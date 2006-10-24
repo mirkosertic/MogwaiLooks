@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Resource>
+	<Bundle interface="de.mogwai.looks.LooksBundle">
+		<Entry id="OK">
+			<Text lang="de">Ok</Text>		
+			<Text lang="en">Ok</Text>					
+		</Entry>
+		<Entry id="CANCEL">
+			<Text lang="de">Abbrechen</Text>		
+			<Text lang="en">Cancel</Text>					
+		</Entry>
+		<Entry id="YES">
+			<Text lang="de">Ja</Text>		
+			<Text lang="en">Yes</Text>					
+		</Entry>
+		<Entry id="NO">
+			<Text lang="de">Nein</Text>		
+			<Text lang="en">No</Text>					
+		</Entry>
+	</Bundle>
+</Resource>
