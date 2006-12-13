@@ -5,14 +5,17 @@ package de.mogwai.looks;
  */
 public interface LooksBundle {
 
-  String BUNDLE_NAME = "de/mogwai/looks/LooksBundle";
+	String BUNDLE_NAME = "de/mogwai/looks/LooksBundle";
 
-  /** Ok */
-  String OK = "OK";
-  /** Abbrechen */
-  String CANCEL = "CANCEL";
-  /** Ja */
-  String YES = "YES";
-  /** Nein */
-  String NO = "NO";
+	/** Ok */
+	String OK = "OK";
+
+	/** Abbrechen */
+	String CANCEL = "CANCEL";
+
+	/** Ja */
+	String YES = "YES";
+
+	/** Nein */
+	String NO = "NO";
 }
