@@ -1,61 +1,61 @@
 /**
- * Mogwai Looks.
- * Copyright (C) 2002 The Mogwai Project.
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ * Mogwai Looks. Copyright (C) 2002 The Mogwai Project.
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 package de.mogwai.looks.tools;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JComponent;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 public class DefaultModificationListener implements ActionListener,
-        DocumentListener {
+		DocumentListener {
 
-    private JComponent source;
+	private JComponent source;
 
-    public DefaultModificationListener(JComponent aSource) {
+	public DefaultModificationListener(JComponent aSource) {
 
-        source = aSource;
-    }
+		source = aSource;
+	}
 
-    private void somethingWasChanged() {
+	private void somethingWasChanged() {
 
-        ModificationTrackerHelper.setModified(source, true);
-    }
+		ModificationTrackerHelper.setModified(source, true);
+	}
 
-    public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {
 
-        somethingWasChanged();
-    }
+		somethingWasChanged();
+	}
 
-    public void insertUpdate(DocumentEvent e) {
+	public void insertUpdate(DocumentEvent e) {
 
-        somethingWasChanged();
-    }
+		somethingWasChanged();
+	}
 
-    public void removeUpdate(DocumentEvent e) {
+	public void removeUpdate(DocumentEvent e) {
 
-        somethingWasChanged();
-    }
+		somethingWasChanged();
+	}
 
-    public void changedUpdate(DocumentEvent e) {
+	public void changedUpdate(DocumentEvent e) {
 
-        somethingWasChanged();
-    }
+		somethingWasChanged();
+	}
 }
