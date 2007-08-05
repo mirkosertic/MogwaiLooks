@@ -24,6 +24,11 @@ import de.mogwai.looks.UIInitializer;
 
 public class DefaultScrollPane extends JScrollPane {
 
+	public DefaultScrollPane() {
+		
+		initialize();
+	}	
+	
 	public DefaultScrollPane(JComponent aChild) {
 
 		super(aChild);

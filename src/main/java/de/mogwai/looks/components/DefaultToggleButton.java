@@ -18,25 +18,39 @@
 package de.mogwai.looks.components;
 
 import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JToggleButton;
 
-public class DefaultToolbarButton extends DefaultButton {
+import de.mogwai.i18n.I18NAble;
+import de.mogwai.i18n.ResourceHelper;
+import de.mogwai.i18n.ResourceHelperLocator;
 
-	public DefaultToolbarButton(Action aAction) {
+public class DefaultToggleButton extends JToggleButton implements I18NAble {
+
+	private String resourceID;
+
+	public DefaultToggleButton() {
+
+	}
+
+	public DefaultToggleButton(String aResourceID) {
+
+		super(aResourceID);
+		resourceID = aResourceID;
+	}
+
+	public DefaultToggleButton(Action aAction) {
+
 		super(aAction);
-		initialize();
 	}
 
-	private void initialize() {
-		setBorderPainted(false);
-		setFocusable(false);
-		/*setSize(new Dimension(32,32));
-		setPreferredSize(new Dimension(32,32)); 
-		setMinimumSize(new Dimension(32,32));*/
+	public String getResourceBundleID() {
+
+		return resourceID;
 	}
 
-	@Override
-	public void setText(String aText) {
-		super.setText("");
-		setToolTipText(aText);
+	public ResourceHelper getResourceHelper() {
+
+		return ResourceHelperLocator.findResourceHelperFor(this);
 	}
 }
