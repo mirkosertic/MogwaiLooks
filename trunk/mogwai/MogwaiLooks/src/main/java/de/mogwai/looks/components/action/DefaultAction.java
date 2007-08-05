@@ -75,8 +75,6 @@ public class DefaultAction extends AbstractAction implements I18NAble {
 			putValue(SMALL_ICON, ImageIconCache.getImageIcon(iconName));
 		}
 		I18NInitializer.initialize(this);
-
-		setEnabled(false);
 	}
 
 	public void addActionListener(ActionListener aListener) {
@@ -94,18 +92,15 @@ public class DefaultAction extends AbstractAction implements I18NAble {
 	}
 
 	public String getResourceBundleID() {
-
 		return resourceID;
 	}
 
 	public void setText(String aText) {
-
 		putValue(NAME, aText);
 	}
 
 	public void setCommandName(String aCommandName) {
 		putValue(ACTION_COMMAND_KEY, aCommandName);
-		setEnabled(true);
 	}
 
 	public ResourceHelper getResourceHelper() {

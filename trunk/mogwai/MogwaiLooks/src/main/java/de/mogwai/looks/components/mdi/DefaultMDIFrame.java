@@ -37,7 +37,7 @@ public class DefaultMDIFrame extends DefaultFrame implements
 
 	private DefaultDesktopPane desktopPane = new DefaultDesktopPane();
 
-	private DefaultMenu windowMenu = new DefaultMenu("WINDOWS");
+	private DefaultMenu windowMenu = new DefaultMenu(this, "WINDOWS");
 
 	private DefaultAction cascadeAction = new DefaultAction(this, this,
 			"CASCADE_WINDOWS");

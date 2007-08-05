@@ -19,21 +19,44 @@ package de.mogwai.looks.components.menu;
 
 import java.awt.Font;
 
+import javax.swing.Action;
 import javax.swing.JMenu;
 
 import de.mogwai.i18n.I18NAble;
 import de.mogwai.i18n.ResourceHelper;
 import de.mogwai.i18n.ResourceHelperLocator;
+import de.mogwai.i18n.ResourceHelperProvider;
 import de.mogwai.looks.UIInitializer;
+import de.mogwai.looks.components.action.DefaultAction;
 
 public class DefaultMenu extends JMenu implements I18NAble {
 
 	private String resourceID;
+	private ResourceHelper resourceHelper; 
 
-	public DefaultMenu(String aResourceID) {
+	public DefaultMenu(DefaultAction aAction) {
+		super(aAction);
+		
+		resourceHelper = aAction.getResourceHelper();
+		
+		initialize();
+	}
+	
+	public DefaultMenu(ResourceHelper aHelper, Action aAction) {
+		super(aAction);
+		
+		resourceHelper = aHelper;
+		
+		initialize();
+	}
+	
+	public DefaultMenu(ResourceHelperProvider aProvider, String aResourceID) {
 
 		super(aResourceID);
+		
 		resourceID = aResourceID;
+		resourceHelper = aProvider.getResourceHelper();
+		
 		initialize();
 	}
 
@@ -50,11 +73,16 @@ public class DefaultMenu extends JMenu implements I18NAble {
 
 	public ResourceHelper getResourceHelper() {
 
+		if (resourceHelper != null) {
+			return resourceHelper;
+		}
+		
 		return ResourceHelperLocator.findResourceHelperFor(this);
 	}
 
 	private void initialize() {
 
+		setOpaque(true);
 		UIInitializer.getInstance().initializeFontAndColors(this);
 	}
 }

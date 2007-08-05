@@ -26,6 +26,7 @@ import de.mogwai.i18n.I18NAble;
 import de.mogwai.i18n.ResourceHelper;
 import de.mogwai.i18n.ResourceHelperLocator;
 import de.mogwai.looks.UIInitializer;
+import de.mogwai.looks.components.action.DefaultAction;
 
 public class DefaultMenuItem extends JMenuItem implements I18NAble {
 
@@ -43,7 +44,7 @@ public class DefaultMenuItem extends JMenuItem implements I18NAble {
 		super(aAction);
 		initialize();
 	}
-
+	
 	@Override
 	public void setFont(Font aFont) {
 
@@ -57,6 +58,10 @@ public class DefaultMenuItem extends JMenuItem implements I18NAble {
 
 	public ResourceHelper getResourceHelper() {
 
+		Action theAction = getAction();
+		if (theAction instanceof DefaultAction) {
+			return ((DefaultAction)theAction).getResourceHelper();
+		}
 		return ResourceHelperLocator.findResourceHelperFor(this);
 	}
 
