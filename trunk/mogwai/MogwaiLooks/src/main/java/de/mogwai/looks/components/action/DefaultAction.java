@@ -70,11 +70,18 @@ public class DefaultAction extends AbstractAction implements I18NAble {
 
 	private void initialize() {
 
+		putValue(NAME, null);
+		
 		String iconName = resourceHelper.getIcon(resourceID);
 		if (iconName != null) {
 			putValue(SMALL_ICON, ImageIconCache.getImageIcon(iconName));
 		}
-		I18NInitializer.initialize(this);
+		
+		try {
+			I18NInitializer.initialize(this);
+		} catch (Exception e) {
+			//TODO: Add better exception handling here
+		}
 	}
 
 	public void addActionListener(ActionListener aListener) {

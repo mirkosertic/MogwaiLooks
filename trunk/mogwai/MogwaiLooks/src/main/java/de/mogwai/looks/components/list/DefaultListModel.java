@@ -17,6 +17,8 @@
  */
 package de.mogwai.looks.components.list;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -24,15 +26,15 @@ import javax.swing.ListModel;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 
-public class DefaultListModel<Typ> implements ListModel {
+public class DefaultListModel<T> implements ListModel {
 
-	protected List<Typ> data;
+	protected List<T> data;
 
 	protected Vector<ListDataListener> listener = new Vector<ListDataListener>();
 
 	public DefaultListModel() {
 
-		data = new Vector<Typ>();
+		data = new Vector<T>();
 	}
 
 	public int getSize() {
@@ -64,15 +66,33 @@ public class DefaultListModel<Typ> implements ListModel {
 		}
 	}
 
-	public void add(Typ aEntry) {
+	public void add(T aEntry) {
 
 		data.add(aEntry);
 		fireListDataChanged();
 	}
+	
+	public void remove(T aEntry) {
+		data.remove(aEntry);
+		fireListDataChanged();
+	}
+	
+	public T get(int aIndex) {
+		return data.get(aIndex);
+	}
 
-	public void setData(List<Typ> aData) {
+	public void setData(List<T> aData) {
 
 		data = aData;
 		fireListDataChanged();
+	}
+
+	public void clear() {
+		data.clear();
+		fireListDataChanged();
+	}
+
+	public boolean contains(T o) {
+		return data.contains(o);
 	}
 }
