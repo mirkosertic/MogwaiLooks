@@ -30,7 +30,6 @@ public class DefaultList<Typ> extends JList {
 	private DefaultListModel<Typ> model;
 
 	public DefaultList() {
-
 		initialize();
 	}
 
