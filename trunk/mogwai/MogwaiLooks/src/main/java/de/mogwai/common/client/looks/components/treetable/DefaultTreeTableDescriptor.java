@@ -22,8 +22,8 @@ import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperProvider;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultTreeTableDescriptor {
 

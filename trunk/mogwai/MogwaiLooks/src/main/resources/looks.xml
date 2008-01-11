@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Resource>
-	<Bundle interface="de.mogwai.looks.LooksBundle">
+	<Bundle interface="de.mogwai.common.client.looks.LooksBundle">
 		<Entry id="OK">
 			<Text lang="de">Ok</Text>		
 			<Text lang="en">Ok</Text>					

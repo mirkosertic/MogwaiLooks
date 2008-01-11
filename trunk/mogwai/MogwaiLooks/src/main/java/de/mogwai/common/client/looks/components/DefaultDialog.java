@@ -27,9 +27,9 @@ import de.mogwai.common.client.looks.components.action.ActionEventProcessor;
 import de.mogwai.common.client.looks.components.action.ActionEventProcessorHelper;
 import de.mogwai.common.client.looks.tools.ModificationTracker;
 import de.mogwai.common.client.looks.tools.WindowHelper;
-import de.mogwai.i18n.I18NAble;
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperProvider;
+import de.mogwai.common.i18n.I18NAble;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultDialog extends JDialog implements ResourceHelperProvider,
 		I18NAble, ModificationTracker, ResultProvider, ActionEventProcessor {

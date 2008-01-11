@@ -24,10 +24,10 @@ import java.util.Vector;
 import javax.swing.AbstractAction;
 
 import de.mogwai.common.client.looks.tools.ImageIconCache;
-import de.mogwai.i18n.I18NAble;
-import de.mogwai.i18n.I18NInitializer;
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperProvider;
+import de.mogwai.common.i18n.I18NAble;
+import de.mogwai.common.i18n.I18NInitializer;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultAction extends AbstractAction implements I18NAble {
 

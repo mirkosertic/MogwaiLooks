@@ -21,9 +21,9 @@ import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
 
-import de.mogwai.i18n.I18NAble;
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperLocator;
+import de.mogwai.common.i18n.I18NAble;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultToggleButton extends JToggleButton implements I18NAble {
 

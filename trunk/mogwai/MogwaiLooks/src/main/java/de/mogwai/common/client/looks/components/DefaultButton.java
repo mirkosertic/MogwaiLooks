@@ -20,9 +20,9 @@ package de.mogwai.common.client.looks.components;
 import javax.swing.Action;
 import javax.swing.JButton;
 
-import de.mogwai.i18n.I18NAble;
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperLocator;
+import de.mogwai.common.i18n.I18NAble;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultButton extends JButton implements I18NAble {
 

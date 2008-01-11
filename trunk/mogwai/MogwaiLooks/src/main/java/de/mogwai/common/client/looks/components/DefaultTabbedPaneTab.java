@@ -19,9 +19,9 @@ package de.mogwai.common.client.looks.components;
 
 import javax.swing.JTabbedPane;
 
-import de.mogwai.i18n.I18NAble;
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperLocator;
+import de.mogwai.common.i18n.I18NAble;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultTabbedPaneTab extends DefaultPanel implements I18NAble {
 	

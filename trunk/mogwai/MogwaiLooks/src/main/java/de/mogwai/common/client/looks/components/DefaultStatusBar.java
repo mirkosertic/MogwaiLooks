@@ -26,7 +26,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
 import de.mogwai.common.client.looks.UIInitializer;
-import de.mogwai.i18n.ResourceHelperLocator;
+import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultStatusBar extends JLabel implements StatusBar {
 

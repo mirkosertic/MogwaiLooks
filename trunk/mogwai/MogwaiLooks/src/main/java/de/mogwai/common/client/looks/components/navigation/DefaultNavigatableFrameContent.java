@@ -23,8 +23,8 @@ import de.mogwai.common.client.looks.components.DefaultFrameContent;
 import de.mogwai.common.client.looks.components.action.ActionEventProcessor;
 import de.mogwai.common.client.looks.components.action.ActionEventProcessorHelper;
 import de.mogwai.common.client.looks.components.action.DefaultAction;
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperProvider;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultNavigatableFrameContent extends DefaultFrameContent
 		implements ActionEventProcessor, ResourceHelperProvider {

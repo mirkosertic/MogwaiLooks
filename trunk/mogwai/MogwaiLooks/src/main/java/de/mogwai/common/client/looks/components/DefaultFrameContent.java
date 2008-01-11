@@ -47,6 +47,10 @@ public class DefaultFrameContent extends DefaultPanel implements
 	public void initializeBindingInfo() {
 	}
 
+	public StatusBar getStatusBar() {
+		return statusBar;
+	}
+	
 	protected void initializeToolbar() {
 	}
 

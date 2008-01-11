@@ -24,9 +24,9 @@ import javax.swing.JMenuItem;
 
 import de.mogwai.common.client.looks.UIInitializer;
 import de.mogwai.common.client.looks.components.action.DefaultAction;
-import de.mogwai.i18n.I18NAble;
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperLocator;
+import de.mogwai.common.i18n.I18NAble;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultMenuItem extends JMenuItem implements I18NAble {
 

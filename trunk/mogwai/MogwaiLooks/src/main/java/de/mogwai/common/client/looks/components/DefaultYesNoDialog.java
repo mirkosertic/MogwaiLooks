@@ -28,8 +28,8 @@ import com.jgoodies.forms.layout.FormLayout;
 import de.mogwai.common.client.looks.LooksBundle;
 import de.mogwai.common.client.looks.UIInitializer;
 import de.mogwai.common.client.looks.components.action.DefaultAction;
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperProvider;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultYesNoDialog extends DefaultDialog {
 
