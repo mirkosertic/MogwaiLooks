@@ -21,9 +21,9 @@ import javax.swing.JFrame;
 
 import de.mogwai.common.client.looks.components.menu.DefaultMenuBar;
 import de.mogwai.common.client.looks.tools.WindowHelper;
-import de.mogwai.i18n.I18NAble;
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperProvider;
+import de.mogwai.common.i18n.I18NAble;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultFrame extends JFrame implements ResourceHelperProvider,
 		I18NAble, ToolbarProvider {

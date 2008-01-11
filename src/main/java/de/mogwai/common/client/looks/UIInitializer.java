@@ -40,8 +40,8 @@ import javax.swing.border.Border;
 import javax.swing.table.JTableHeader;
 
 import de.mogwai.common.client.looks.components.renderer.DefaultTableHeaderRenderer;
-import de.mogwai.i18n.I18NAble;
-import de.mogwai.i18n.I18NInitializer;
+import de.mogwai.common.i18n.I18NAble;
+import de.mogwai.common.i18n.I18NInitializer;
 
 public class UIInitializer {
 

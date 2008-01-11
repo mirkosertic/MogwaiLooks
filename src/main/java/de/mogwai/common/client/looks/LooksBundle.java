@@ -5,7 +5,7 @@ package de.mogwai.common.client.looks;
  */
 public interface LooksBundle {
 
-  String BUNDLE_NAME = "de/mogwai/looks/LooksBundle";
+  String BUNDLE_NAME = "de/mogwai/common/client/looks/LooksBundle";
 
   /** Ok */
   String OK = "OK";

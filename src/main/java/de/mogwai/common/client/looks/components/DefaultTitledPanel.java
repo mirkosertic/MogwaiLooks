@@ -21,9 +21,9 @@ import java.awt.event.ActionEvent;
 
 import de.mogwai.common.client.looks.components.action.ActionEventProcessor;
 import de.mogwai.common.client.looks.components.action.ActionEventProcessorHelper;
-import de.mogwai.i18n.I18NAble;
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperLocator;
+import de.mogwai.common.i18n.I18NAble;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultTitledPanel extends DefaultPanel implements I18NAble,
 		ActionEventProcessor {

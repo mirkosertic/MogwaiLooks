@@ -22,8 +22,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import de.mogwai.common.client.looks.UIInitializer;
-import de.mogwai.i18n.ResourceHelper;
-import de.mogwai.i18n.ResourceHelperProvider;
+import de.mogwai.common.i18n.ResourceHelper;
+import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultPopupMenu extends JPopupMenu implements
 		ResourceHelperProvider {
