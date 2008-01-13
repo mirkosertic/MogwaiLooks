@@ -1,0 +1,13 @@
+ 
+     Release Notes for MogwaiLooks
+     
+
+Release 0.1
+
+* First Release
+
+Release 1.2
+
+* Minor Bug fixes
+* Renamed several packages and corrected spelling
+* Migrated to Maven
