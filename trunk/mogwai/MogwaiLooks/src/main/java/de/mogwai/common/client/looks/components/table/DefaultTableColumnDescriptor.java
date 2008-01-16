@@ -91,4 +91,45 @@ public class DefaultTableColumnDescriptor {
         this.editor = editor;
     }
 
+    /**
+     * @param clazz the clazz to set
+     */
+    public void setClazz(Class clazz) {
+        this.clazz = clazz;
+    }
+
+    /**
+     * @param displayName the displayName to set
+     */
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    /**
+     * @param editable the editable to set
+     */
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
+
+    /**
+     * @param propertyName the propertyName to set
+     */
+    public void setPropertyName(String propertyName) {
+        this.propertyName = propertyName;
+    }
+
+    /**
+     * @param renderer the renderer to set
+     */
+    public void setRenderer(TableCellRenderer renderer) {
+        this.renderer = renderer;
+    }
+
+    /**
+     * @param size the size to set
+     */
+    public void setSize(int size) {
+        this.size = size;
+    }
 }
