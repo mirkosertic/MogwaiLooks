@@ -25,144 +25,144 @@ import javax.swing.tree.TreePath;
 
 public abstract class DefaultTreeTableModel implements TreeModel {
 
-	protected DefaultTreeTableNode root;
+    protected DefaultTreeTableNode root;
 
-	protected EventListenerList listenerList = new EventListenerList();
+    protected EventListenerList listenerList = new EventListenerList();
 
-	protected DefaultTreeTableDescriptor descriptor;
+    protected DefaultTreeTableDescriptor descriptor;
 
-	public DefaultTreeTableModel(DefaultTreeTableNode root,
-			DefaultTreeTableDescriptor aDescriptor) {
+    public DefaultTreeTableModel(DefaultTreeTableNode root, DefaultTreeTableDescriptor aDescriptor) {
 
-		this.root = root;
-		descriptor = aDescriptor;
-	}
+        this.root = root;
+        descriptor = aDescriptor;
+    }
 
-	public DefaultTreeTableDescriptor getDescriptor() {
-		return descriptor;
-	}
+    public DefaultTreeTableDescriptor getDescriptor() {
+        return descriptor;
+    }
 
-	public DefaultTreeTableNode getRoot() {
+    public DefaultTreeTableNode getRoot() {
 
-		return root;
-	}
+        return root;
+    }
 
-	public void setRoot(DefaultTreeTableNode aRoot) {
-		root = aRoot;
-		fireTreeStructureChanged(this);
-	}
+    public void setRoot(DefaultTreeTableNode aRoot) {
+        root = aRoot;
+        fireTreeStructureChanged(this);
+    }
 
-	public boolean isLeaf(Object node) {
+    public boolean isLeaf(Object node) {
 
-		return getChildCount(node) == 0;
-	}
+        return getChildCount(node) == 0;
+    }
 
-	public void valueForPathChanged(TreePath path, Object newValue) {
+    public void valueForPathChanged(TreePath path, Object newValue) {
 
-	}
+    }
 
-	public int getIndexOfChild(Object parent, Object child) {
+    public int getIndexOfChild(Object parent, Object child) {
 
-		for (int i = 0; i < getChildCount(parent); i++) {
-			if (getChild(parent, i).equals(child)) {
-				return i;
-			}
-		}
-		return -1;
-	}
+        for (int i = 0; i < getChildCount(parent); i++) {
+            if (getChild(parent, i).equals(child)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
-	public void addTreeModelListener(TreeModelListener l) {
+    public void addTreeModelListener(TreeModelListener l) {
 
-		listenerList.add(TreeModelListener.class, l);
-	}
+        listenerList.add(TreeModelListener.class, l);
+    }
 
-	public void removeTreeModelListener(TreeModelListener l) {
+    public void removeTreeModelListener(TreeModelListener l) {
 
-		listenerList.remove(TreeModelListener.class, l);
-	}
+        listenerList.remove(TreeModelListener.class, l);
+    }
 
-	protected void fireTreeNodesChanged(Object source, Object[] path,
-			int[] childIndices, Object[] children) {
+    protected void fireTreeNodesChanged(Object source, Object[] path, int[] childIndices, Object[] children) {
 
-		Object[] listeners = listenerList.getListenerList();
-		TreeModelEvent e = null;
-		for (int i = listeners.length - 2; i >= 0; i -= 2) {
-			if (listeners[i] == TreeModelListener.class) {
-				if (e == null)
-					e = new TreeModelEvent(source, path, childIndices, children);
-				((TreeModelListener) listeners[i + 1]).treeNodesChanged(e);
-			}
-		}
-	}
+        Object[] listeners = listenerList.getListenerList();
+        TreeModelEvent e = null;
+        for (int i = listeners.length - 2; i >= 0; i -= 2) {
+            if (listeners[i] == TreeModelListener.class) {
+                if (e == null) {
+                    e = new TreeModelEvent(source, path, childIndices, children);
+                }
+                ((TreeModelListener) listeners[i + 1]).treeNodesChanged(e);
+            }
+        }
+    }
 
-	protected void fireTreeNodesInserted(Object source, Object[] path,
-			int[] childIndices, Object[] children) {
+    protected void fireTreeNodesInserted(Object source, Object[] path, int[] childIndices, Object[] children) {
 
-		Object[] listeners = listenerList.getListenerList();
-		TreeModelEvent e = null;
-		for (int i = listeners.length - 2; i >= 0; i -= 2) {
-			if (listeners[i] == TreeModelListener.class) {
-				if (e == null)
-					e = new TreeModelEvent(source, path, childIndices, children);
-				((TreeModelListener) listeners[i + 1]).treeNodesInserted(e);
-			}
-		}
-	}
+        Object[] listeners = listenerList.getListenerList();
+        TreeModelEvent e = null;
+        for (int i = listeners.length - 2; i >= 0; i -= 2) {
+            if (listeners[i] == TreeModelListener.class) {
+                if (e == null) {
+                    e = new TreeModelEvent(source, path, childIndices, children);
+                }
+                ((TreeModelListener) listeners[i + 1]).treeNodesInserted(e);
+            }
+        }
+    }
 
-	protected void fireTreeNodesRemoved(Object source, Object[] path,
-			int[] childIndices, Object[] children) {
+    protected void fireTreeNodesRemoved(Object source, Object[] path, int[] childIndices, Object[] children) {
 
-		Object[] listeners = listenerList.getListenerList();
-		TreeModelEvent e = null;
-		for (int i = listeners.length - 2; i >= 0; i -= 2) {
-			if (listeners[i] == TreeModelListener.class) {
-				if (e == null)
-					e = new TreeModelEvent(source, path, childIndices, children);
-				((TreeModelListener) listeners[i + 1]).treeNodesRemoved(e);
-			}
-		}
-	}
+        Object[] listeners = listenerList.getListenerList();
+        TreeModelEvent e = null;
+        for (int i = listeners.length - 2; i >= 0; i -= 2) {
+            if (listeners[i] == TreeModelListener.class) {
+                if (e == null) {
+                    e = new TreeModelEvent(source, path, childIndices, children);
+                }
+                ((TreeModelListener) listeners[i + 1]).treeNodesRemoved(e);
+            }
+        }
+    }
 
-	public void fireTreeStructureChanged(Object source) {
+    public void fireTreeStructureChanged(Object source) {
 
-		Object[] listeners = listenerList.getListenerList();
-		TreeModelEvent e = null;
-		for (int i = listeners.length - 2; i >= 0; i -= 2) {
-			if (listeners[i] == TreeModelListener.class) {
-				if (e == null)
-					e = new TreeModelEvent(source, (TreePath) null, null, null);
-				((TreeModelListener) listeners[i + 1]).treeStructureChanged(e);
-			}
-		}
-	}
+        Object[] listeners = listenerList.getListenerList();
+        TreeModelEvent e = null;
+        for (int i = listeners.length - 2; i >= 0; i -= 2) {
+            if (listeners[i] == TreeModelListener.class) {
+                if (e == null) {
+                    e = new TreeModelEvent(source, (TreePath) null, null, null);
+                }
+                ((TreeModelListener) listeners[i + 1]).treeStructureChanged(e);
+            }
+        }
+    }
 
-	public boolean isCellEditable(Object node, int column) {
+    public boolean isCellEditable(Object node, int column) {
 
-		return getColumnClass(column) == DefaultTreeTableModel.class;
-	}
+        return getColumnClass(column) == DefaultTreeTableModel.class;
+    }
 
-	public void setValueAt(Object aValue, Object node, int column) {
-	}
+    public void setValueAt(Object aValue, Object node, int column) {
+    }
 
-	public Object getChild(Object parent, int index) {
-		return ((DefaultTreeTableNode) parent).getChild(index);
-	}
+    public Object getChild(Object parent, int index) {
+        return ((DefaultTreeTableNode) parent).getChild(index);
+    }
 
-	public int getChildCount(Object parent) {
-		return ((DefaultTreeTableNode) parent).getChildCount();
-	}
+    public int getChildCount(Object parent) {
+        return ((DefaultTreeTableNode) parent).getChildCount();
+    }
 
-	public int getColumnCount() {
-		return descriptor.getColumnCount();
-	}
+    public int getColumnCount() {
+        return descriptor.getColumnCount();
+    }
 
-	public String getColumnName(int column) {
-		return descriptor.getColumnName(column);
-	}
+    public String getColumnName(int column) {
+        return descriptor.getColumnName(column);
+    }
 
-	public Class getColumnClass(int column) {
-		return descriptor.getColumnClass(column);
-	}
+    public Class getColumnClass(int column) {
+        return descriptor.getColumnClass(column);
+    }
 
-	public abstract Object getValueAt(DefaultTreeTableNode node, int column);
+    public abstract Object getValueAt(DefaultTreeTableNode node, int column);
 }

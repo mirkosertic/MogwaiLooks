@@ -24,16 +24,15 @@ import de.mogwai.common.client.looks.UIInitializer;
 
 public class DefaultTitledBorder extends TitledBorder {
 
-	public DefaultTitledBorder(String aResourceID) {
+    public DefaultTitledBorder(String aResourceID) {
 
-		super(aResourceID);
-		setBorder(BorderFactory.createLineBorder(UIInitializer.getInstance()
-				.getDefaultBorderColor()));
-		initialize();
-	}
+        super(aResourceID);
+        setBorder(BorderFactory.createLineBorder(UIInitializer.getInstance().getDefaultBorderColor()));
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		setTitleFont(UIInitializer.getInstance().getDefaultFont());
-	}
+        setTitleFont(UIInitializer.getInstance().getDefaultFont());
+    }
 }

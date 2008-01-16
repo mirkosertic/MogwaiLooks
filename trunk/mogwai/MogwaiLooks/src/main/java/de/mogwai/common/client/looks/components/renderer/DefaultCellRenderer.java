@@ -26,53 +26,51 @@ import javax.swing.tree.TreeCellRenderer;
 
 import de.mogwai.common.client.looks.UIInitializer;
 
-public class DefaultCellRenderer extends DefaultRenderer implements
-		TableCellRenderer, TreeCellRenderer {
+public final class DefaultCellRenderer extends DefaultRenderer implements TableCellRenderer, TreeCellRenderer {
 
-	private static DefaultCellRenderer me = new DefaultCellRenderer();
+    private static DefaultCellRenderer me = new DefaultCellRenderer();
 
-	private UIInitializer initializer;
+    private UIInitializer initializer;
 
-	public static DefaultCellRenderer getInstance() {
+    public static DefaultCellRenderer getInstance() {
 
-		return me;
-	}
+        return me;
+    }
 
-	private DefaultCellRenderer() {
+    private DefaultCellRenderer() {
 
-		initializer = UIInitializer.getInstance();
-	}
+        initializer = UIInitializer.getInstance();
+    }
 
-	public Component getTableCellRendererComponent(JTable table, Object value,
-			boolean isSelected, boolean hasFocus, int row, int column) {
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+            int row, int column) {
 
-		setText(objectToString(value));
-		setIcon(objectToIcon(value));
-		if (isSelected) {
-			setBackground(initializer.getDefaultListSelectionBackground());
-			setForeground(initializer.getDefaultListSelectionForeground());
-		} else {
-			setBackground(initializer.getDefaultListNonSelectionBackground());
-			setForeground(initializer.getDefaultListNonSelectionForeground());
-		}
-		return this;
-	}
+        setText(objectToString(value));
+        setIcon(objectToIcon(value));
+        if (isSelected) {
+            setBackground(initializer.getDefaultListSelectionBackground());
+            setForeground(initializer.getDefaultListSelectionForeground());
+        } else {
+            setBackground(initializer.getDefaultListNonSelectionBackground());
+            setForeground(initializer.getDefaultListNonSelectionForeground());
+        }
+        return this;
+    }
 
-	public Component getTreeCellRendererComponent(JTree tree, Object value,
-			boolean selected, boolean expanded, boolean leaf, int row,
-			boolean hasFocus) {
+    public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected, boolean expanded,
+            boolean leaf, int row, boolean hasFocus) {
 
-		setText(objectToString(value));
-		setIcon(objectToIcon(value));
+        setText(objectToString(value));
+        setIcon(objectToIcon(value));
 
-		setText(objectToString(value));
-		if (selected) {
-			setBackground(initializer.getDefaultListSelectionBackground());
-			setForeground(initializer.getDefaultListSelectionForeground());
-		} else {
-			setBackground(initializer.getDefaultListNonSelectionBackground());
-			setForeground(initializer.getDefaultListNonSelectionForeground());
-		}
-		return this;
-	}
+        setText(objectToString(value));
+        if (selected) {
+            setBackground(initializer.getDefaultListSelectionBackground());
+            setForeground(initializer.getDefaultListSelectionForeground());
+        } else {
+            setBackground(initializer.getDefaultListNonSelectionBackground());
+            setForeground(initializer.getDefaultListNonSelectionForeground());
+        }
+        return this;
+    }
 }

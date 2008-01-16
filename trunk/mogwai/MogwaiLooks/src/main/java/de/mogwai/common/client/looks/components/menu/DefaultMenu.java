@@ -31,58 +31,59 @@ import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultMenu extends JMenu implements I18NAble {
 
-	private String resourceID;
-	private ResourceHelper resourceHelper; 
+    private String resourceID;
 
-	public DefaultMenu(DefaultAction aAction) {
-		super(aAction);
-		
-		resourceHelper = aAction.getResourceHelper();
-		
-		initialize();
-	}
-	
-	public DefaultMenu(ResourceHelper aHelper, Action aAction) {
-		super(aAction);
-		
-		resourceHelper = aHelper;
-		
-		initialize();
-	}
-	
-	public DefaultMenu(ResourceHelperProvider aProvider, String aResourceID) {
+    private ResourceHelper resourceHelper;
 
-		super(aResourceID);
-		
-		resourceID = aResourceID;
-		resourceHelper = aProvider.getResourceHelper();
-		
-		initialize();
-	}
+    public DefaultMenu(DefaultAction aAction) {
+        super(aAction);
 
-	@Override
-	public void setFont(Font aFont) {
+        resourceHelper = aAction.getResourceHelper();
 
-		super.setFont(aFont.deriveFont(Font.PLAIN));
-	}
+        initialize();
+    }
 
-	public String getResourceBundleID() {
+    public DefaultMenu(ResourceHelper aHelper, Action aAction) {
+        super(aAction);
 
-		return resourceID;
-	}
+        resourceHelper = aHelper;
 
-	public ResourceHelper getResourceHelper() {
+        initialize();
+    }
 
-		if (resourceHelper != null) {
-			return resourceHelper;
-		}
-		
-		return ResourceHelperLocator.findResourceHelperFor(this);
-	}
+    public DefaultMenu(ResourceHelperProvider aProvider, String aResourceID) {
 
-	private void initialize() {
+        super(aResourceID);
 
-		setOpaque(true);
-		UIInitializer.getInstance().initializeFontAndColors(this);
-	}
+        resourceID = aResourceID;
+        resourceHelper = aProvider.getResourceHelper();
+
+        initialize();
+    }
+
+    @Override
+    public void setFont(Font aFont) {
+
+        super.setFont(aFont.deriveFont(Font.PLAIN));
+    }
+
+    public String getResourceBundleID() {
+
+        return resourceID;
+    }
+
+    public ResourceHelper getResourceHelper() {
+
+        if (resourceHelper != null) {
+            return resourceHelper;
+        }
+
+        return ResourceHelperLocator.findResourceHelperFor(this);
+    }
+
+    private void initialize() {
+
+        setOpaque(true);
+        UIInitializer.getInstance().initializeFontAndColors(this);
+    }
 }

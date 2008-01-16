@@ -27,83 +27,82 @@ import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultTreeTableDescriptor {
 
-	private Vector<DefaultTreeTableColumnDescriptor> column = new Vector<DefaultTreeTableColumnDescriptor>();
+    private Vector<DefaultTreeTableColumnDescriptor> column = new Vector<DefaultTreeTableColumnDescriptor>();
 
-	protected ResourceHelper resourceHelper;
+    protected ResourceHelper resourceHelper;
 
-	private JTable table;
+    private JTable table;
 
-	protected DefaultTreeTableDescriptor(ResourceHelper aResourceHelper) {
+    protected DefaultTreeTableDescriptor(ResourceHelper aResourceHelper) {
 
-		resourceHelper = aResourceHelper;
-	}
+        resourceHelper = aResourceHelper;
+    }
 
-	protected DefaultTreeTableDescriptor(ResourceHelperProvider aProvider) {
+    protected DefaultTreeTableDescriptor(ResourceHelperProvider aProvider) {
 
-		this(aProvider.getResourceHelper());
-	}
+        this(aProvider.getResourceHelper());
+    }
 
-	protected DefaultTreeTableColumnDescriptor addColumn(String displayName,
-			Class clazz) {
-		return addColumn(displayName, clazz, -1);
-	}
+    protected DefaultTreeTableColumnDescriptor addColumn(String displayName, Class clazz) {
+        return addColumn(displayName, clazz, -1);
+    }
 
-	protected DefaultTreeTableColumnDescriptor addColumn(String aResourceKey,
-			Class clazz, int size) {
+    protected DefaultTreeTableColumnDescriptor addColumn(String aResourceKey, Class clazz, int size) {
 
-		if (column.size() == 0) {
-			clazz = DefaultTreeTableModel.class;
-		}
+        if (column.size() == 0) {
+            clazz = DefaultTreeTableModel.class;
+        }
 
-		DefaultTreeTableColumnDescriptor theDesc = new DefaultTreeTableColumnDescriptor(
-				resourceHelper.getText(aResourceKey), clazz, size);
+        DefaultTreeTableColumnDescriptor theDesc = new DefaultTreeTableColumnDescriptor(resourceHelper
+                .getText(aResourceKey), clazz, size);
 
-		column.add(theDesc);
+        column.add(theDesc);
 
-		return theDesc;
-	}
+        return theDesc;
+    }
 
-	public int getColumnCount() {
+    public int getColumnCount() {
 
-		return column.size();
-	}
+        return column.size();
+    }
 
-	public String getColumnName(int columnIndex) {
+    public String getColumnName(int columnIndex) {
 
-		return column.get(columnIndex).getDisplayName();
-	}
+        return column.get(columnIndex).getDisplayName();
+    }
 
-	public Class getColumnClass(int columnIndex) {
+    public Class getColumnClass(int columnIndex) {
 
-		if (columnIndex == 0) {
-			return DefaultTreeTableModel.class;
-		}
-		return column.get(columnIndex).getClass();
-	}
+        if (columnIndex == 0) {
+            return DefaultTreeTableModel.class;
+        }
+        return column.get(columnIndex).getClass();
+    }
 
-	public boolean isColumnEditable(int columnIndex) {
-		return false;
-	}
+    public boolean isColumnEditable(int columnIndex) {
+        return false;
+    }
 
-	public void configureTable(DefaultTreeTable aTable) {
+    public void configureTable(DefaultTreeTable aTable) {
 
-		table = aTable;
+        table = aTable;
 
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-		table.setRowSelectionAllowed(true);
-		table.setColumnSelectionAllowed(false);
-		table.setRowSelectionAllowed(true);
-		table.getTableHeader().setReorderingAllowed(false);
-		for (DefaultTreeTableColumnDescriptor theDesc : column) {
-			int index = column.indexOf(theDesc);
-			TableColumn theColumn = table.getColumnModel().getColumn(index);
-			if (theDesc.getSize() > 0) {
-				theColumn.setMinWidth(theDesc.getSize());
-				theColumn.setMaxWidth(theDesc.getSize());
-				theColumn.setWidth(theDesc.getSize());
-			}
-			if (index > 0)
-				theColumn.setCellRenderer(theDesc.getRenderer());
-		}
-	}
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        table.setRowSelectionAllowed(true);
+        table.setColumnSelectionAllowed(false);
+        table.setRowSelectionAllowed(true);
+        table.getTableHeader().setReorderingAllowed(false);
+        for (DefaultTreeTableColumnDescriptor theDesc : column) {
+            int index = column.indexOf(theDesc);
+            TableColumn theColumn = table.getColumnModel().getColumn(index);
+            if (theDesc.getSize() > 0) {
+                theColumn.setMinWidth(theDesc.getSize());
+                theColumn.setMaxWidth(theDesc.getSize());
+                theColumn.setWidth(theDesc.getSize());
+            }
+            if (index > 0) {
+                theColumn.setCellRenderer(theDesc.getRenderer());
+            }
+        }
+    }
 }

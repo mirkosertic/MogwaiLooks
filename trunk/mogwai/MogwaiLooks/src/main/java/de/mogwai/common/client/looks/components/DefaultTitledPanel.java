@@ -25,41 +25,40 @@ import de.mogwai.common.i18n.I18NAble;
 import de.mogwai.common.i18n.ResourceHelper;
 import de.mogwai.common.i18n.ResourceHelperLocator;
 
-public class DefaultTitledPanel extends DefaultPanel implements I18NAble,
-		ActionEventProcessor {
+public class DefaultTitledPanel extends DefaultPanel implements I18NAble, ActionEventProcessor {
 
-	private DefaultTitledBorder border;
+    private DefaultTitledBorder border;
 
-	private String resourceID;
+    private String resourceID;
 
-	public DefaultTitledPanel(String titleResourceID) {
+    public DefaultTitledPanel(String titleResourceID) {
 
-		initialize(titleResourceID);
-	}
+        initialize(titleResourceID);
+    }
 
-	private void initialize(String titleResouceID) {
+    private void initialize(String titleResouceID) {
 
-		border = new DefaultTitledBorder(titleResouceID);
-		setBorder(border);
-		resourceID = titleResouceID;
-	}
+        border = new DefaultTitledBorder(titleResouceID);
+        setBorder(border);
+        resourceID = titleResouceID;
+    }
 
-	public ResourceHelper getResourceHelper() {
+    public ResourceHelper getResourceHelper() {
 
-		return ResourceHelperLocator.findResourceHelperFor(this);
-	}
+        return ResourceHelperLocator.findResourceHelperFor(this);
+    }
 
-	public String getResourceBundleID() {
+    public String getResourceBundleID() {
 
-		return resourceID;
-	}
+        return resourceID;
+    }
 
-	public void setText(String aText) {
+    public void setText(String aText) {
 
-		border.setTitle(aText);
-	}
+        border.setTitle(aText);
+    }
 
-	public void processActionEvent(ActionEvent e) {
-		ActionEventProcessorHelper.invoke(this, e);
-	}
+    public void processActionEvent(ActionEvent e) {
+        ActionEventProcessorHelper.invoke(this, e);
+    }
 }

@@ -30,43 +30,43 @@ import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultMenuItem extends JMenuItem implements I18NAble {
 
-	private String resourceID;
+    private String resourceID;
 
-	public DefaultMenuItem(String aResourceID) {
+    public DefaultMenuItem(String aResourceID) {
 
-		super(aResourceID);
-		resourceID = aResourceID;
-		initialize();
-	}
+        super(aResourceID);
+        resourceID = aResourceID;
+        initialize();
+    }
 
-	public DefaultMenuItem(Action aAction) {
+    public DefaultMenuItem(Action aAction) {
 
-		super(aAction);
-		initialize();
-	}
-	
-	@Override
-	public void setFont(Font aFont) {
+        super(aAction);
+        initialize();
+    }
 
-		super.setFont(aFont.deriveFont(Font.PLAIN));
-	}
+    @Override
+    public void setFont(Font aFont) {
 
-	public String getResourceBundleID() {
+        super.setFont(aFont.deriveFont(Font.PLAIN));
+    }
 
-		return resourceID;
-	}
+    public String getResourceBundleID() {
 
-	public ResourceHelper getResourceHelper() {
+        return resourceID;
+    }
 
-		Action theAction = getAction();
-		if (theAction instanceof DefaultAction) {
-			return ((DefaultAction)theAction).getResourceHelper();
-		}
-		return ResourceHelperLocator.findResourceHelperFor(this);
-	}
+    public ResourceHelper getResourceHelper() {
 
-	private void initialize() {
+        Action theAction = getAction();
+        if (theAction instanceof DefaultAction) {
+            return ((DefaultAction) theAction).getResourceHelper();
+        }
+        return ResourceHelperLocator.findResourceHelperFor(this);
+    }
 
-		UIInitializer.getInstance().initializeFontAndColors(this);
-	}
+    private void initialize() {
+
+        UIInitializer.getInstance().initializeFontAndColors(this);
+    }
 }

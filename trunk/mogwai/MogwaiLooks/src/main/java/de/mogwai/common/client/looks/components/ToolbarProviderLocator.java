@@ -19,20 +19,21 @@ package de.mogwai.common.client.looks.components;
 
 import java.awt.Component;
 
-public class ToolbarProviderLocator {
+public final class ToolbarProviderLocator {
 
-	private ToolbarProviderLocator() {
+    private ToolbarProviderLocator() {
 
-	}
+    }
 
-	public static DefaultToolbar findToolbarFor(Component aComponent) {
+    public static DefaultToolbar findToolbarFor(Component aComponent) {
 
-		if (aComponent instanceof ToolbarProvider) {
-			return ((ToolbarProvider) aComponent).getToolbar();
-		}
-		if (aComponent.getParent() != null)
-			return findToolbarFor(aComponent.getParent());
+        if (aComponent instanceof ToolbarProvider) {
+            return ((ToolbarProvider) aComponent).getToolbar();
+        }
+        if (aComponent.getParent() != null) {
+            return findToolbarFor(aComponent.getParent());
+        }
 
-		throw new RuntimeException("Cannot retrieve toolbar for " + aComponent);
-	}
+        throw new RuntimeException("Cannot retrieve toolbar for " + aComponent);
+    }
 }

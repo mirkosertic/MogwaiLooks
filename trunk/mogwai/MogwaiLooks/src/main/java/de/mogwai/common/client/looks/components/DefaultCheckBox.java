@@ -28,28 +28,28 @@ import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultCheckBox extends JCheckBox implements I18NAble {
 
-	private String resourceID;
+    private String resourceID;
 
-	public DefaultCheckBox(String aResourceID) {
+    public DefaultCheckBox(String aResourceID) {
 
-		super(aResourceID);
-		resourceID = aResourceID;
-		initialize();
-	}
+        super(aResourceID);
+        resourceID = aResourceID;
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		addActionListener(new DefaultModificationListener(this));
-		setPreferredSize(new Dimension(10, 21));
-	}
+        addActionListener(new DefaultModificationListener(this));
+        setPreferredSize(new Dimension(10, 21));
+    }
 
-	public String getResourceBundleID() {
+    public String getResourceBundleID() {
 
-		return resourceID;
-	}
+        return resourceID;
+    }
 
-	public ResourceHelper getResourceHelper() {
+    public ResourceHelper getResourceHelper() {
 
-		return ResourceHelperLocator.findResourceHelperFor(this);
-	}
+        return ResourceHelperLocator.findResourceHelperFor(this);
+    }
 }

@@ -24,38 +24,37 @@ import javax.swing.JComponent;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public class DefaultModificationListener implements ActionListener,
-		DocumentListener {
+public class DefaultModificationListener implements ActionListener, DocumentListener {
 
-	private JComponent source;
+    private JComponent source;
 
-	public DefaultModificationListener(JComponent aSource) {
+    public DefaultModificationListener(JComponent aSource) {
 
-		source = aSource;
-	}
+        source = aSource;
+    }
 
-	private void somethingWasChanged() {
+    private void somethingWasChanged() {
 
-		ModificationTrackerHelper.setModified(source, true);
-	}
+        ModificationTrackerHelper.setModified(source, true);
+    }
 
-	public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {
 
-		somethingWasChanged();
-	}
+        somethingWasChanged();
+    }
 
-	public void insertUpdate(DocumentEvent e) {
+    public void insertUpdate(DocumentEvent e) {
 
-		somethingWasChanged();
-	}
+        somethingWasChanged();
+    }
 
-	public void removeUpdate(DocumentEvent e) {
+    public void removeUpdate(DocumentEvent e) {
 
-		somethingWasChanged();
-	}
+        somethingWasChanged();
+    }
 
-	public void changedUpdate(DocumentEvent e) {
+    public void changedUpdate(DocumentEvent e) {
 
-		somethingWasChanged();
-	}
+        somethingWasChanged();
+    }
 }

@@ -25,32 +25,31 @@ import de.mogwai.common.client.looks.UIInitializer;
 import de.mogwai.common.i18n.ResourceHelper;
 import de.mogwai.common.i18n.ResourceHelperProvider;
 
-public class DefaultPopupMenu extends JPopupMenu implements
-		ResourceHelperProvider {
+public class DefaultPopupMenu extends JPopupMenu implements ResourceHelperProvider {
 
-	private ResourceHelper resourceHelper;
+    private ResourceHelper resourceHelper;
 
-	public DefaultPopupMenu() {
-		this(null);
-	}
+    public DefaultPopupMenu() {
+        this(null);
+    }
 
-	public DefaultPopupMenu(ResourceHelper aHelper) {
-		initialize();
-		resourceHelper = aHelper;
-	}
+    public DefaultPopupMenu(ResourceHelper aHelper) {
+        initialize();
+        resourceHelper = aHelper;
+    }
 
-	private void initialize() {
-		UIInitializer.getInstance().initializeFontAndColors(this);
-	}
+    private void initialize() {
+        UIInitializer.getInstance().initializeFontAndColors(this);
+    }
 
-	@Override
-	public JMenuItem add(Action aAction) {
-		JMenuItem theItem = super.add(aAction);
-		UIInitializer.getInstance().initializeFontAndColors(theItem);
-		return theItem;
-	}
+    @Override
+    public JMenuItem add(Action aAction) {
+        JMenuItem theItem = super.add(aAction);
+        UIInitializer.getInstance().initializeFontAndColors(theItem);
+        return theItem;
+    }
 
-	public ResourceHelper getResourceHelper() {
-		return resourceHelper;
-	}
+    public ResourceHelper getResourceHelper() {
+        return resourceHelper;
+    }
 }

@@ -19,21 +19,21 @@ package de.mogwai.common.client.looks.components;
 
 import java.awt.Component;
 
-public class ResultProviderLocator {
+public final class ResultProviderLocator {
 
-	private ResultProviderLocator() {
+    private ResultProviderLocator() {
 
-	}
+    }
 
-	public static ResultProvider findResultProviderFor(Component aComponent) {
+    public static ResultProvider findResultProviderFor(Component aComponent) {
 
-		if (aComponent instanceof ResultProvider) {
-			return (ResultProvider) aComponent;
-		}
-		if (aComponent.getParent() != null)
-			return findResultProviderFor(aComponent.getParent());
+        if (aComponent instanceof ResultProvider) {
+            return (ResultProvider) aComponent;
+        }
+        if (aComponent.getParent() != null) {
+            return findResultProviderFor(aComponent.getParent());
+        }
 
-		throw new RuntimeException("Cannot retrieve ResultProvider for "
-				+ aComponent);
-	}
+        throw new RuntimeException("Cannot retrieve ResultProvider for " + aComponent);
+    }
 }

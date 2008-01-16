@@ -21,32 +21,32 @@ import java.util.Vector;
 
 public class DefaultTreeTableNode<T> {
 
-	T value;
+    protected T value;
 
-	private Vector<DefaultTreeTableNode> children = new Vector<DefaultTreeTableNode>();
+    private Vector<DefaultTreeTableNode> children = new Vector<DefaultTreeTableNode>();
 
-	public DefaultTreeTableNode() {
-		this(null);
-	}
+    public DefaultTreeTableNode() {
+        this(null);
+    }
 
-	public DefaultTreeTableNode(T aValue) {
-		value = aValue;
-	}
+    public DefaultTreeTableNode(T aValue) {
+        value = aValue;
+    }
 
-	public T getValue() {
-		return value;
-	}
+    public T getValue() {
+        return value;
+    }
 
-	public DefaultTreeTableNode addChild(DefaultTreeTableNode aChild) {
-		children.add(aChild);
-		return aChild;
-	}
+    public DefaultTreeTableNode addChild(DefaultTreeTableNode aChild) {
+        children.add(aChild);
+        return aChild;
+    }
 
-	public int getChildCount() {
-		return children.size();
-	}
+    public int getChildCount() {
+        return children.size();
+    }
 
-	public DefaultTreeTableNode getChild(int count) {
-		return children.get(count);
-	}
+    public DefaultTreeTableNode getChild(int count) {
+        return children.get(count);
+    }
 }

@@ -24,22 +24,21 @@ import de.mogwai.common.client.looks.tools.DefaultModificationListener;
 
 public class DefaultTextArea extends JTextArea {
 
-	private DefaultScrollPane scrollPane;
+    private DefaultScrollPane scrollPane;
 
-	public DefaultTextArea() {
+    public DefaultTextArea() {
 
-		scrollPane = new DefaultScrollPane(this);
-		initialize();
-	}
+        scrollPane = new DefaultScrollPane(this);
+        initialize();
+    }
 
-	public JScrollPane getScrollPane() {
+    public JScrollPane getScrollPane() {
 
-		return scrollPane;
-	}
+        return scrollPane;
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		getDocument()
-				.addDocumentListener(new DefaultModificationListener(this));
-	}
+        getDocument().addDocumentListener(new DefaultModificationListener(this));
+    }
 }

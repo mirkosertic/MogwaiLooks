@@ -36,138 +36,131 @@ import de.mogwai.common.client.looks.components.renderer.DefaultCellRenderer;
 
 public class DefaultTreeTable extends DefaultTable {
 
-	protected TreeTableCellRenderer tree;
+    protected TreeTableCellRenderer tree;
 
-	public DefaultTreeTable() {
+    public DefaultTreeTable() {
 
-		super();
+        super();
 
-		setDefaultEditor(DefaultTreeTableModel.class, new TreeTableCellEditor());
-		setShowGrid(false);
-		setIntercellSpacing(new Dimension(0, 0));
-	}
+        setDefaultEditor(DefaultTreeTableModel.class, new TreeTableCellEditor());
+        setShowGrid(false);
+        setIntercellSpacing(new Dimension(0, 0));
+    }
 
-	public void setModel(DefaultTreeTableModel aModel) {
+    public void setModel(DefaultTreeTableModel aModel) {
 
-		int selectedRow = getSelectedRow();
+        int selectedRow = getSelectedRow();
 
-		tree = new TreeTableCellRenderer(aModel);
-		super.setModel(new DefaultTreeTableModelAdapter(aModel, tree));
-		tree.setSelectionModel(new DefaultTreeSelectionModel() {
+        tree = new TreeTableCellRenderer(aModel);
+        super.setModel(new DefaultTreeTableModelAdapter(aModel, tree));
+        tree.setSelectionModel(new DefaultTreeSelectionModel() {
 
-			{
-				setSelectionModel(listSelectionModel);
-			}
-		});
-		tree.setRowHeight(getRowHeight());
-		setDefaultEditor(DefaultTreeTableModel.class, new TreeTableCellEditor());
-		setShowGrid(false);
-		setIntercellSpacing(new Dimension(0, 0));
-		setDefaultRenderer(DefaultTreeTableModel.class, tree);
+            {
+                setSelectionModel(listSelectionModel);
+            }
+        });
+        tree.setRowHeight(getRowHeight());
+        setDefaultEditor(DefaultTreeTableModel.class, new TreeTableCellEditor());
+        setShowGrid(false);
+        setIntercellSpacing(new Dimension(0, 0));
+        setDefaultRenderer(DefaultTreeTableModel.class, tree);
 
-		aModel.getDescriptor().configureTable(this);
+        aModel.getDescriptor().configureTable(this);
 
-		expandAll(true);
+        expandAll(true);
 
-		getSelectionModel().setSelectionInterval(selectedRow, selectedRow);
-	}
+        getSelectionModel().setSelectionInterval(selectedRow, selectedRow);
+    }
 
-	public DefaultTreeTableNode getSelectedNode() {
-		if (tree != null) {
-			TreePath thePath = tree.getSelectionPath();
-			if (thePath == null)
-				return null;
+    public DefaultTreeTableNode getSelectedNode() {
+        if (tree != null) {
+            TreePath thePath = tree.getSelectionPath();
+            if (thePath == null) {
+                return null;
+            }
 
-			return (DefaultTreeTableNode) thePath.getLastPathComponent();
-		} else
-			return null;
-	}
+            return (DefaultTreeTableNode) thePath.getLastPathComponent();
+        } else {
+            return null;
+        }
+    }
 
-	@Override
-	public int getEditingRow() {
+    @Override
+    public int getEditingRow() {
 
-		return (getColumnClass(editingColumn) == DefaultTreeTableModel.class) ? -1
-				: editingRow;
-	}
+        return (getColumnClass(editingColumn) == DefaultTreeTableModel.class) ? -1 : editingRow;
+    }
 
-	public void expandAll(boolean expand) {
-		DefaultTreeTableNode root = (DefaultTreeTableNode) tree.getModel()
-				.getRoot();
+    public void expandAll(boolean expand) {
+        DefaultTreeTableNode root = (DefaultTreeTableNode) tree.getModel().getRoot();
 
-		expandAll(new TreePath(root), expand);
-	}
+        expandAll(new TreePath(root), expand);
+    }
 
-	private void expandAll(TreePath parent, boolean expand) {
-		DefaultTreeTableNode node = (DefaultTreeTableNode) parent
-				.getLastPathComponent();
-		if (node.getChildCount() >= 0) {
-			for (int i = 0; i < node.getChildCount(); i++) {
-				TreePath path = parent.pathByAddingChild(node.getChild(i));
-				expandAll(path, expand);
-			}
-		}
+    private void expandAll(TreePath parent, boolean expand) {
+        DefaultTreeTableNode node = (DefaultTreeTableNode) parent.getLastPathComponent();
+        if (node.getChildCount() >= 0) {
+            for (int i = 0; i < node.getChildCount(); i++) {
+                TreePath path = parent.pathByAddingChild(node.getChild(i));
+                expandAll(path, expand);
+            }
+        }
 
-		if (expand) {
-			tree.expandPath(parent);
-		} else {
-			tree.collapsePath(parent);
-		}
-	}
+        if (expand) {
+            tree.expandPath(parent);
+        } else {
+            tree.collapsePath(parent);
+        }
+    }
 
-	private class TreeTableCellRenderer extends JTree implements
-			TableCellRenderer {
+    private class TreeTableCellRenderer extends JTree implements TableCellRenderer {
 
-		protected int visibleRow;
+        protected int visibleRow;
 
-		private UIInitializer initializer = UIInitializer.getInstance();
+        private UIInitializer initializer = UIInitializer.getInstance();
 
-		public TreeTableCellRenderer(TreeModel model) {
-			super(model);
-			setCellRenderer(DefaultCellRenderer.getInstance());
-			UIInitializer.getInstance().initializeComponent(this);
-		}
+        public TreeTableCellRenderer(TreeModel model) {
+            super(model);
+            setCellRenderer(DefaultCellRenderer.getInstance());
+            UIInitializer.getInstance().initializeComponent(this);
+        }
 
-		@Override
-		public void setBounds(int x, int y, int w, int h) {
+        @Override
+        public void setBounds(int x, int y, int w, int h) {
 
-			super.setBounds(x, 0, w, DefaultTreeTable.this.getHeight());
-		}
+            super.setBounds(x, 0, w, DefaultTreeTable.this.getHeight());
+        }
 
-		@Override
-		public void paint(Graphics g) {
+        @Override
+        public void paint(Graphics g) {
 
-			g.translate(0, -visibleRow * getRowHeight());
-			super.paint(g);
-		}
+            g.translate(0, -visibleRow * getRowHeight());
+            super.paint(g);
+        }
 
-		public Component getTableCellRendererComponent(JTable table,
-				Object value, boolean isSelected, boolean hasFocus, int row,
-				int column) {
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+                boolean hasFocus, int row, int column) {
 
-			if (isSelected) {
-				setBackground(initializer.getDefaultListSelectionBackground());
-				setForeground(initializer.getDefaultListSelectionForeground());
-			} else {
-				setBackground(initializer
-						.getDefaultListNonSelectionBackground());
-				setForeground(initializer
-						.getDefaultListNonSelectionForeground());
-			}
-			visibleRow = row;
-			return this;
-		}
-	}
+            if (isSelected) {
+                setBackground(initializer.getDefaultListSelectionBackground());
+                setForeground(initializer.getDefaultListSelectionForeground());
+            } else {
+                setBackground(initializer.getDefaultListNonSelectionBackground());
+                setForeground(initializer.getDefaultListNonSelectionForeground());
+            }
+            visibleRow = row;
+            return this;
+        }
+    }
 
-	private class TreeTableCellEditor extends AbstractCellEditor implements
-			TableCellEditor {
+    private class TreeTableCellEditor extends AbstractCellEditor implements TableCellEditor {
 
-		public Component getTableCellEditorComponent(JTable table,
-				Object value, boolean isSelected, int r, int c) {
-			return tree;
-		}
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c) {
+            return tree;
+        }
 
-		public Object getCellEditorValue() {
-			return null;
-		}
-	}
+        public Object getCellEditorValue() {
+            return null;
+        }
+    }
 }

@@ -23,16 +23,16 @@ import javax.swing.ImageIcon;
 
 public class ImageIconCache {
 
-	private static HashMap<String, ImageIcon> icons = new HashMap<String, ImageIcon>();
+    private static HashMap<String, ImageIcon> icons = new HashMap<String, ImageIcon>();
 
-	public static ImageIcon getImageIcon(String aIconName) {
-		if (icons.containsKey(aIconName))
-			return icons.get(aIconName);
+    public static ImageIcon getImageIcon(String aIconName) {
+        if (icons.containsKey(aIconName)) {
+            return icons.get(aIconName);
+        }
 
-		ImageIcon aIcon = new ImageIcon(ImageIconCache.class
-				.getResource(aIconName));
-		icons.put(aIconName, aIcon);
+        ImageIcon aIcon = new ImageIcon(ImageIconCache.class.getResource(aIconName));
+        icons.put(aIconName, aIcon);
 
-		return aIcon;
-	}
+        return aIcon;
+    }
 }

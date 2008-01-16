@@ -25,30 +25,30 @@ import de.mogwai.common.client.looks.components.renderer.DefaultListRenderer;
 
 public class DefaultList<Typ> extends JList {
 
-	private DefaultScrollPane scrollPane;
+    private DefaultScrollPane scrollPane;
 
-	private DefaultListModel<Typ> model;
+    private DefaultListModel<Typ> model;
 
-	public DefaultList() {
-		initialize();
-	}
+    public DefaultList() {
+        initialize();
+    }
 
-	public JScrollPane getScrollPane() {
+    public JScrollPane getScrollPane() {
 
-		return scrollPane;
-	}
+        return scrollPane;
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		scrollPane = new DefaultScrollPane(this);
-		model = new DefaultListModel<Typ>();
-		setCellRenderer(DefaultListRenderer.getInstance());
-		setModel(model);
-	}
+        scrollPane = new DefaultScrollPane(this);
+        model = new DefaultListModel<Typ>();
+        setCellRenderer(DefaultListRenderer.getInstance());
+        setModel(model);
+    }
 
-	@Override
-	public DefaultListModel<Typ> getModel() {
+    @Override
+    public DefaultListModel<Typ> getModel() {
 
-		return model;
-	}
+        return model;
+    }
 }

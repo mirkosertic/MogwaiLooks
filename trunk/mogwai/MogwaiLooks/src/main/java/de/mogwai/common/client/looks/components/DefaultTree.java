@@ -22,15 +22,15 @@ import javax.swing.JTree;
 
 public class DefaultTree extends JTree {
 
-	private DefaultScrollPane scrollPane;
+    private DefaultScrollPane scrollPane;
 
-	public DefaultTree() {
+    public DefaultTree() {
 
-		scrollPane = new DefaultScrollPane(this);
-	}
+        scrollPane = new DefaultScrollPane(this);
+    }
 
-	public JScrollPane getScrollPane() {
+    public JScrollPane getScrollPane() {
 
-		return scrollPane;
-	}
+        return scrollPane;
+    }
 }

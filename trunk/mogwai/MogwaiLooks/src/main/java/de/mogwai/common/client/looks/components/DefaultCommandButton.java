@@ -22,35 +22,36 @@ import java.awt.event.ActionListener;
 
 public class DefaultCommandButton extends DefaultButton {
 
-	private String m_command;
+    private String m_command;
 
-	private DefaultCommandDelegate m_delegate = new DefaultCommandDelegate(this);
+    private DefaultCommandDelegate m_delegate = new DefaultCommandDelegate(this);
 
-	public DefaultCommandButton() {
+    public DefaultCommandButton() {
 
-		this(null);
-	}
+        this(null);
+    }
 
-	public DefaultCommandButton(String aText) {
+    public DefaultCommandButton(String aText) {
 
-		super(aText);
-		addActionListener(new ActionListener() {
+        super(aText);
+        addActionListener(new ActionListener() {
 
-			public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {
 
-				if (m_command != null)
-					m_delegate.execute(m_command);
-			}
-		});
-	}
+                if (m_command != null) {
+                    m_delegate.execute(m_command);
+                }
+            }
+        });
+    }
 
-	public String getCommand() {
+    public String getCommand() {
 
-		return m_command;
-	}
+        return m_command;
+    }
 
-	public void setCommand(String command) {
+    public void setCommand(String command) {
 
-		m_command = command;
-	}
+        m_command = command;
+    }
 }

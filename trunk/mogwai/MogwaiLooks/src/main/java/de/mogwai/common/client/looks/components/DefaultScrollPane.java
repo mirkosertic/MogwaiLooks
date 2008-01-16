@@ -24,21 +24,19 @@ import de.mogwai.common.client.looks.UIInitializer;
 
 public class DefaultScrollPane extends JScrollPane {
 
-	public DefaultScrollPane() {
-		
-		initialize();
-	}	
-	
-	public DefaultScrollPane(JComponent aChild) {
+    public DefaultScrollPane() {
 
-		super(aChild);
-		initialize();
-	}
+        initialize();
+    }
 
-	private void initialize() {
+    public DefaultScrollPane(JComponent aChild) {
 
-		getViewport().setBackground(
-				UIInitializer.getInstance()
-						.getDefaultListNonSelectionBackground());
-	}
+        super(aChild);
+        initialize();
+    }
+
+    private void initialize() {
+
+        getViewport().setBackground(UIInitializer.getInstance().getDefaultListNonSelectionBackground());
+    }
 }

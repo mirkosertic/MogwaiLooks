@@ -21,7 +21,7 @@ import javax.swing.Icon;
 
 public interface StringTranslator<T> {
 
-	public String createStringFromObject(T aValue);
+    String createStringFromObject(T aValue);
 
-	public Icon getIcon(T aValue);
+    Icon getIcon(T aValue);
 }

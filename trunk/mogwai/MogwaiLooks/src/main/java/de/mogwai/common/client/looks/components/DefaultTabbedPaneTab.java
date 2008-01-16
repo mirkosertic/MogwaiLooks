@@ -24,34 +24,35 @@ import de.mogwai.common.i18n.ResourceHelper;
 import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultTabbedPaneTab extends DefaultPanel implements I18NAble {
-	
-	private JTabbedPane parent;
-	private String resourceId;
-	
-	public DefaultTabbedPaneTab(JTabbedPane aParent,String aResourceID) {
-		parent = aParent;
-		resourceId = aResourceID;
-	}
 
-	public String getResourceBundleID() {
-		return resourceId;
-	}
+    private JTabbedPane parent;
 
-	public ResourceHelper getResourceHelper() {
-		return ResourceHelperLocator.findResourceHelperFor(this);
-	}
+    private String resourceId;
 
-	public void setText(String aText) {
-		setTitle(aText);
-	}
+    public DefaultTabbedPaneTab(JTabbedPane aParent, String aResourceID) {
+        parent = aParent;
+        resourceId = aResourceID;
+    }
 
-	public String getTitle() {
-		
-		return parent.getTitleAt(parent.indexOfComponent(this));
-	}
-	
-	public void setTitle(String title) {
-		parent.setTitleAt(parent.indexOfComponent(this),title);
-	}
-	
+    public String getResourceBundleID() {
+        return resourceId;
+    }
+
+    public ResourceHelper getResourceHelper() {
+        return ResourceHelperLocator.findResourceHelperFor(this);
+    }
+
+    public void setText(String aText) {
+        setTitle(aText);
+    }
+
+    public String getTitle() {
+
+        return parent.getTitleAt(parent.indexOfComponent(this));
+    }
+
+    public void setTitle(String title) {
+        parent.setTitleAt(parent.indexOfComponent(this), title);
+    }
+
 }

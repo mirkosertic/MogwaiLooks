@@ -26,27 +26,27 @@ import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultRadioButton extends JRadioButton implements I18NAble {
 
-	private String resourceID;
+    private String resourceID;
 
-	public DefaultRadioButton(String aResourceID) {
+    public DefaultRadioButton(String aResourceID) {
 
-		super(aResourceID);
-		resourceID = aResourceID;
-		initialize();
-	}
+        super(aResourceID);
+        resourceID = aResourceID;
+        initialize();
+    }
 
-	public String getResourceBundleID() {
+    public String getResourceBundleID() {
 
-		return resourceID;
-	}
+        return resourceID;
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		addActionListener(new DefaultModificationListener(this));
-	}
+        addActionListener(new DefaultModificationListener(this));
+    }
 
-	public ResourceHelper getResourceHelper() {
+    public ResourceHelper getResourceHelper() {
 
-		return ResourceHelperLocator.findResourceHelperFor(this);
-	}
+        return ResourceHelperLocator.findResourceHelperFor(this);
+    }
 }

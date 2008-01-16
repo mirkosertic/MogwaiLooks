@@ -30,61 +30,59 @@ import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultStatusBar extends JLabel implements StatusBar {
 
-	public DefaultStatusBar() {
+    public DefaultStatusBar() {
 
-		setBorder(BorderFactory.createLoweredBevelBorder());
-		setPreferredSize(new Dimension(100, 21));
-	}
+        setBorder(BorderFactory.createLoweredBevelBorder());
+        setPreferredSize(new Dimension(100, 21));
+    }
 
-	@Override
-	public void setText(String aText) {
+    @Override
+    public void setText(String aText) {
 
-		super.setText(" " + aText);
-	}
+        super.setText(" " + aText);
+    }
 
-	@Override
-	public void setFont(Font aFont) {
+    @Override
+    public void setFont(Font aFont) {
 
-		super.setFont(aFont.deriveFont(Font.BOLD));
-	}
+        super.setFont(aFont.deriveFont(Font.BOLD));
+    }
 
-	public void clear() {
+    public void clear() {
 
-		setText("");
-	}
+        setText("");
+    }
 
-	public void showErrors(Vector errorList) {
+    public void showErrors(Vector errorList) {
 
-		if (errorList.size() < 1) {
-			clear();
-		} else {
-			showError(errorList.get(0).toString());
-		}
-	}
+        if (errorList.size() < 1) {
+            clear();
+        } else {
+            showError(errorList.get(0).toString());
+        }
+    }
 
-	public void showError(String aMessage) {
+    public void showError(String aMessage) {
 
-		setForeground(UIInitializer.getInstance().getDefaultErrorColor());
-		setText(aMessage);
-	}
+        setForeground(UIInitializer.getInstance().getDefaultErrorColor());
+        setText(aMessage);
+    }
 
-	public void showErrorByID(String aMessageID) {
+    public void showErrorByID(String aMessageID) {
 
-		setForeground(UIInitializer.getInstance().getDefaultErrorColor());
-		setText(ResourceHelperLocator.findResourceHelperFor(this).getText(
-				aMessageID));
-	}
+        setForeground(UIInitializer.getInstance().getDefaultErrorColor());
+        setText(ResourceHelperLocator.findResourceHelperFor(this).getText(aMessageID));
+    }
 
-	public void showInformation(String aMessage) {
+    public void showInformation(String aMessage) {
 
-		setForeground(Color.black);
-		setText(aMessage);
-	}
+        setForeground(Color.black);
+        setText(aMessage);
+    }
 
-	public void showInformationByID(String aMessageID) {
+    public void showInformationByID(String aMessageID) {
 
-		setForeground(Color.black);
-		setText(ResourceHelperLocator.findResourceHelperFor(this).getText(
-				aMessageID));
-	}
+        setForeground(Color.black);
+        setText(ResourceHelperLocator.findResourceHelperFor(this).getText(aMessageID));
+    }
 }

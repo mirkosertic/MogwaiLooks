@@ -24,71 +24,71 @@ import de.mogwai.common.client.looks.components.renderer.DefaultCellRenderer;
 
 public class DefaultTableColumnDescriptor {
 
-	private String displayName;
+    private String displayName;
 
-	private Class clazz;
+    private Class clazz;
 
-	private String propertyName;
+    private String propertyName;
 
-	private int size = -1;
+    private int size = -1;
 
-	private TableCellRenderer renderer = DefaultCellRenderer.getInstance();
+    private TableCellRenderer renderer = DefaultCellRenderer.getInstance();
 
-	private TableCellEditor editor;
+    private TableCellEditor editor;
 
-	private boolean editable;
+    private boolean editable;
 
-	public DefaultTableColumnDescriptor(String aDisplayName, Class aClazz,
-			String aPropertyName, int aSize, boolean bEditable) {
-		displayName = aDisplayName;
-		clazz = aClazz;
-		propertyName = aPropertyName;
-		size = aSize;
-		editable = bEditable;
+    public DefaultTableColumnDescriptor(String aDisplayName, Class aClazz, String aPropertyName, int aSize,
+            boolean bEditable) {
+        displayName = aDisplayName;
+        clazz = aClazz;
+        propertyName = aPropertyName;
+        size = aSize;
+        editable = bEditable;
 
-		if ((bEditable) && clazz.equals(String.class)) {
-			editor = new DefaultTextFieldCellEditor();
-		}
-	}
+        if ((bEditable) && clazz.equals(String.class)) {
+            editor = new DefaultTextFieldCellEditor();
+        }
+    }
 
-	public Class getClazz() {
+    public Class getClazz() {
 
-		return clazz;
-	}
+        return clazz;
+    }
 
-	public String getDisplayName() {
+    public String getDisplayName() {
 
-		return displayName;
-	}
+        return displayName;
+    }
 
-	public boolean isEditable() {
+    public boolean isEditable() {
 
-		return editable;
-	}
+        return editable;
+    }
 
-	public String getPropertyName() {
+    public String getPropertyName() {
 
-		return propertyName;
-	}
+        return propertyName;
+    }
 
-	public TableCellRenderer getRenderer() {
+    public TableCellRenderer getRenderer() {
 
-		return renderer;
-	}
+        return renderer;
+    }
 
-	public int getSize() {
+    public int getSize() {
 
-		return size;
-	}
+        return size;
+    }
 
-	public TableCellEditor getEditor() {
+    public TableCellEditor getEditor() {
 
-		return editor;
-	}
+        return editor;
+    }
 
-	public void setEditor(TableCellEditor editor) {
+    public void setEditor(TableCellEditor editor) {
 
-		this.editor = editor;
-	}
+        this.editor = editor;
+    }
 
 }

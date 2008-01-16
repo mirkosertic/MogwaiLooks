@@ -24,34 +24,33 @@ import javax.swing.ListCellRenderer;
 
 import de.mogwai.common.client.looks.UIInitializer;
 
-public class DefaultListRenderer extends DefaultRenderer implements
-		ListCellRenderer {
+public final class DefaultListRenderer extends DefaultRenderer implements ListCellRenderer {
 
-	private static DefaultListRenderer me = new DefaultListRenderer();
+    private static DefaultListRenderer me = new DefaultListRenderer();
 
-	private UIInitializer initializer;
+    private UIInitializer initializer;
 
-	public static DefaultListRenderer getInstance() {
+    public static DefaultListRenderer getInstance() {
 
-		return me;
-	}
+        return me;
+    }
 
-	private DefaultListRenderer() {
+    private DefaultListRenderer() {
 
-		initializer = UIInitializer.getInstance();
-	}
+        initializer = UIInitializer.getInstance();
+    }
 
-	public Component getListCellRendererComponent(JList list, Object value,
-			int index, boolean isSelected, boolean cellHasFocus) {
+    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+            boolean cellHasFocus) {
 
-		setText(objectToString(value));
-		if (isSelected) {
-			setBackground(initializer.getDefaultListSelectionBackground());
-			setForeground(initializer.getDefaultListSelectionForeground());
-		} else {
-			setBackground(initializer.getDefaultListNonSelectionBackground());
-			setForeground(initializer.getDefaultListNonSelectionForeground());
-		}
-		return this;
-	}
+        setText(objectToString(value));
+        if (isSelected) {
+            setBackground(initializer.getDefaultListSelectionBackground());
+            setForeground(initializer.getDefaultListSelectionForeground());
+        } else {
+            setBackground(initializer.getDefaultListNonSelectionBackground());
+            setForeground(initializer.getDefaultListNonSelectionForeground());
+        }
+        return this;
+    }
 }

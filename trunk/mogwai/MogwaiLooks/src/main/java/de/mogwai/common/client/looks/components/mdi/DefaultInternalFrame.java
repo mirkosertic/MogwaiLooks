@@ -29,93 +29,91 @@ import de.mogwai.common.i18n.I18NAble;
 import de.mogwai.common.i18n.ResourceHelper;
 import de.mogwai.common.i18n.ResourceHelperProvider;
 
-public class DefaultInternalFrame extends JInternalFrame implements
-		ResourceHelperProvider, I18NAble, ModificationTracker {
+public class DefaultInternalFrame extends JInternalFrame implements ResourceHelperProvider, I18NAble,
+        ModificationTracker {
 
-	private String resourceID;
+    private String resourceID;
 
-	private ResourceHelper resource;
+    private ResourceHelper resource;
 
-	private DefaultFrameContent content = new DefaultFrameContent();
+    private DefaultFrameContent content = new DefaultFrameContent();
 
-	private boolean modified;
+    private boolean modified;
 
-	public DefaultInternalFrame(String aBundleName, String aResourceID) {
+    public DefaultInternalFrame(String aBundleName, String aResourceID) {
 
-		super(aResourceID);
-		resourceID = aResourceID;
-		resource = ResourceHelper.getResourceHelper(aBundleName);
-		initialize();
-		UIInitializer.getInstance().initialize(this);
-	}
+        super(aResourceID);
+        resourceID = aResourceID;
+        resource = ResourceHelper.getResourceHelper(aBundleName);
+        initialize();
+        UIInitializer.getInstance().initialize(this);
+    }
 
-	public DefaultInternalFrame(String aBundleName, String aResourceID,
-			DefaultFrameContent aContent) {
+    public DefaultInternalFrame(String aBundleName, String aResourceID, DefaultFrameContent aContent) {
 
-		this(aBundleName, aResourceID);
-		content = aContent;
-		setContentPane(content);
-		UIInitializer.getInstance().initialize(this);
-		content.initializeBindingInfo();
-		pack();
-	}
+        this(aBundleName, aResourceID);
+        content = aContent;
+        setContentPane(content);
+        UIInitializer.getInstance().initialize(this);
+        content.initializeBindingInfo();
+        pack();
+    }
 
-	public DefaultFrameContent getDefaultFrameContent() {
+    public DefaultFrameContent getDefaultFrameContent() {
 
-		return content;
-	}
+        return content;
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		setVisible(true);
-		setClosable(true);
-		setContentPane(content);
-		setBorder(BorderFactory.createLineBorder(UIInitializer.getInstance()
-				.getDefaultInternalFrameBorderColor(), 1));
+        setVisible(true);
+        setClosable(true);
+        setContentPane(content);
+        setBorder(BorderFactory.createLineBorder(UIInitializer.getInstance().getDefaultInternalFrameBorderColor(), 1));
 
-	}
+    }
 
-	public void activate() {
+    public void activate() {
 
-		try {
-			setSelected(true);
-		} catch (Exception e) {
-		}
-	}
+        try {
+            setSelected(true);
+        } catch (Exception e) {
+            // Do nothing
+        }
+    }
 
-	public ResourceHelper getResourceHelper() {
+    public ResourceHelper getResourceHelper() {
 
-		return resource;
-	}
+        return resource;
+    }
 
-	public String getResourceBundleID() {
+    public String getResourceBundleID() {
 
-		return resourceID;
-	}
+        return resourceID;
+    }
 
-	public void setText(String aText) {
+    public void setText(String aText) {
 
-		setTitle(aText);
-	}
+        setTitle(aText);
+    }
 
-	public void setModified(boolean bModified) {
-		modified = bModified;
-		setClosable(!bModified);
-	}
+    public void setModified(boolean bModified) {
+        modified = bModified;
+        setClosable(!bModified);
+    }
 
-	public boolean isModified() {
-		return modified;
-	}
+    public boolean isModified() {
+        return modified;
+    }
 
-	@Override
-	public void setVisible(boolean bStatus) {
-		super.setVisible(bStatus);
-		if (!bStatus) {
-			InternalFrameEvent theEvent = new InternalFrameEvent(this,
-					InternalFrameEvent.INTERNAL_FRAME_CLOSING);
-			for (InternalFrameListener theListener : getListeners(InternalFrameListener.class)) {
-				theListener.internalFrameClosing(theEvent);
-			}
-		}
-	}
+    @Override
+    public void setVisible(boolean bStatus) {
+        super.setVisible(bStatus);
+        if (!bStatus) {
+            InternalFrameEvent theEvent = new InternalFrameEvent(this, InternalFrameEvent.INTERNAL_FRAME_CLOSING);
+            for (InternalFrameListener theListener : getListeners(InternalFrameListener.class)) {
+                theListener.internalFrameClosing(theEvent);
+            }
+        }
+    }
 }

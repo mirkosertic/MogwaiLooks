@@ -32,104 +32,98 @@ import de.mogwai.common.client.looks.components.action.DefaultAction;
 import de.mogwai.common.client.looks.components.menu.DefaultMenu;
 import de.mogwai.common.client.looks.components.menu.DefaultMenuItem;
 
-public class DefaultMDIFrame extends DefaultFrame implements
-		ActionEventProcessor {
+public class DefaultMDIFrame extends DefaultFrame implements ActionEventProcessor {
 
-	private DefaultDesktopPane desktopPane = new DefaultDesktopPane();
+    private DefaultDesktopPane desktopPane = new DefaultDesktopPane();
 
-	private DefaultMenu windowMenu = new DefaultMenu(this, "WINDOWS");
+    private DefaultMenu windowMenu = new DefaultMenu(this, "WINDOWS");
 
-	private DefaultAction cascadeAction = new DefaultAction(this, this,
-			"CASCADE_WINDOWS");
+    private DefaultAction cascadeAction = new DefaultAction(this, this, "CASCADE_WINDOWS");
 
-	public DefaultMDIFrame() {
+    public DefaultMDIFrame() {
 
-		this(null);
-	}
+        this(null);
+    }
 
-	public DefaultMDIFrame(String aResourceID) {
+    public DefaultMDIFrame(String aResourceID) {
 
-		super(aResourceID);
-		initialize();
-	}
+        super(aResourceID);
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		cascadeAction.setCommandName("Cascade");
+        cascadeAction.setCommandName("Cascade");
 
-		getDefaultFrameContent()
-				.setDetailComponent(desktopPane.getScrollPane());
-		menuBar.add(windowMenu);
+        getDefaultFrameContent().setDetailComponent(desktopPane.getScrollPane());
+        menuBar.add(windowMenu);
 
-		windowMenu.addMenuListener(new MenuListener() {
+        windowMenu.addMenuListener(new MenuListener() {
 
-			public void menuSelected(MenuEvent e) {
+            public void menuSelected(MenuEvent e) {
 
-				windowMenu.removeAll();
-				// windowMenu.add(windowCascade);
-				windowMenu.add(new DefaultMenuItem(cascadeAction));
-				Vector<DefaultInternalFrame> theFrames = desktopPane
-						.getChilds();
-				if (theFrames.size() > 0) {
-					windowMenu.addSeparator();
-					for (final DefaultInternalFrame theFrame : theFrames) {
-						DefaultMenuItem theItem = new DefaultMenuItem(theFrame
-								.getTitle());
-						theItem.addActionListener(new ActionListener() {
+                windowMenu.removeAll();
+                // windowMenu.add(windowCascade);
+                windowMenu.add(new DefaultMenuItem(cascadeAction));
+                Vector<DefaultInternalFrame> theFrames = desktopPane.getChilds();
+                if (theFrames.size() > 0) {
+                    windowMenu.addSeparator();
+                    for (final DefaultInternalFrame theFrame : theFrames) {
+                        DefaultMenuItem theItem = new DefaultMenuItem(theFrame.getTitle());
+                        theItem.addActionListener(new ActionListener() {
 
-							public void actionPerformed(ActionEvent e) {
+                            public void actionPerformed(ActionEvent e) {
 
-								theFrame.activate();
-							}
-						});
-						UIInitializer.getInstance().initializeFontAndColors(
-								theItem);
-						windowMenu.add(theItem);
-					}
-				}
-			}
+                                theFrame.activate();
+                            }
+                        });
+                        UIInitializer.getInstance().initializeFontAndColors(theItem);
+                        windowMenu.add(theItem);
+                    }
+                }
+            }
 
-			public void menuDeselected(MenuEvent e) {
+            public void menuDeselected(MenuEvent e) {
 
-			}
+            }
 
-			public void menuCanceled(MenuEvent e) {
+            public void menuCanceled(MenuEvent e) {
 
-			}
-		});
-	}
+            }
+        });
+    }
 
-	public void addChild(DefaultInternalFrame aFrame) {
+    public void addChild(DefaultInternalFrame aFrame) {
 
-		desktopPane.add(aFrame);
-		aFrame.activate();
-	}
+        desktopPane.add(aFrame);
+        aFrame.activate();
+    }
 
-	public void cascadeChilds() {
+    public void cascadeChilds() {
 
-		desktopPane.cascade();
-	}
+        desktopPane.cascade();
+    }
 
-	public String getBaseTitle() {
+    public String getBaseTitle() {
 
-		return getTitle();
-	}
+        return getTitle();
+    }
 
-	public void activateChild(DefaultInternalFrame aFrame) {
+    public void activateChild(DefaultInternalFrame aFrame) {
 
-		setTitle(getBaseTitle() + " - " + aFrame.getTitle());
-	}
+        setTitle(getBaseTitle() + " - " + aFrame.getTitle());
+    }
 
-	public void restoreDefaultTitle() {
+    public void restoreDefaultTitle() {
 
-		setTitle(getBaseTitle());
-	}
+        setTitle(getBaseTitle());
+    }
 
-	public void doCascade(ActionEvent e) {
-		desktopPane.cascade();
-	}
+    public void doCascade(ActionEvent e) {
+        desktopPane.cascade();
+    }
 
-	public void processActionEvent(ActionEvent e) {
-		ActionEventProcessorHelper.invoke(this, e);
-	}
+    public void processActionEvent(ActionEvent e) {
+        ActionEventProcessorHelper.invoke(this, e);
+    }
 }

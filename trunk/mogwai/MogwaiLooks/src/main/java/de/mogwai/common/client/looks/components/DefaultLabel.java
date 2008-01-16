@@ -25,52 +25,53 @@ import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultLabel extends JLabel implements I18NAble {
 
-	private String resourceID;
+    private String resourceID;
 
-	private boolean colon = true;
+    private boolean colon = true;
 
-	public DefaultLabel() {
+    public DefaultLabel() {
 
-		initialize();
-	}
+        initialize();
+    }
 
-	public DefaultLabel(String aResourceKey) {
+    public DefaultLabel(String aResourceKey) {
 
-		super(aResourceKey);
-		resourceID = aResourceKey;
-		initialize();
-	}
+        super(aResourceKey);
+        resourceID = aResourceKey;
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		setVerticalAlignment(TOP);
-	}
+        setVerticalAlignment(TOP);
+    }
 
-	public String getResourceBundleID() {
+    public String getResourceBundleID() {
 
-		return resourceID;
-	}
+        return resourceID;
+    }
 
-	public ResourceHelper getResourceHelper() {
+    public ResourceHelper getResourceHelper() {
 
-		return ResourceHelperLocator.findResourceHelperFor(this);
-	}
+        return ResourceHelperLocator.findResourceHelperFor(this);
+    }
 
-	@Override
-	public void setText(String aText) {
+    @Override
+    public void setText(String aText) {
 
-		if (colon)
-			aText += ":";
-		super.setText(aText);
-	}
+        if (colon) {
+            aText += ":";
+        }
+        super.setText(aText);
+    }
 
-	public boolean hasColon() {
+    public boolean hasColon() {
 
-		return colon;
-	}
+        return colon;
+    }
 
-	public void setColon(boolean colon) {
+    public void setColon(boolean colon) {
 
-		this.colon = colon;
-	}
+        this.colon = colon;
+    }
 }

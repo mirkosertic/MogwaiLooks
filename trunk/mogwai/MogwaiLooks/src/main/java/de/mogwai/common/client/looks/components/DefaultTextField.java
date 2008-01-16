@@ -23,14 +23,13 @@ import de.mogwai.common.client.looks.tools.DefaultModificationListener;
 
 public class DefaultTextField extends JTextField {
 
-	public DefaultTextField() {
+    public DefaultTextField() {
 
-		initialize();
-	}
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		getDocument()
-				.addDocumentListener(new DefaultModificationListener(this));
-	}
+        getDocument().addDocumentListener(new DefaultModificationListener(this));
+    }
 }

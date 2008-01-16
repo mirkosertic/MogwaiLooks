@@ -33,76 +33,70 @@ import de.mogwai.common.client.looks.tools.DefaultSelectableItem;
 import de.mogwai.common.client.looks.tools.ModificationTrackerHelper;
 import de.mogwai.common.client.looks.tools.StringRendererHelper;
 
-public class DefaultListSelectableItemEditor extends AbstractCellEditor
-		implements TableCellEditor {
+public class DefaultListSelectableItemEditor extends AbstractCellEditor implements TableCellEditor {
 
-	private UIInitializer initializer = UIInitializer.getInstance();
+    private UIInitializer initializer = UIInitializer.getInstance();
 
-	private JCheckBox checkBox = new JCheckBox();
+    private JCheckBox checkBox = new JCheckBox();
 
-	private DefaultSelectableItem currentItem;
+    private DefaultSelectableItem currentItem;
 
-	private DefaultCheckBoxList parent;
+    private DefaultCheckBoxList parent;
 
-	public DefaultListSelectableItemEditor(DefaultCheckBoxList aParent) {
+    public DefaultListSelectableItemEditor(DefaultCheckBoxList aParent) {
 
-		parent = aParent;
-		initialize();
-	}
+        parent = aParent;
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		initializer.initializeComponent(checkBox);
-		checkBox.addActionListener(new ActionListener() {
+        initializer.initializeComponent(checkBox);
+        checkBox.addActionListener(new ActionListener() {
 
-			public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {
 
-				currentItem.setSelected(checkBox.isSelected());
-				ModificationTrackerHelper.setModified(parent, true);
-				cancelCellEditing();
-			}
-		});
-	}
+                currentItem.setSelected(checkBox.isSelected());
+                ModificationTrackerHelper.setModified(parent, true);
+                cancelCellEditing();
+            }
+        });
+    }
 
-	protected String objectToString(Object aObject) {
+    protected String objectToString(Object aObject) {
 
-		return StringRendererHelper.objectToString(aObject);
-	}
+        return StringRendererHelper.objectToString(aObject);
+    }
 
-	public Component getTableCellEditorComponent(JTable table, Object value,
-			boolean isSelected, int row, int column) {
+    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 
-		currentItem = (DefaultSelectableItem) value;
-		checkBox.setText(objectToString(currentItem.getValue()));
-		checkBox.setSelected(currentItem.isSelected());
-		if (isSelected) {
-			checkBox.setBackground(initializer
-					.getDefaultListSelectionBackground());
-			checkBox.setForeground(initializer
-					.getDefaultListSelectionForeground());
-		} else {
-			checkBox.setBackground(initializer
-					.getDefaultListNonSelectionBackground());
-			checkBox.setForeground(initializer
-					.getDefaultListNonSelectionForeground());
-		}
-		return checkBox;
-	}
+        currentItem = (DefaultSelectableItem) value;
+        checkBox.setText(objectToString(currentItem.getValue()));
+        checkBox.setSelected(currentItem.isSelected());
+        if (isSelected) {
+            checkBox.setBackground(initializer.getDefaultListSelectionBackground());
+            checkBox.setForeground(initializer.getDefaultListSelectionForeground());
+        } else {
+            checkBox.setBackground(initializer.getDefaultListNonSelectionBackground());
+            checkBox.setForeground(initializer.getDefaultListNonSelectionForeground());
+        }
+        return checkBox;
+    }
 
-	public Object getCellEditorValue() {
+    public Object getCellEditorValue() {
 
-		return Boolean.valueOf(checkBox.isSelected());
-	}
+        return Boolean.valueOf(checkBox.isSelected());
+    }
 
-	@Override
-	public boolean isCellEditable(EventObject anEvent) {
+    @Override
+    public boolean isCellEditable(EventObject anEvent) {
 
-		return true;
-	}
+        return true;
+    }
 
-	@Override
-	public boolean shouldSelectCell(EventObject anEvent) {
+    @Override
+    public boolean shouldSelectCell(EventObject anEvent) {
 
-		return true;
-	}
+        return true;
+    }
 }

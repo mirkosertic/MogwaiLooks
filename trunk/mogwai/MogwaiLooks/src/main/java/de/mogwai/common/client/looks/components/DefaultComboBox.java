@@ -26,46 +26,46 @@ import de.mogwai.common.client.looks.tools.DefaultModificationListener;
 
 public class DefaultComboBox extends JComboBox {
 
-	public DefaultComboBox() {
+    public DefaultComboBox() {
 
-		initialize();
-	}
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		setRenderer(DefaultComboboxRenderer.getInstance());
-		addActionListener(new DefaultModificationListener(this));
-	}
+        setRenderer(DefaultComboboxRenderer.getInstance());
+        addActionListener(new DefaultModificationListener(this));
+    }
 
-	@Override
-	public Dimension getSize() {
+    @Override
+    public Dimension getSize() {
 
-		Dimension theSize = super.getSize();
-		theSize.height = 21;
-		return theSize;
-	}
+        Dimension theSize = super.getSize();
+        theSize.height = 21;
+        return theSize;
+    }
 
-	@Override
-	public Dimension getMinimumSize() {
+    @Override
+    public Dimension getMinimumSize() {
 
-		Dimension theSize = super.getMinimumSize();
-		theSize.height = 21;
-		return theSize;
-	}
+        Dimension theSize = super.getMinimumSize();
+        theSize.height = 21;
+        return theSize;
+    }
 
-	@Override
-	public Dimension getPreferredSize() {
+    @Override
+    public Dimension getPreferredSize() {
 
-		Dimension theSize = super.getPreferredSize();
-		theSize.height = 21;
-		return theSize;
-	}
+        Dimension theSize = super.getPreferredSize();
+        theSize.height = 21;
+        return theSize;
+    }
 
-	@Override
-	public Dimension getMaximumSize() {
+    @Override
+    public Dimension getMaximumSize() {
 
-		Dimension theSize = super.getMaximumSize();
-		theSize.height = 21;
-		return theSize;
-	}
+        Dimension theSize = super.getMaximumSize();
+        theSize.height = 21;
+        return theSize;
+    }
 }

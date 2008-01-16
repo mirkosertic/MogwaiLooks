@@ -25,71 +25,70 @@ import javax.swing.tree.TreePath;
 
 public class DefaultTreeTableModelAdapter extends AbstractTableModel {
 
-	private JTree tree;
+    private JTree tree;
 
-	private DefaultTreeTableModel treeTableModel;
+    private DefaultTreeTableModel treeTableModel;
 
-	public DefaultTreeTableModelAdapter(DefaultTreeTableModel treeTableModel,
-			JTree tree) {
+    public DefaultTreeTableModelAdapter(DefaultTreeTableModel treeTableModel, JTree tree) {
 
-		this.tree = tree;
-		this.treeTableModel = treeTableModel;
-		tree.addTreeExpansionListener(new TreeExpansionListener() {
+        this.tree = tree;
+        this.treeTableModel = treeTableModel;
+        tree.addTreeExpansionListener(new TreeExpansionListener() {
 
-			public void treeExpanded(TreeExpansionEvent event) {
+            public void treeExpanded(TreeExpansionEvent event) {
 
-				fireTableDataChanged();
-			}
+                fireTableDataChanged();
+            }
 
-			public void treeCollapsed(TreeExpansionEvent event) {
+            public void treeCollapsed(TreeExpansionEvent event) {
 
-				fireTableDataChanged();
-			}
-		});
-	}
+                fireTableDataChanged();
+            }
+        });
+    }
 
-	public int getColumnCount() {
+    public int getColumnCount() {
 
-		return treeTableModel.getColumnCount();
-	}
+        return treeTableModel.getColumnCount();
+    }
 
-	@Override
-	public String getColumnName(int column) {
+    @Override
+    public String getColumnName(int column) {
 
-		return treeTableModel.getColumnName(column);
-	}
+        return treeTableModel.getColumnName(column);
+    }
 
-	@Override
-	public Class getColumnClass(int column) {
+    @Override
+    public Class getColumnClass(int column) {
 
-		return treeTableModel.getColumnClass(column);
-	}
+        return treeTableModel.getColumnClass(column);
+    }
 
-	public int getRowCount() {
+    public int getRowCount() {
 
-		return tree.getRowCount();
-	}
+        return tree.getRowCount();
+    }
 
-	protected DefaultTreeTableNode nodeForRow(int row) {
+    protected DefaultTreeTableNode nodeForRow(int row) {
 
-		TreePath treePath = tree.getPathForRow(row);
-		return (DefaultTreeTableNode) treePath.getLastPathComponent();
-	}
+        TreePath treePath = tree.getPathForRow(row);
+        return (DefaultTreeTableNode) treePath.getLastPathComponent();
+    }
 
-	public Object getValueAt(int row, int column) {
+    public Object getValueAt(int row, int column) {
 
-		return treeTableModel.getValueAt(nodeForRow(row), column);
-	}
+        return treeTableModel.getValueAt(nodeForRow(row), column);
+    }
 
-	@Override
-	public boolean isCellEditable(int row, int column) {
+    @Override
+    public boolean isCellEditable(int row, int column) {
 
-		return treeTableModel.isCellEditable(nodeForRow(row), column);
-	}
+        return treeTableModel.isCellEditable(nodeForRow(row), column);
+    }
 
-	@Override
-	public void setValueAt(Object value, int row, int column) {
+    @Override
+    public void setValueAt(Object value, int row, int column) {
 
-		treeTableModel.setValueAt(value, nodeForRow(row), column);
-	}
+        treeTableModel.setValueAt(value, nodeForRow(row), column);
+    }
 }

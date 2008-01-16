@@ -25,63 +25,62 @@ import de.mogwai.common.i18n.I18NAble;
 import de.mogwai.common.i18n.ResourceHelper;
 import de.mogwai.common.i18n.ResourceHelperProvider;
 
-public class DefaultFrame extends JFrame implements ResourceHelperProvider,
-		I18NAble, ToolbarProvider {
+public class DefaultFrame extends JFrame implements ResourceHelperProvider, I18NAble, ToolbarProvider {
 
-	protected DefaultMenuBar menuBar = new DefaultMenuBar();
+    protected DefaultMenuBar menuBar = new DefaultMenuBar();
 
-	protected DefaultFrameContent frameContent = new DefaultFrameContent();
+    protected DefaultFrameContent frameContent = new DefaultFrameContent();
 
-	protected DefaultToolbar toolbar = new DefaultToolbar();
+    protected DefaultToolbar toolbar = new DefaultToolbar();
 
-	private String resourceID;
+    private String resourceID;
 
-	public DefaultFrame(String aResourceID) {
+    public DefaultFrame(String aResourceID) {
 
-		resourceID = aResourceID;
-		initialize();
-	}
+        resourceID = aResourceID;
+        initialize();
+    }
 
-	public DefaultFrame() {
+    public DefaultFrame() {
 
-		this(null);
-	}
+        this(null);
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		setJMenuBar(menuBar);
-		setContentPane(frameContent);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-	}
+        setJMenuBar(menuBar);
+        setContentPane(frameContent);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
 
-	public DefaultFrameContent getDefaultFrameContent() {
-		return frameContent;
-	}
+    public DefaultFrameContent getDefaultFrameContent() {
+        return frameContent;
+    }
 
-	public ResourceHelper getResourceHelper() {
+    public ResourceHelper getResourceHelper() {
 
-		return null;
-	}
+        return null;
+    }
 
-	public String getResourceBundleID() {
+    public String getResourceBundleID() {
 
-		return resourceID;
-	}
+        return resourceID;
+    }
 
-	public void setText(String aText) {
+    public void setText(String aText) {
 
-		setTitle(aText);
-	}
+        setTitle(aText);
+    }
 
-	public DefaultToolbar getToolbar() {
-		return toolbar;
-	}
+    public DefaultToolbar getToolbar() {
+        return toolbar;
+    }
 
-	@Override
-	public void setVisible(boolean bVisible) {
-		if (bVisible) {
-			new WindowHelper(this).center();
-		}
-		super.setVisible(bVisible);
-	}
+    @Override
+    public void setVisible(boolean bVisible) {
+        if (bVisible) {
+            new WindowHelper(this).center();
+        }
+        super.setVisible(bVisible);
+    }
 }

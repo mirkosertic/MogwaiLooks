@@ -26,55 +26,51 @@ import de.mogwai.common.client.looks.tools.DefaultSelectableItem;
 
 public class DefaultCheckBoxList<Typ> extends DefaultTable {
 
-	private DefaultCheckBoxListModel<Typ> model = new DefaultCheckBoxListModel<Typ>();
+    private DefaultCheckBoxListModel<Typ> model = new DefaultCheckBoxListModel<Typ>();
 
-	public DefaultCheckBoxList() {
-		initialize();
-	}
+    public DefaultCheckBoxList() {
+        initialize();
+    }
 
-	private void initialize() {
-		setModel(model);
-		getTableHeader().setVisible(false);
-		setShowGrid(false);
-		setRowSelectionAllowed(true);
-		getColumnModel().getColumn(0).setCellEditor(
-				new DefaultListSelectableItemEditor(this));
-		getColumnModel().getColumn(0).setCellRenderer(
-				DefaultListSelectableItemRenderer.getInstance());
-	}
+    private void initialize() {
+        setModel(model);
+        getTableHeader().setVisible(false);
+        setShowGrid(false);
+        setRowSelectionAllowed(true);
+        getColumnModel().getColumn(0).setCellEditor(new DefaultListSelectableItemEditor(this));
+        getColumnModel().getColumn(0).setCellRenderer(DefaultListSelectableItemRenderer.getInstance());
+    }
 
-	@Override
-	public DefaultCheckBoxListModel<Typ> getModel() {
-		return model;
-	}
+    @Override
+    public DefaultCheckBoxListModel<Typ> getModel() {
+        return model;
+    }
 
-	public void setSelectedItems(List<Typ> selected) {
+    public void setSelectedItems(List<Typ> selected) {
 
-		for (int i = 0; i < model.getRowCount(); i++) {
-			DefaultSelectableItem<Typ> item = (DefaultSelectableItem<Typ>) model
-					.getRow(i);
-			item.setSelected(false);
+        for (int i = 0; i < model.getRowCount(); i++) {
+            DefaultSelectableItem<Typ> item = (DefaultSelectableItem<Typ>) model.getRow(i);
+            item.setSelected(false);
 
-			for (Typ theTyp : selected) {
-				if (theTyp.equals(item.getValue())) {
-					item.setSelected(true);
-				}
-			}
-		}
-		getModel().fireTableDataChanged();
-	}
+            for (Typ theTyp : selected) {
+                if (theTyp.equals(item.getValue())) {
+                    item.setSelected(true);
+                }
+            }
+        }
+        getModel().fireTableDataChanged();
+    }
 
-	public List<Typ> getSelectedItems() {
-		Vector<Typ> selected = new Vector<Typ>();
-		for (int i = 0; i < model.getRowCount(); i++) {
-			DefaultSelectableItem<Typ> item = (DefaultSelectableItem<Typ>) model
-					.getRow(i);
-			if (item.isSelected()) {
-				selected.add(item.getValue());
-			}
-		}
+    public List<Typ> getSelectedItems() {
+        Vector<Typ> selected = new Vector<Typ>();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            DefaultSelectableItem<Typ> item = (DefaultSelectableItem<Typ>) model.getRow(i);
+            if (item.isSelected()) {
+                selected.add(item.getValue());
+            }
+        }
 
-		return selected;
-	}
+        return selected;
+    }
 
 }

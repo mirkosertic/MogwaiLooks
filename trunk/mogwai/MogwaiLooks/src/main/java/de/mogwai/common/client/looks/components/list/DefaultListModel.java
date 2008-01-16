@@ -26,71 +26,70 @@ import javax.swing.event.ListDataListener;
 
 public class DefaultListModel<T> implements ListModel {
 
-	protected List<T> data;
+    protected List<T> data;
 
-	protected Vector<ListDataListener> listener = new Vector<ListDataListener>();
+    protected Vector<ListDataListener> listener = new Vector<ListDataListener>();
 
-	public DefaultListModel() {
+    public DefaultListModel() {
 
-		data = new Vector<T>();
-	}
+        data = new Vector<T>();
+    }
 
-	public int getSize() {
+    public int getSize() {
 
-		return data.size();
-	}
+        return data.size();
+    }
 
-	public Object getElementAt(int index) {
+    public Object getElementAt(int index) {
 
-		return data.get(index);
-	}
+        return data.get(index);
+    }
 
-	public void addListDataListener(ListDataListener l) {
+    public void addListDataListener(ListDataListener l) {
 
-		listener.add(l);
-	}
+        listener.add(l);
+    }
 
-	public void removeListDataListener(ListDataListener l) {
+    public void removeListDataListener(ListDataListener l) {
 
-		listener.remove(l);
-	}
+        listener.remove(l);
+    }
 
-	public void fireListDataChanged() {
+    public void fireListDataChanged() {
 
-		ListDataEvent theEvent = new ListDataEvent(this,
-				ListDataEvent.CONTENTS_CHANGED, 0, 0);
-		for (ListDataListener theListener : listener) {
-			theListener.contentsChanged(theEvent);
-		}
-	}
+        ListDataEvent theEvent = new ListDataEvent(this, ListDataEvent.CONTENTS_CHANGED, 0, 0);
+        for (ListDataListener theListener : listener) {
+            theListener.contentsChanged(theEvent);
+        }
+    }
 
-	public void add(T aEntry) {
+    public void add(T aEntry) {
 
-		data.add(aEntry);
-		fireListDataChanged();
-	}
-	
-	public void remove(T aEntry) {
-		data.remove(aEntry);
-		fireListDataChanged();
-	}
-	
-	public T get(int aIndex) {
-		return data.get(aIndex);
-	}
+        data.add(aEntry);
+        fireListDataChanged();
+    }
 
-	public void setData(List<T> aData) {
+    public void remove(T aEntry) {
+        data.remove(aEntry);
+        fireListDataChanged();
+    }
 
-		data = aData;
-		fireListDataChanged();
-	}
+    public T get(int aIndex) {
+        return data.get(aIndex);
+    }
 
-	public void clear() {
-		data.clear();
-		fireListDataChanged();
-	}
+    public void setData(List<T> aData) {
 
-	public boolean contains(T o) {
-		return data.contains(o);
-	}
+        data = aData;
+        fireListDataChanged();
+    }
+
+    public void clear() {
+        data.clear();
+        fireListDataChanged();
+    }
+
+    public boolean contains(T o) {
+        return data.contains(o);
+    }
 }

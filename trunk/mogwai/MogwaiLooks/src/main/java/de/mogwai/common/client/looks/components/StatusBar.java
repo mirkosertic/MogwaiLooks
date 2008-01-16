@@ -21,11 +21,11 @@ import java.util.Vector;
 
 public interface StatusBar {
 
-	public void setText(String aText);
+    void setText(String aText);
 
-	public void clear();
+    void clear();
 
-	public void showErrors(Vector errorList);
+    void showErrors(Vector errorList);
 
-	public void showError(String aMessage);
+    void showError(String aMessage);
 }

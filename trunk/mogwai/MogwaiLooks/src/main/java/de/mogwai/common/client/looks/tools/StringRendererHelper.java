@@ -25,60 +25,59 @@ import de.mogwai.common.client.looks.components.treetable.DefaultTreeTableNode;
 
 public class StringRendererHelper {
 
-	static {
+    static {
 
-		translators = new HashMap<Class, StringTranslator>();
+        translators = new HashMap<Class, StringTranslator>();
 
-		StringRendererHelper.registerTranslator(DefaultTreeTableNode.class,
-				new StringTranslator<DefaultTreeTableNode>() {
+        StringRendererHelper.registerTranslator(DefaultTreeTableNode.class,
+                new StringTranslator<DefaultTreeTableNode>() {
 
-					public String createStringFromObject(
-							DefaultTreeTableNode aValue) {
-						if (aValue == null)
-							return "";
-						if (aValue.getValue() == null)
-							return "Root";
+                    public String createStringFromObject(DefaultTreeTableNode aValue) {
+                        if (aValue == null) {
+                            return "";
+                        }
+                        if (aValue.getValue() == null) {
+                            return "Root";
+                        }
 
-						return StringRendererHelper.objectToString(aValue
-								.getValue());
-					}
+                        return StringRendererHelper.objectToString(aValue.getValue());
+                    }
 
-					public Icon getIcon(DefaultTreeTableNode aObject) {
-						return null;
-					}
+                    public Icon getIcon(DefaultTreeTableNode aObject) {
+                        return null;
+                    }
 
-				});
+                });
 
-	}
+    }
 
-	private static HashMap<Class, StringTranslator> translators;
+    private static HashMap<Class, StringTranslator> translators;
 
-	public static void registerTranslator(Class aClass,
-			StringTranslator aTranslator) {
-		translators.put(aClass, aTranslator);
-	}
+    public static void registerTranslator(Class aClass, StringTranslator aTranslator) {
+        translators.put(aClass, aTranslator);
+    }
 
-	public static String objectToString(Object aObject) {
+    public static String objectToString(Object aObject) {
 
-		if (aObject == null)
-			return "";
+        if (aObject == null) {
+            return "";
+        }
 
-		StringTranslator theTranslator = translators.get(aObject.getClass());
-		if (theTranslator != null) {
-			return theTranslator.createStringFromObject(aObject);
-		}
-		return aObject.toString();
-	}
+        StringTranslator theTranslator = translators.get(aObject.getClass());
+        if (theTranslator != null) {
+            return theTranslator.createStringFromObject(aObject);
+        }
+        return aObject.toString();
+    }
 
-	public static Icon objectToIcon(Object aObject) {
+    public static Icon objectToIcon(Object aObject) {
 
-		if (aObject != null) {
-			StringTranslator theTranslator = translators
-					.get(aObject.getClass());
-			if (theTranslator != null) {
-				return theTranslator.getIcon(aObject);
-			}
-		}
-		return null;
-	}
+        if (aObject != null) {
+            StringTranslator theTranslator = translators.get(aObject.getClass());
+            if (theTranslator != null) {
+                return theTranslator.getIcon(aObject);
+            }
+        }
+        return null;
+    }
 }

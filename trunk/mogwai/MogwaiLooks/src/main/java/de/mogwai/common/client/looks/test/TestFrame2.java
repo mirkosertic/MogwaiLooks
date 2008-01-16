@@ -27,34 +27,33 @@ import de.mogwai.common.client.looks.components.DefaultPanel;
 
 public class TestFrame2 extends DefaultFrame {
 
-	public TestFrame2() {
+    public TestFrame2() {
 
-		initialize();
-	}
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		DefaultPanel thePanel = new DefaultPanel();
-		FormLayout theLayout = new FormLayout("2dlu,fill:80dlu,2dlu",
-				"2dlu,fill:200dlu");
-		CellConstraints theConstraints = new CellConstraints();
-		thePanel.setLayout(theLayout);
-		DefaultCheckBoxList<String> theList = new DefaultCheckBoxList<String>();
-		DefaultCheckBoxListModel<String> theData = theList.getModel();
-		for (int count = 0; count < 120; count++) {
-			theData.add("Hallo " + count);
-		}
-		theData.fireTableDataChanged();
-		thePanel.add(theList.getScrollPane(), theConstraints.xy(2, 2));
-		getDefaultFrameContent().setDetailComponent(thePanel);
-		// UIInitializer.getInstance().initialize(this);
-		pack();
-	}
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        DefaultPanel thePanel = new DefaultPanel();
+        FormLayout theLayout = new FormLayout("2dlu,fill:80dlu,2dlu", "2dlu,fill:200dlu");
+        CellConstraints theConstraints = new CellConstraints();
+        thePanel.setLayout(theLayout);
+        DefaultCheckBoxList<String> theList = new DefaultCheckBoxList<String>();
+        DefaultCheckBoxListModel<String> theData = theList.getModel();
+        for (int count = 0; count < 120; count++) {
+            theData.add("Hallo " + count);
+        }
+        theData.fireTableDataChanged();
+        thePanel.add(theList.getScrollPane(), theConstraints.xy(2, 2));
+        getDefaultFrameContent().setDetailComponent(thePanel);
+        // UIInitializer.getInstance().initialize(this);
+        pack();
+    }
 
-	public static void main(String args[]) {
+    public static void main(String[] args) {
 
-		TestFrame2 theFrame = new TestFrame2();
-		theFrame.setVisible(true);
-	}
+        TestFrame2 theFrame = new TestFrame2();
+        theFrame.setVisible(true);
+    }
 }

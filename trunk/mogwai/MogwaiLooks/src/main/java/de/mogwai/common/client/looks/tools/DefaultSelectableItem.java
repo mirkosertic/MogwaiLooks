@@ -19,44 +19,44 @@ package de.mogwai.common.client.looks.tools;
 
 public class DefaultSelectableItem<Typ> {
 
-	private boolean selected;
+    private boolean selected;
 
-	private Typ value;
+    private Typ value;
 
-	public DefaultSelectableItem(Typ aValue) {
+    public DefaultSelectableItem(Typ aValue) {
 
-		this(aValue, false);
-	}
+        this(aValue, false);
+    }
 
-	public DefaultSelectableItem(Typ aValue, boolean aSelected) {
+    public DefaultSelectableItem(Typ aValue, boolean aSelected) {
 
-		value = aValue;
-		selected = aSelected;
-	}
+        value = aValue;
+        selected = aSelected;
+    }
 
-	public Typ getValue() {
+    public Typ getValue() {
 
-		return value;
-	}
+        return value;
+    }
 
-	public boolean isSelected() {
+    public boolean isSelected() {
 
-		return selected;
-	}
+        return selected;
+    }
 
-	public void setSelected(boolean selected) {
+    public void setSelected(boolean selected) {
 
-		this.selected = selected;
-	}
+        this.selected = selected;
+    }
 
-	public void setValue(Typ value) {
+    public void setValue(Typ value) {
 
-		this.value = value;
-	}
+        this.value = value;
+    }
 
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
 
-		return value.toString();
-	}
+        return value.toString();
+    }
 }

@@ -28,50 +28,44 @@ import javax.swing.table.TableCellRenderer;
 import de.mogwai.common.client.looks.UIInitializer;
 import de.mogwai.common.client.looks.tools.DefaultSelectableItem;
 
-public class DefaultListSelectableItemRenderer extends DefaultRenderer
-		implements ListCellRenderer, TableCellRenderer {
+public final class DefaultListSelectableItemRenderer extends DefaultRenderer implements ListCellRenderer, TableCellRenderer {
 
-	private JCheckBox checkBox = new JCheckBox();
+    private JCheckBox checkBox = new JCheckBox();
 
-	private UIInitializer initializer = UIInitializer.getInstance();
+    private UIInitializer initializer = UIInitializer.getInstance();
 
-	private static DefaultListSelectableItemRenderer me = new DefaultListSelectableItemRenderer();
+    private static DefaultListSelectableItemRenderer me = new DefaultListSelectableItemRenderer();
 
-	public static DefaultListSelectableItemRenderer getInstance() {
+    public static DefaultListSelectableItemRenderer getInstance() {
 
-		return me;
-	}
+        return me;
+    }
 
-	private DefaultListSelectableItemRenderer() {
+    private DefaultListSelectableItemRenderer() {
 
-		initializer = UIInitializer.getInstance();
-		initializer.initializeComponent(checkBox);
-	}
+        initializer = UIInitializer.getInstance();
+        initializer.initializeComponent(checkBox);
+    }
 
-	public Component getListCellRendererComponent(JList list, Object value,
-			int index, boolean isSelected, boolean cellHasFocus) {
+    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+            boolean cellHasFocus) {
 
-		DefaultSelectableItem theItem = (DefaultSelectableItem) value;
-		checkBox.setText(objectToString(theItem.getValue()));
-		checkBox.setSelected(theItem.isSelected());
-		if (isSelected) {
-			checkBox.setBackground(initializer
-					.getDefaultListSelectionBackground());
-			checkBox.setForeground(initializer
-					.getDefaultListSelectionForeground());
-		} else {
-			checkBox.setBackground(initializer
-					.getDefaultListNonSelectionBackground());
-			checkBox.setForeground(initializer
-					.getDefaultListNonSelectionForeground());
-		}
-		return checkBox;
-	}
+        DefaultSelectableItem theItem = (DefaultSelectableItem) value;
+        checkBox.setText(objectToString(theItem.getValue()));
+        checkBox.setSelected(theItem.isSelected());
+        if (isSelected) {
+            checkBox.setBackground(initializer.getDefaultListSelectionBackground());
+            checkBox.setForeground(initializer.getDefaultListSelectionForeground());
+        } else {
+            checkBox.setBackground(initializer.getDefaultListNonSelectionBackground());
+            checkBox.setForeground(initializer.getDefaultListNonSelectionForeground());
+        }
+        return checkBox;
+    }
 
-	public Component getTableCellRendererComponent(JTable table, Object value,
-			boolean isSelected, boolean hasFocus, int row, int column) {
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+            int row, int column) {
 
-		return getListCellRendererComponent(null, value, row, isSelected,
-				hasFocus);
-	}
+        return getListCellRendererComponent(null, value, row, isSelected, hasFocus);
+    }
 }
