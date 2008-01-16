@@ -25,25 +25,25 @@ import de.mogwai.common.client.looks.tools.StringRendererHelper;
 
 public class DefaultRenderer extends JLabel {
 
-	public DefaultRenderer() {
+    public DefaultRenderer() {
 
-		initialize();
-	}
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		setOpaque(true);
-		setVerticalAlignment(TOP);
-		UIInitializer.getInstance().initializeComponent(this);
-	}
+        setOpaque(true);
+        setVerticalAlignment(TOP);
+        UIInitializer.getInstance().initializeComponent(this);
+    }
 
-	protected String objectToString(Object aObject) {
+    protected String objectToString(Object aObject) {
 
-		return StringRendererHelper.objectToString(aObject);
-	}
+        return StringRendererHelper.objectToString(aObject);
+    }
 
-	protected Icon objectToIcon(Object aObject) {
+    protected Icon objectToIcon(Object aObject) {
 
-		return StringRendererHelper.objectToIcon(aObject);
-	}
+        return StringRendererHelper.objectToIcon(aObject);
+    }
 }

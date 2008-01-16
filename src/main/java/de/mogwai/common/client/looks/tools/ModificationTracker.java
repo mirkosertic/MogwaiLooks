@@ -19,7 +19,7 @@ package de.mogwai.common.client.looks.tools;
 
 public interface ModificationTracker {
 
-	void setModified(boolean bModified);
+    void setModified(boolean bModified);
 
-	boolean isModified();
+    boolean isModified();
 }

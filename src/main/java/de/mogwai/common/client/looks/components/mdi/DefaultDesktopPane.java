@@ -31,133 +31,133 @@ import de.mogwai.common.client.looks.components.DefaultScrollPane;
 
 public class DefaultDesktopPane extends JDesktopPane {
 
-	private DefaultScrollPane scrollPane;
+    private DefaultScrollPane scrollPane;
 
-	private Vector<DefaultInternalFrame> frames = new Vector<DefaultInternalFrame>();
+    private Vector<DefaultInternalFrame> frames = new Vector<DefaultInternalFrame>();
 
-	public DefaultDesktopPane() {
+    public DefaultDesktopPane() {
 
-		scrollPane = new DefaultScrollPane(this);
-		setDesktopManager(new DefaultDesktopManager(this));
-	}
+        scrollPane = new DefaultScrollPane(this);
+        setDesktopManager(new DefaultDesktopManager(this));
+    }
 
-	public JScrollPane getScrollPane() {
+    public JScrollPane getScrollPane() {
 
-		return scrollPane;
-	}
+        return scrollPane;
+    }
 
-	private void removeInternal(DefaultInternalFrame aFrame) {
+    private void removeInternal(DefaultInternalFrame aFrame) {
 
-		frames.remove(aFrame);
-	}
+        frames.remove(aFrame);
+    }
 
-	public void remove(DefaultInternalFrame aFrame) {
+    public void remove(DefaultInternalFrame aFrame) {
 
-		removeInternal(aFrame);
-		super.remove(aFrame);
-	}
+        removeInternal(aFrame);
+        super.remove(aFrame);
+    }
 
-	protected DefaultMDIFrame getMDIFrame() {
+    protected DefaultMDIFrame getMDIFrame() {
 
-		Component theRoot = SwingUtilities.getRoot(this);
-		if (theRoot instanceof DefaultMDIFrame)
-			return (DefaultMDIFrame) theRoot;
-		return null;
-	}
+        Component theRoot = SwingUtilities.getRoot(this);
+        if (theRoot instanceof DefaultMDIFrame) {
+            return (DefaultMDIFrame) theRoot;
+        }
+        return null;
+    }
 
-	protected void handleChildClosing(DefaultInternalFrame aFrame) {
+    protected void handleChildClosing(DefaultInternalFrame aFrame) {
 
-		if (aFrame.isSelected())
-			getMDIFrame().restoreDefaultTitle();
-		removeInternal(aFrame);
-	}
+        if (aFrame.isSelected()) {
+            getMDIFrame().restoreDefaultTitle();
+        }
+        removeInternal(aFrame);
+    }
 
-	protected void handleChildActivated(DefaultInternalFrame aFrame) {
+    protected void handleChildActivated(DefaultInternalFrame aFrame) {
 
-		getMDIFrame().activateChild(aFrame);
-	}
+        getMDIFrame().activateChild(aFrame);
+    }
 
-	public void add(DefaultInternalFrame aFrame) {
+    public void add(DefaultInternalFrame aFrame) {
 
-		frames.add(aFrame);
-		aFrame.setLocation(10, 10);
-		super.add(aFrame);
-		aFrame.addInternalFrameListener(new InternalFrameListener() {
+        frames.add(aFrame);
+        aFrame.setLocation(10, 10);
+        super.add(aFrame);
+        aFrame.addInternalFrameListener(new InternalFrameListener() {
 
-			public void internalFrameOpened(InternalFrameEvent e) {
+            public void internalFrameOpened(InternalFrameEvent e) {
 
-				handleChildActivated((DefaultInternalFrame) e
-						.getInternalFrame());
-			}
+                handleChildActivated((DefaultInternalFrame) e.getInternalFrame());
+            }
 
-			public void internalFrameClosing(InternalFrameEvent e) {
+            public void internalFrameClosing(InternalFrameEvent e) {
 
-				handleChildClosing((DefaultInternalFrame) e.getInternalFrame());
-			}
+                handleChildClosing((DefaultInternalFrame) e.getInternalFrame());
+            }
 
-			public void internalFrameClosed(InternalFrameEvent e) {
+            public void internalFrameClosed(InternalFrameEvent e) {
 
-			}
+            }
 
-			public void internalFrameIconified(InternalFrameEvent e) {
+            public void internalFrameIconified(InternalFrameEvent e) {
 
-			}
+            }
 
-			public void internalFrameDeiconified(InternalFrameEvent e) {
+            public void internalFrameDeiconified(InternalFrameEvent e) {
 
-			}
+            }
 
-			public void internalFrameActivated(InternalFrameEvent e) {
+            public void internalFrameActivated(InternalFrameEvent e) {
 
-				handleChildActivated((DefaultInternalFrame) e
-						.getInternalFrame());
-			}
+                handleChildActivated((DefaultInternalFrame) e.getInternalFrame());
+            }
 
-			public void internalFrameDeactivated(InternalFrameEvent e) {
+            public void internalFrameDeactivated(InternalFrameEvent e) {
 
-			}
-		});
-	}
+            }
+        });
+    }
 
-	public Vector<DefaultInternalFrame> getChilds() {
+    public Vector<DefaultInternalFrame> getChilds() {
 
-		return frames;
-	}
+        return frames;
+    }
 
-	public void cascade() {
+    public void cascade() {
 
-		int x = 10;
-		int y = 10;
-		DefaultInternalFrame theSelected = (DefaultInternalFrame) getSelectedFrame();
-		if (theSelected != null) {
-			frames.remove(theSelected);
-			frames.add(theSelected);
-		}
-		for (DefaultInternalFrame theFrame : frames) {
-			theFrame.setLocation(x, y);
-			x += 20;
-			y += 20;
-			theFrame.toFront();
-		}
-	}
+        int x = 10;
+        int y = 10;
+        DefaultInternalFrame theSelected = (DefaultInternalFrame) getSelectedFrame();
+        if (theSelected != null) {
+            frames.remove(theSelected);
+            frames.add(theSelected);
+        }
+        for (DefaultInternalFrame theFrame : frames) {
+            theFrame.setLocation(x, y);
+            x += 20;
+            y += 20;
+            theFrame.toFront();
+        }
+    }
 
-	/**
-	 * Sets all component size properties ( maximum, minimum, preferred) to the
-	 * given dimension.
-	 */
-	public void setAllSize(Dimension d) {
+    /**
+     * Sets all component size properties ( maximum, minimum, preferred) to the
+     * given dimension.
+     */
+    public void setAllSize(Dimension d) {
 
-		setMinimumSize(d);
-		setMaximumSize(d);
-		setPreferredSize(d);
-	}
+        setMinimumSize(d);
+        setMaximumSize(d);
+        setPreferredSize(d);
+    }
 
-	/**
-	 * Sets all component size properties ( maximum, minimum, preferred) to the
-	 * given width and height.
-	 */
-	public void setAllSize(int width, int height) {
+    /**
+     * Sets all component size properties ( maximum, minimum, preferred) to the
+     * given width and height.
+     */
+    public void setAllSize(int width, int height) {
 
-		setAllSize(new Dimension(width, height));
-	}
+        setAllSize(new Dimension(width, height));
+    }
 }

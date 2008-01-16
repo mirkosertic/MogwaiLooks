@@ -19,5 +19,5 @@ package de.mogwai.common.client.looks.components;
 
 public interface ResultProvider {
 
-	public void setResult(Object aResult);
+    void setResult(Object aResult);
 }

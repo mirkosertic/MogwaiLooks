@@ -27,32 +27,31 @@ import de.mogwai.common.client.looks.components.list.DefaultListModel;
 
 public class TestFrame1 extends DefaultFrame {
 
-	public TestFrame1() {
+    public TestFrame1() {
 
-		initialize();
-	}
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		DefaultPanel thePanel = new DefaultPanel();
-		FormLayout theLayout = new FormLayout("2dlu,fill:80dlu,2dlu",
-				"2dlu,fill:200dlu");
-		CellConstraints theConstraints = new CellConstraints();
-		thePanel.setLayout(theLayout);
-		DefaultList<String> theList = new DefaultList<String>();
-		DefaultListModel<String> theData = theList.getModel();
-		theData.add("Hallo1");
-		theData.add("Hallo1");
-		theData.fireListDataChanged();
-		thePanel.add(theList.getScrollPane(), theConstraints.xy(2, 2));
-		getDefaultFrameContent().setDetailComponent(thePanel);
-		pack();
-	}
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        DefaultPanel thePanel = new DefaultPanel();
+        FormLayout theLayout = new FormLayout("2dlu,fill:80dlu,2dlu", "2dlu,fill:200dlu");
+        CellConstraints theConstraints = new CellConstraints();
+        thePanel.setLayout(theLayout);
+        DefaultList<String> theList = new DefaultList<String>();
+        DefaultListModel<String> theData = theList.getModel();
+        theData.add("Hallo1");
+        theData.add("Hallo1");
+        theData.fireListDataChanged();
+        thePanel.add(theList.getScrollPane(), theConstraints.xy(2, 2));
+        getDefaultFrameContent().setDetailComponent(thePanel);
+        pack();
+    }
 
-	public static void main(String args[]) {
+    public static void main(String[] args) {
 
-		TestFrame1 theFrame = new TestFrame1();
-		theFrame.setVisible(true);
-	}
+        TestFrame1 theFrame = new TestFrame1();
+        theFrame.setVisible(true);
+    }
 }

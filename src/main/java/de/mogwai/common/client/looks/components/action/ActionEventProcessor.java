@@ -21,5 +21,5 @@ import java.awt.event.ActionEvent;
 
 public interface ActionEventProcessor {
 
-	public void processActionEvent(ActionEvent e);
+    void processActionEvent(ActionEvent e);
 }

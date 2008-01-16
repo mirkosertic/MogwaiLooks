@@ -22,39 +22,40 @@ import java.lang.reflect.Method;
 
 public class DefaultCommandDelegate {
 
-	private Component parent;
+    private Component parent;
 
-	public DefaultCommandDelegate(Component aParent) {
+    public DefaultCommandDelegate(Component aParent) {
 
-		parent = aParent;
-	}
+        parent = aParent;
+    }
 
-	public void execute(String aCommand) {
+    public void execute(String aCommand) {
 
-		execute(aCommand, parent);
-	}
+        execute(aCommand, parent);
+    }
 
-	private boolean execute(String aCommand, Component aObject) {
+    private boolean execute(String aCommand, Component aObject) {
 
-		Method theMethod = null;
-		try {
-			theMethod = aObject.getClass().getMethod(aCommand, new Class[] {});
-		} catch (Exception e) {
-		}
-		if (theMethod != null) {
-			try {
-				theMethod.invoke(aObject, new Object[] {});
-				return true;
-			} catch (Exception e) {
-				return true;
-			}
-		} else {
-			aObject = aObject.getParent();
-			if (aObject != null) {
-				return execute(aCommand, aObject);
-			} else {
-				return false;
-			}
-		}
-	}
+        Method theMethod = null;
+        try {
+            theMethod = aObject.getClass().getMethod(aCommand, new Class[] {});
+        } catch (Exception e) {
+            // Do nothing
+        }
+        if (theMethod != null) {
+            try {
+                theMethod.invoke(aObject, new Object[] {});
+                return true;
+            } catch (Exception e) {
+                return true;
+            }
+        } else {
+            aObject = aObject.getParent();
+            if (aObject != null) {
+                return execute(aCommand, aObject);
+            } else {
+                return false;
+            }
+        }
+    }
 }

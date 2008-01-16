@@ -30,132 +30,133 @@ import javax.swing.SwingUtilities;
  * start() on the SwingWorker after creating it.
  */
 public abstract class SwingWorker3 {
-	private Object value; // see getValue(), setValue()
 
-	/**
-	 * Class to maintain reference to current worker thread under separate
-	 * synchronization control.
-	 */
-	private static class ThreadVar {
-		private Thread thread;
+    private Object value; // see getValue(), setValue()
 
-		ThreadVar(Thread t) {
-			thread = t;
-		}
+    /**
+     * Class to maintain reference to current worker thread under separate
+     * synchronization control.
+     */
+    private static class ThreadVar {
+        private Thread thread;
 
-		synchronized Thread get() {
-			return thread;
-		}
+        ThreadVar(Thread t) {
+            thread = t;
+        }
 
-		synchronized void clear() {
-			thread = null;
-		}
-	}
+        synchronized Thread get() {
+            return thread;
+        }
 
-	private ThreadVar threadVar;
+        synchronized void clear() {
+            thread = null;
+        }
+    }
 
-	/**
-	 * Get the value produced by the worker thread, or null if it hasn't been
-	 * constructed yet.
-	 */
-	protected synchronized Object getValue() {
-		return value;
-	}
+    private ThreadVar threadVar;
 
-	/**
-	 * Set the value produced by worker thread
-	 */
-	private synchronized void setValue(Object x) {
-		value = x;
-	}
+    /**
+     * Get the value produced by the worker thread, or null if it hasn't been
+     * constructed yet.
+     */
+    protected synchronized Object getValue() {
+        return value;
+    }
 
-	/**
-	 * Compute the value to be returned by the <code>get</code> method.
-	 */
-	public abstract Object construct();
+    /**
+     * Set the value produced by worker thread.
+     */
+    private synchronized void setValue(Object x) {
+        value = x;
+    }
 
-	/**
-	 * Called on the event dispatching thread (not on the worker thread) after
-	 * the <code>construct</code> method has returned.
-	 */
-	public void finished() {
-	}
+    /**
+     * Compute the value to be returned by the <code>get</code> method.
+     */
+    public abstract Object construct();
 
-	/**
-	 * A new method that interrupts the worker thread. Call this method to force
-	 * the worker to stop what it's doing.
-	 */
-	public void interrupt() {
-		Thread t = threadVar.get();
-		if (t != null) {
-			t.interrupt();
-		}
-		threadVar.clear();
-	}
+    /**
+     * Called on the event dispatching thread (not on the worker thread) after
+     * the <code>construct</code> method has returned.
+     */
+    public void finished() {
+    }
 
-	/**
-	 * Return the value created by the <code>construct</code> method. Returns
-	 * null if either the constructing thread or the current thread was
-	 * interrupted before a value was produced.
-	 * 
-	 * @return the value created by the <code>construct</code> method
-	 */
-	public Object get() {
-		while (true) {
-			Thread t = threadVar.get();
-			if (t == null) {
-				return getValue();
-			}
-			try {
-				t.join();
-			} catch (InterruptedException e) {
-				Thread.currentThread().interrupt(); // propagate
-				return null;
-			}
-		}
-	}
+    /**
+     * A new method that interrupts the worker thread. Call this method to force
+     * the worker to stop what it's doing.
+     */
+    public void interrupt() {
+        Thread t = threadVar.get();
+        if (t != null) {
+            t.interrupt();
+        }
+        threadVar.clear();
+    }
 
-	/**
-	 * Start a thread that will call the <code>construct</code> method and
-	 * then exit.
-	 */
-	public SwingWorker3() {
-		final Runnable doFinished = new Runnable() {
-			public void run() {
-				finished();
-			}
-		};
+    /**
+     * Return the value created by the <code>construct</code> method. Returns
+     * null if either the constructing thread or the current thread was
+     * interrupted before a value was produced.
+     * 
+     * @return the value created by the <code>construct</code> method
+     */
+    public Object get() {
+        while (true) {
+            Thread t = threadVar.get();
+            if (t == null) {
+                return getValue();
+            }
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); // propagate
+                return null;
+            }
+        }
+    }
 
-		Runnable doConstruct = new Runnable() {
-			public void run() {
-				try {
-					SwingUtilities.invokeAndWait(new Runnable() {
-						public void run() {
-							setValue(construct());
-						}
+    /**
+     * Start a thread that will call the <code>construct</code> method and
+     * then exit.
+     */
+    public SwingWorker3() {
+        final Runnable doFinished = new Runnable() {
+            public void run() {
+                finished();
+            }
+        };
 
-					});
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					threadVar.clear();
-				}
+        Runnable doConstruct = new Runnable() {
+            public void run() {
+                try {
+                    SwingUtilities.invokeAndWait(new Runnable() {
+                        public void run() {
+                            setValue(construct());
+                        }
 
-				SwingUtilities.invokeLater(doFinished);
-			}
-		};
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    threadVar.clear();
+                }
 
-		Thread t = new Thread(doConstruct);
-		threadVar = new ThreadVar(t);
-	}
+                SwingUtilities.invokeLater(doFinished);
+            }
+        };
 
-	/**
-	 * Start the worker thread.
-	 */
-	public void start() {
-		Thread t = threadVar.get();
-		if (t != null) {
-			t.start();
-		}
-	}
+        Thread t = new Thread(doConstruct);
+        threadVar = new ThreadVar(t);
+    }
+
+    /**
+     * Start the worker thread.
+     */
+    public void start() {
+        Thread t = threadVar.get();
+        if (t != null) {
+            t.start();
+        }
+    }
 }

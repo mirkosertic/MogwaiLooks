@@ -30,87 +30,86 @@ import javax.swing.JInternalFrame;
 import de.mogwai.common.client.looks.tools.ModificationTracker;
 import de.mogwai.common.client.looks.tools.ModificationTrackerHelper;
 
-public class DefaultFrameContent extends DefaultPanel implements
-		ModificationTracker, ToolbarProvider {
+public class DefaultFrameContent extends DefaultPanel implements ModificationTracker, ToolbarProvider {
 
-	protected StatusBar statusBar;
+    protected StatusBar statusBar;
 
-	protected DefaultToolbar toolbar = new DefaultToolbar();
+    protected DefaultToolbar toolbar = new DefaultToolbar();
 
-	protected boolean modified;
+    protected boolean modified;
 
-	public DefaultFrameContent() {
+    public DefaultFrameContent() {
 
-		initialize();
-	}
+        initialize();
+    }
 
-	public void initializeBindingInfo() {
-	}
+    public void initializeBindingInfo() {
+    }
 
-	public StatusBar getStatusBar() {
-		return statusBar;
-	}
-	
-	protected void initializeToolbar() {
-	}
+    public StatusBar getStatusBar() {
+        return statusBar;
+    }
 
-	private void initialize() {
+    protected void initializeToolbar() {
+    }
 
-		statusBar = createStatusBar();
+    private void initialize() {
 
-		setBorder(null);
-		setLayout(new BorderLayout());
-		add(toolbar, BorderLayout.NORTH);
-		add((Component) statusBar, BorderLayout.SOUTH);
-	}
+        statusBar = createStatusBar();
 
-	public void setDetailComponent(JComponent aComponent) {
+        setBorder(null);
+        setLayout(new BorderLayout());
+        add(toolbar, BorderLayout.NORTH);
+        add((Component) statusBar, BorderLayout.SOUTH);
+    }
 
-		add(aComponent, BorderLayout.CENTER);
-	}
+    public void setDetailComponent(JComponent aComponent) {
 
-	public boolean isModified() {
+        add(aComponent, BorderLayout.CENTER);
+    }
 
-		return modified;
-	}
+    public boolean isModified() {
 
-	public void setModified(boolean modified) {
+        return modified;
+    }
 
-		this.modified = modified;
+    public void setModified(boolean modified) {
 
-		ModificationTrackerHelper.setModified(getParent(), modified);
-	}
+        this.modified = modified;
 
-	public String getTitle() {
+        ModificationTrackerHelper.setModified(getParent(), modified);
+    }
 
-		return "";
-	}
+    public String getTitle() {
 
-	public DefaultToolbar getToolbar() {
-		return toolbar;
-	}
+        return "";
+    }
 
-	public void doExit(ActionEvent e) {
-		Container theParent = this.getParent();
-		while (theParent != null) {
-			if (theParent instanceof JInternalFrame) {
-				theParent.setVisible(false);
-				return;
-			}
-			if (theParent instanceof JFrame) {
-				theParent.setVisible(false);
-				return;
-			}
-			if (theParent instanceof JDialog) {
-				theParent.setVisible(false);
-				return;
-			}
+    public DefaultToolbar getToolbar() {
+        return toolbar;
+    }
 
-			theParent = theParent.getParent();
-		}
-	}
+    public void doExit(ActionEvent e) {
+        Container theParent = this.getParent();
+        while (theParent != null) {
+            if (theParent instanceof JInternalFrame) {
+                theParent.setVisible(false);
+                return;
+            }
+            if (theParent instanceof JFrame) {
+                theParent.setVisible(false);
+                return;
+            }
+            if (theParent instanceof JDialog) {
+                theParent.setVisible(false);
+                return;
+            }
 
-	public StatusBar createStatusBar() {
-		return new DefaultStatusBar();
-	}
+            theParent = theParent.getParent();
+        }
+    }
+
+    public StatusBar createStatusBar() {
+        return new DefaultStatusBar();
+    }
 }

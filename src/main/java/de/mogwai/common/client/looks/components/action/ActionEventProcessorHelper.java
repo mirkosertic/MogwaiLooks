@@ -27,54 +27,53 @@ import javax.swing.RootPaneContainer;
 
 public class ActionEventProcessorHelper {
 
-	public static JRootPane getRootPane(Object aWhere) {
-		if (!(aWhere instanceof Component))
-			return null;
+    public static JRootPane getRootPane(Object aWhere) {
+        if (!(aWhere instanceof Component)) {
+            return null;
+        }
 
-		if (aWhere instanceof RootPaneContainer)
-			return (JRootPane) ((RootPaneContainer) aWhere).getRootPane();
+        if (aWhere instanceof RootPaneContainer) {
+            return (JRootPane) ((RootPaneContainer) aWhere).getRootPane();
+        }
 
-		return getRootPane(((Component) aWhere).getParent());
-	}
+        return getRootPane(((Component) aWhere).getParent());
+    }
 
-	public static void invoke(final Object aWhere, final ActionEvent aEvent) {
+    public static void invoke(final Object aWhere, final ActionEvent aEvent) {
 
-		final JRootPane theRootPane = getRootPane(aWhere);
-		if (theRootPane != null) {
-			theRootPane.getGlassPane().setCursor(
-					Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-			theRootPane.getGlassPane().setVisible(true);
-		}
+        final JRootPane theRootPane = getRootPane(aWhere);
+        if (theRootPane != null) {
+            theRootPane.getGlassPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            theRootPane.getGlassPane().setVisible(true);
+        }
 
-		SwingWorker3 theWorker = new SwingWorker3() {
+        SwingWorker3 theWorker = new SwingWorker3() {
 
-			@Override
-			public Object construct() {
+            @Override
+            public Object construct() {
 
-				try {
-					Method theMethod = aWhere.getClass().getMethod(
-							"do" + aEvent.getActionCommand(),
-							new Class[] { ActionEvent.class });
-					theMethod.invoke(aWhere, new Object[] { aEvent });
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
+                try {
+                    Method theMethod = aWhere.getClass().getMethod("do" + aEvent.getActionCommand(),
+                            new Class[] { ActionEvent.class });
+                    theMethod.invoke(aWhere, new Object[] { aEvent });
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
 
-				return null;
-			}
+                return null;
+            }
 
-			@Override
-			public void finished() {
-				super.finished();
+            @Override
+            public void finished() {
+                super.finished();
 
-				if (theRootPane != null) {
-					theRootPane.getGlassPane().setCursor(
-							Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-					theRootPane.getGlassPane().setVisible(false);
-				}
-			}
+                if (theRootPane != null) {
+                    theRootPane.getGlassPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                    theRootPane.getGlassPane().setVisible(false);
+                }
+            }
 
-		};
-		theWorker.start();
-	}
+        };
+        theWorker.start();
+    }
 }

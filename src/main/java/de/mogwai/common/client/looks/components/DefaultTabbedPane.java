@@ -21,7 +21,7 @@ import javax.swing.JTabbedPane;
 
 public class DefaultTabbedPane extends JTabbedPane {
 
-	public DefaultTabbedPane() {
+    public DefaultTabbedPane() {
 
-	}
+    }
 }

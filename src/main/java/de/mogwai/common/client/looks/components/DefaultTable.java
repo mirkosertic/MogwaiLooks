@@ -29,52 +29,51 @@ import de.mogwai.common.client.looks.UIInitializer;
 
 public class DefaultTable extends JTable {
 
-	private DefaultScrollPane scrollPane;
+    private DefaultScrollPane scrollPane;
 
-	private DefaultPopupMenu contextMenu;
+    private DefaultPopupMenu contextMenu;
 
-	public DefaultTable() {
+    public DefaultTable() {
 
-		scrollPane = new DefaultScrollPane(this);
-		initialize();
-	}
+        scrollPane = new DefaultScrollPane(this);
+        initialize();
+    }
 
-	public JScrollPane getScrollPane() {
+    public JScrollPane getScrollPane() {
 
-		return scrollPane;
-	}
+        return scrollPane;
+    }
 
-	public DefaultPopupMenu getContextMenu() {
+    public DefaultPopupMenu getContextMenu() {
 
-		return contextMenu;
-	}
+        return contextMenu;
+    }
 
-	public void setContextMenu(DefaultPopupMenu contaxtMenu) {
+    public void setContextMenu(DefaultPopupMenu contaxtMenu) {
 
-		this.contextMenu = contaxtMenu;
-		UIInitializer.getInstance().initialize(contaxtMenu);
-	}
+        this.contextMenu = contaxtMenu;
+        UIInitializer.getInstance().initialize(contaxtMenu);
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-		setCellSelectionEnabled(false);
-		setColumnSelectionAllowed(false);
-		setRowSelectionAllowed(true);
-		setGridColor(UIInitializer.getInstance().getDefaultTableGridColor());
+        setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+        setCellSelectionEnabled(false);
+        setColumnSelectionAllowed(false);
+        setRowSelectionAllowed(true);
+        setGridColor(UIInitializer.getInstance().getDefaultTableGridColor());
 
-		MouseListener theListener = new MouseAdapter() {
+        MouseListener theListener = new MouseAdapter() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (((e.getButton() & MouseEvent.BUTTON2) > 0)
-						&& (contextMenu != null)) {
-					contextMenu.show(DefaultTable.this, e.getX(), e.getY());
-				}
-			}
-		};
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (((e.getButton() & MouseEvent.BUTTON2) > 0) && (contextMenu != null)) {
+                    contextMenu.show(DefaultTable.this, e.getX(), e.getY());
+                }
+            }
+        };
 
-		addMouseListener(theListener);
-		scrollPane.addMouseListener(theListener);
-	}
+        addMouseListener(theListener);
+        scrollPane.addMouseListener(theListener);
+    }
 }

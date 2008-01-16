@@ -18,7 +18,6 @@
 package de.mogwai.common.client.looks.components;
 
 import javax.swing.Action;
-import javax.swing.JButton;
 import javax.swing.JToggleButton;
 
 import de.mogwai.common.i18n.I18NAble;
@@ -27,30 +26,30 @@ import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultToggleButton extends JToggleButton implements I18NAble {
 
-	private String resourceID;
+    private String resourceID;
 
-	public DefaultToggleButton() {
+    public DefaultToggleButton() {
 
-	}
+    }
 
-	public DefaultToggleButton(String aResourceID) {
+    public DefaultToggleButton(String aResourceID) {
 
-		super(aResourceID);
-		resourceID = aResourceID;
-	}
+        super(aResourceID);
+        resourceID = aResourceID;
+    }
 
-	public DefaultToggleButton(Action aAction) {
+    public DefaultToggleButton(Action aAction) {
 
-		super(aAction);
-	}
+        super(aAction);
+    }
 
-	public String getResourceBundleID() {
+    public String getResourceBundleID() {
 
-		return resourceID;
-	}
+        return resourceID;
+    }
 
-	public ResourceHelper getResourceHelper() {
+    public ResourceHelper getResourceHelper() {
 
-		return ResourceHelperLocator.findResourceHelperFor(this);
-	}
+        return ResourceHelperLocator.findResourceHelperFor(this);
+    }
 }

@@ -24,25 +24,24 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.TableCellRenderer;
 
-public class DefaultTableHeaderRenderer extends DefaultRenderer implements
-		TableCellRenderer {
+public class DefaultTableHeaderRenderer extends DefaultRenderer implements TableCellRenderer {
 
-	public DefaultTableHeaderRenderer() {
+    public DefaultTableHeaderRenderer() {
 
-		initialize();
-	}
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		setOpaque(true);
-		setHorizontalAlignment(JLabel.LEFT);
-		setBorder(UIManager.getBorder("TableHeader.cellBorder"));
-	}
+        setOpaque(true);
+        setHorizontalAlignment(JLabel.LEFT);
+        setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+    }
 
-	public Component getTableCellRendererComponent(JTable table, Object value,
-			boolean isSelected, boolean hasFocus, int row, int column) {
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+            int row, int column) {
 
-		setText(objectToString(value));
-		return this;
-	}
+        setText(objectToString(value));
+        return this;
+    }
 }

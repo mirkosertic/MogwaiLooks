@@ -27,24 +27,24 @@ import de.mogwai.common.client.looks.tools.WindowHelper;
 
 public class DefaultSplashScreen extends JWindow {
 
-	private JLabel imageLabel = new JLabel();
+    private JLabel imageLabel = new JLabel();
 
-	public DefaultSplashScreen(String aIconName) {
+    public DefaultSplashScreen(String aIconName) {
 
-		initialize(aIconName);
-	}
+        initialize(aIconName);
+    }
 
-	private void initialize(String aIconName) {
+    private void initialize(String aIconName) {
 
-		imageLabel.setIcon(ImageIconCache.getImageIcon(aIconName));
-		toFront();
-		getContentPane().add(imageLabel, BorderLayout.CENTER);
-	}
+        imageLabel.setIcon(ImageIconCache.getImageIcon(aIconName));
+        toFront();
+        getContentPane().add(imageLabel, BorderLayout.CENTER);
+    }
 
-	@Override
-	public void setVisible(boolean bStatus) {
-		pack();
-		new WindowHelper(this).center();
-		super.setVisible(bStatus);
-	}
+    @Override
+    public void setVisible(boolean bStatus) {
+        pack();
+        new WindowHelper(this).center();
+        super.setVisible(bStatus);
+    }
 }

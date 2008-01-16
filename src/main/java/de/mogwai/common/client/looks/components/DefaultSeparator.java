@@ -32,7 +32,7 @@ import de.mogwai.common.i18n.I18NAble;
 import de.mogwai.common.i18n.ResourceHelper;
 
 public class DefaultSeparator extends DefaultPanel implements I18NAble {
-	
+
     private static final class TitledSeparatorLayout implements LayoutManager {
 
         private final boolean centerSeparators;
@@ -55,8 +55,8 @@ public class DefaultSeparator extends DefaultPanel implements I18NAble {
             Component label = getLabel(parent);
             Dimension labelSize = label.getPreferredSize();
             Insets insets = parent.getInsets();
-            int width  = labelSize.width  + insets.left + insets.right;
-            int height = labelSize.height + insets.top  + insets.bottom;
+            int width = labelSize.width + insets.left + insets.right;
+            int height = labelSize.height + insets.top + insets.bottom;
             return new Dimension(width, height);
         }
 
@@ -64,30 +64,28 @@ public class DefaultSeparator extends DefaultPanel implements I18NAble {
             synchronized (parent.getTreeLock()) {
                 Dimension size = parent.getSize();
                 Insets insets = parent.getInsets();
-                int width  = size.width - insets.left - insets.right;
+                int width = size.width - insets.left - insets.right;
 
                 JLabel label = getLabel(parent);
                 Dimension labelSize = label.getPreferredSize();
-                int labelWidth  = labelSize.width;
+                int labelWidth = labelSize.width;
                 int labelHeight = labelSize.height;
                 Component separator1 = parent.getComponent(1);
-                int separatorHeight  = separator1.getPreferredSize().height;
+                int separatorHeight = separator1.getPreferredSize().height;
 
                 FontMetrics metrics = label.getFontMetrics(label.getFont());
-                int ascent  = metrics.getMaxAscent();
+                int ascent = metrics.getMaxAscent();
                 int hGapDlu = centerSeparators ? 3 : 1;
-                int hGap    = 5;
-                int vOffset = centerSeparators
-                    ? 1 + (labelHeight - separatorHeight) / 2
-                    : ascent - separatorHeight / 2;
+                int hGap = 5;
+                int vOffset = centerSeparators ? 1 + (labelHeight - separatorHeight) / 2 : ascent - separatorHeight / 2;
 
                 int alignment = label.getHorizontalAlignment();
                 int y = insets.top;
                 if (alignment == SwingConstants.LEFT) {
                     int x = insets.left;
                     label.setBounds(x, y, labelWidth, labelHeight);
-                    x+= labelWidth;
-                    x+= hGap;
+                    x += labelWidth;
+                    x += hGap;
                     int separatorWidth = size.width - insets.right - x;
                     separator1.setBounds(x, y + vOffset, separatorWidth, separatorHeight);
                 } else if (alignment == SwingConstants.RIGHT) {
@@ -98,9 +96,9 @@ public class DefaultSeparator extends DefaultPanel implements I18NAble {
                     int separatorWidth = x - insets.left;
                     separator1.setBounds(insets.left, y + vOffset, separatorWidth, separatorHeight);
                 } else {
-                    int xOffset = (width - labelWidth - 2*hGap) / 2;
+                    int xOffset = (width - labelWidth - 2 * hGap) / 2;
                     int x = insets.left;
-                    separator1.setBounds(x, y + vOffset, xOffset-1, separatorHeight);
+                    separator1.setBounds(x, y + vOffset, xOffset - 1, separatorHeight);
                     x += xOffset;
                     x += hGap;
                     label.setBounds(x, y, labelWidth, labelHeight);
@@ -108,7 +106,7 @@ public class DefaultSeparator extends DefaultPanel implements I18NAble {
                     x += hGap;
                     Component separator2 = parent.getComponent(1);
                     int separatorWidth = size.width - insets.right - x;
-                    separator2.setBounds(x, y + vOffset,separatorWidth ,separatorHeight);
+                    separator2.setBounds(x, y + vOffset, separatorWidth, separatorHeight);
                 }
             }
         }
@@ -117,38 +115,39 @@ public class DefaultSeparator extends DefaultPanel implements I18NAble {
             return (DefaultLabel) parent.getComponent(0);
         }
 
-    }	
-	private DefaultLabel label;
-	
-	public DefaultSeparator() {
-		label = new DefaultLabel();
-		configure();
-	}
+    }
 
-	public DefaultSeparator(String aResourceKey) {
-		label = new DefaultLabel(aResourceKey);
-		configure();
-	}
+    private DefaultLabel label;
 
-	private void configure() {
-		
-		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setColon(false);
-		
-		setLayout(new TitledSeparatorLayout(true));
-		add(label);
-		add(new JSeparator());
-	}
+    public DefaultSeparator() {
+        label = new DefaultLabel();
+        configure();
+    }
 
-	public String getResourceBundleID() {
-		return label.getResourceBundleID();
-	}
+    public DefaultSeparator(String aResourceKey) {
+        label = new DefaultLabel(aResourceKey);
+        configure();
+    }
 
-	public ResourceHelper getResourceHelper() {
-		return label.getResourceHelper();
-	}
+    private void configure() {
 
-	public void setText(String aText) {
-		label.setText(aText);
-	}
+        label.setHorizontalAlignment(SwingConstants.LEFT);
+        label.setColon(false);
+
+        setLayout(new TitledSeparatorLayout(true));
+        add(label);
+        add(new JSeparator());
+    }
+
+    public String getResourceBundleID() {
+        return label.getResourceBundleID();
+    }
+
+    public ResourceHelper getResourceHelper() {
+        return label.getResourceHelper();
+    }
+
+    public void setText(String aText) {
+        label.setText(aText);
+    }
 }

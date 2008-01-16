@@ -24,34 +24,33 @@ import javax.swing.ListCellRenderer;
 
 import de.mogwai.common.client.looks.UIInitializer;
 
-public class DefaultComboboxRenderer extends DefaultRenderer implements
-		ListCellRenderer {
+public final class DefaultComboboxRenderer extends DefaultRenderer implements ListCellRenderer {
 
-	private static DefaultComboboxRenderer me = new DefaultComboboxRenderer();
+    private static DefaultComboboxRenderer me = new DefaultComboboxRenderer();
 
-	private UIInitializer initializer;
+    private UIInitializer initializer;
 
-	public static DefaultComboboxRenderer getInstance() {
+    public static DefaultComboboxRenderer getInstance() {
 
-		return me;
-	}
+        return me;
+    }
 
-	private DefaultComboboxRenderer() {
+    private DefaultComboboxRenderer() {
 
-		initializer = UIInitializer.getInstance();
-	}
+        initializer = UIInitializer.getInstance();
+    }
 
-	public Component getListCellRendererComponent(JList list, Object value,
-			int index, boolean isSelected, boolean cellHasFocus) {
+    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+            boolean cellHasFocus) {
 
-		setText(objectToString(value));
-		if (isSelected) {
-			setBackground(initializer.getDefaultListSelectionBackground());
-			setForeground(initializer.getDefaultListSelectionForeground());
-		} else {
-			setBackground(initializer.getDefaultBackgroundColor());
-			setForeground(initializer.getDefaultListNonSelectionForeground());
-		}
-		return this;
-	}
+        setText(objectToString(value));
+        if (isSelected) {
+            setBackground(initializer.getDefaultListSelectionBackground());
+            setForeground(initializer.getDefaultListSelectionForeground());
+        } else {
+            setBackground(initializer.getDefaultBackgroundColor());
+            setForeground(initializer.getDefaultListNonSelectionForeground());
+        }
+        return this;
+    }
 }

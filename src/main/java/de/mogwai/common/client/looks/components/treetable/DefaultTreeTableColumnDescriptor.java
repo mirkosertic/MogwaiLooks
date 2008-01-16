@@ -23,38 +23,37 @@ import de.mogwai.common.client.looks.components.renderer.DefaultCellRenderer;
 
 public class DefaultTreeTableColumnDescriptor {
 
-	private String displayName;
+    private String displayName;
 
-	private Class clazz;
+    private Class clazz;
 
-	private int size = -1;
+    private int size = -1;
 
-	private TableCellRenderer renderer = DefaultCellRenderer.getInstance();
+    private TableCellRenderer renderer = DefaultCellRenderer.getInstance();
 
-	public DefaultTreeTableColumnDescriptor(String aDisplayName, Class aClazz,
-			int aSize) {
-		displayName = aDisplayName;
-		clazz = aClazz;
-		size = aSize;
-	}
+    public DefaultTreeTableColumnDescriptor(String aDisplayName, Class aClazz, int aSize) {
+        displayName = aDisplayName;
+        clazz = aClazz;
+        size = aSize;
+    }
 
-	public Class getClazz() {
+    public Class getClazz() {
 
-		return clazz;
-	}
+        return clazz;
+    }
 
-	public String getDisplayName() {
+    public String getDisplayName() {
 
-		return displayName;
-	}
+        return displayName;
+    }
 
-	public TableCellRenderer getRenderer() {
+    public TableCellRenderer getRenderer() {
 
-		return renderer;
-	}
+        return renderer;
+    }
 
-	public int getSize() {
+    public int getSize() {
 
-		return size;
-	}
+        return size;
+    }
 }

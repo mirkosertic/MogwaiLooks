@@ -31,102 +31,99 @@ import de.mogwai.common.i18n.I18NAble;
 import de.mogwai.common.i18n.ResourceHelper;
 import de.mogwai.common.i18n.ResourceHelperProvider;
 
-public class DefaultDialog extends JDialog implements ResourceHelperProvider,
-		I18NAble, ModificationTracker, ResultProvider, ActionEventProcessor {
+public class DefaultDialog extends JDialog implements ResourceHelperProvider, I18NAble, ModificationTracker,
+        ResultProvider, ActionEventProcessor {
 
-	private String resourceID;
+    private String resourceID;
 
-	private ResourceHelper resource;
+    private ResourceHelper resource;
 
-	private DefaultFrameContent content = new DefaultFrameContent();
+    private DefaultFrameContent content = new DefaultFrameContent();
 
-	private boolean modified;
+    private boolean modified;
 
-	private Object result;
+    private Object result;
 
-	public DefaultDialog(Component parent, String aBundleName,
-			String aResourceID) {
+    public DefaultDialog(Component parent, String aBundleName, String aResourceID) {
 
-		super(WindowHelper.findRootFrame(parent), aResourceID, true);
-		resourceID = aResourceID;
-		resource = ResourceHelper.getResourceHelper(aBundleName);
-		initialize();
-		UIInitializer.getInstance().initialize(this);
-	}
+        super(WindowHelper.findRootFrame(parent), aResourceID, true);
+        resourceID = aResourceID;
+        resource = ResourceHelper.getResourceHelper(aBundleName);
+        initialize();
+        UIInitializer.getInstance().initialize(this);
+    }
 
-	public DefaultDialog(Component parent, ResourceHelper aHelper,
-			String aResourceID) {
+    public DefaultDialog(Component parent, ResourceHelper aHelper, String aResourceID) {
 
-		super(WindowHelper.findRootFrame(parent), aResourceID, true);
-		resourceID = aResourceID;
-		resource = aHelper;
-		initialize();
-		UIInitializer.getInstance().initialize(this);
-	}
+        super(WindowHelper.findRootFrame(parent), aResourceID, true);
+        resourceID = aResourceID;
+        resource = aHelper;
+        initialize();
+        UIInitializer.getInstance().initialize(this);
+    }
 
-	public DefaultDialog(Component parent, String aBundleName,
-			String aResourceID, DefaultFrameContent aContent) {
+    public DefaultDialog(Component parent, String aBundleName, String aResourceID, DefaultFrameContent aContent) {
 
-		this(parent, aBundleName, aResourceID);
-		content = aContent;
-		setContentPane(content);
-		UIInitializer.getInstance().initialize(this);
-		content.initializeBindingInfo();
-		pack();
-	}
+        this(parent, aBundleName, aResourceID);
+        content = aContent;
+        setContentPane(content);
+        UIInitializer.getInstance().initialize(this);
+        content.initializeBindingInfo();
+        pack();
+    }
 
-	public DefaultFrameContent getDefaultFrameContent() {
+    public DefaultFrameContent getDefaultFrameContent() {
 
-		return content;
-	}
+        return content;
+    }
 
-	private void initialize() {
-		setContentPane(content);
-	}
+    private void initialize() {
+        setContentPane(content);
+    }
 
-	public ResourceHelper getResourceHelper() {
+    public ResourceHelper getResourceHelper() {
 
-		return resource;
-	}
+        return resource;
+    }
 
-	public String getResourceBundleID() {
+    public String getResourceBundleID() {
 
-		return resourceID;
-	}
+        return resourceID;
+    }
 
-	public void setText(String aText) {
+    public void setText(String aText) {
 
-		setTitle(aText);
-	}
+        setTitle(aText);
+    }
 
-	public void setModified(boolean bModified) {
-		modified = bModified;
-	}
+    public void setModified(boolean bModified) {
+        modified = bModified;
+    }
 
-	public boolean isModified() {
-		return modified;
-	}
+    public boolean isModified() {
+        return modified;
+    }
 
-	@Override
-	public void setVisible(boolean bStatus) {
-		if (bStatus) {
-			new WindowHelper(this).center();
-		}
-		super.setVisible(bStatus);
-	}
+    @Override
+    public void setVisible(boolean bStatus) {
+        if (bStatus) {
+            new WindowHelper(this).center();
+        }
+        super.setVisible(bStatus);
+    }
 
-	public void setResult(Object aResult) {
-		result = aResult;
-	}
+    public void setResult(Object aResult) {
+        result = aResult;
+    }
 
-	public Object getModalResult() {
-		pack();
-		setResizable(false);
-		setVisible(true);
-		return result;
-	}
+    public Object getModalResult() {
+        pack();
+        setResizable(false);
+        setVisible(true);
+        return result;
+    }
 
-	public void processActionEvent(ActionEvent e) {
-		ActionEventProcessorHelper.invoke(this, e);
-	}
+    public void processActionEvent(ActionEvent e) {
+        ActionEventProcessorHelper.invoke(this, e);
+    }
 }

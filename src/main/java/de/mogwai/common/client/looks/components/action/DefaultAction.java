@@ -31,86 +31,83 @@ import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultAction extends AbstractAction implements I18NAble {
 
-	private Vector<ActionListener> listener = new Vector<ActionListener>();
+    private Vector<ActionListener> listener = new Vector<ActionListener>();
 
-	private String resourceID;
+    private String resourceID;
 
-	private ResourceHelper resourceHelper;
+    private ResourceHelper resourceHelper;
 
-	private ActionEventProcessor processor;
+    private ActionEventProcessor processor;
 
-	public DefaultAction(ActionEventProcessor aProcessor,
-			ResourceHelperProvider aProvider, String aResourceID) {
-		this(aProcessor, aProvider.getResourceHelper(), aResourceID);
-	}
+    public DefaultAction(ActionEventProcessor aProcessor, ResourceHelperProvider aProvider, String aResourceID) {
+        this(aProcessor, aProvider.getResourceHelper(), aResourceID);
+    }
 
-	public DefaultAction(ResourceHelperProvider aProvider, String aResourceID) {
-		this(null, aProvider.getResourceHelper(), aResourceID);
-	}
+    public DefaultAction(ResourceHelperProvider aProvider, String aResourceID) {
+        this(null, aProvider.getResourceHelper(), aResourceID);
+    }
 
-	public DefaultAction(ActionEventProcessor aProcessor, String aBundleName,
-			String aResourceID) {
-		this(aProcessor, ResourceHelper.getResourceHelper(aBundleName),
-				aResourceID);
-	}
+    public DefaultAction(ActionEventProcessor aProcessor, String aBundleName, String aResourceID) {
+        this(aProcessor, ResourceHelper.getResourceHelper(aBundleName), aResourceID);
+    }
 
-	public DefaultAction(String aBundleName, String aResourceID) {
-		this(null, ResourceHelper.getResourceHelper(aBundleName), aResourceID);
-	}
+    public DefaultAction(String aBundleName, String aResourceID) {
+        this(null, ResourceHelper.getResourceHelper(aBundleName), aResourceID);
+    }
 
-	public DefaultAction(ActionEventProcessor aProcessor,
-			ResourceHelper aHelper, String aResourceID) {
+    public DefaultAction(ActionEventProcessor aProcessor, ResourceHelper aHelper, String aResourceID) {
 
-		super(aResourceID);
-		resourceID = aResourceID;
-		resourceHelper = aHelper;
-		processor = aProcessor;
-		initialize();
-	}
+        super(aResourceID);
+        resourceID = aResourceID;
+        resourceHelper = aHelper;
+        processor = aProcessor;
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		putValue(NAME, null);
-		
-		String iconName = resourceHelper.getIcon(resourceID);
-		if (iconName != null) {
-			putValue(SMALL_ICON, ImageIconCache.getImageIcon(iconName));
-		}
-		
-		try {
-			I18NInitializer.initialize(this);
-		} catch (Exception e) {
-			//TODO: Add better exception handling here
-		}
-	}
+        putValue(NAME, null);
 
-	public void addActionListener(ActionListener aListener) {
-		listener.add(aListener);
-	}
+        String iconName = resourceHelper.getIcon(resourceID);
+        if (iconName != null) {
+            putValue(SMALL_ICON, ImageIconCache.getImageIcon(iconName));
+        }
 
-	public void actionPerformed(ActionEvent e) {
+        try {
+            I18NInitializer.initialize(this);
+        } catch (Exception e) {
+            // TODO: Add better exception handling here
+        }
+    }
 
-		for (ActionListener theListener : listener) {
-			theListener.actionPerformed(e);
-		}
+    public void addActionListener(ActionListener aListener) {
+        listener.add(aListener);
+    }
 
-		if (processor != null)
-			processor.processActionEvent(e);
-	}
+    public void actionPerformed(ActionEvent e) {
 
-	public String getResourceBundleID() {
-		return resourceID;
-	}
+        for (ActionListener theListener : listener) {
+            theListener.actionPerformed(e);
+        }
 
-	public void setText(String aText) {
-		putValue(NAME, aText);
-	}
+        if (processor != null) {
+            processor.processActionEvent(e);
+        }
+    }
 
-	public void setCommandName(String aCommandName) {
-		putValue(ACTION_COMMAND_KEY, aCommandName);
-	}
+    public String getResourceBundleID() {
+        return resourceID;
+    }
 
-	public ResourceHelper getResourceHelper() {
-		return resourceHelper;
-	}
+    public void setText(String aText) {
+        putValue(NAME, aText);
+    }
+
+    public void setCommandName(String aCommandName) {
+        putValue(ACTION_COMMAND_KEY, aCommandName);
+    }
+
+    public ResourceHelper getResourceHelper() {
+        return resourceHelper;
+    }
 }

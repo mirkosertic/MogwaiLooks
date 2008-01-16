@@ -19,5 +19,5 @@ package de.mogwai.common.client.looks.components;
 
 public interface ToolbarProvider {
 
-	public DefaultToolbar getToolbar();
+    DefaultToolbar getToolbar();
 }

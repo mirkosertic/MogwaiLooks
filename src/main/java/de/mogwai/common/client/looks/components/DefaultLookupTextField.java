@@ -25,39 +25,39 @@ import javax.swing.JPanel;
 
 public class DefaultLookupTextField extends JPanel {
 
-	private DefaultTextField textField = new DefaultTextField();
+    private DefaultTextField textField = new DefaultTextField();
 
-	private DefaultButton button = new DefaultButton();
+    private DefaultButton button = new DefaultButton();
 
-	public DefaultLookupTextField() {
-		initialize();
-	}
+    public DefaultLookupTextField() {
+        initialize();
+    }
 
-	private void initialize() {
-		setLayout(new BorderLayout());
-		add(textField, BorderLayout.CENTER);
-		add(button, BorderLayout.EAST);
+    private void initialize() {
+        setLayout(new BorderLayout());
+        add(textField, BorderLayout.CENTER);
+        add(button, BorderLayout.EAST);
 
-		button.setPreferredSize(new Dimension(21, 21));
-		button.setMinimumSize(new Dimension(21, 21));
-		button.setMaximumSize(new Dimension(21, 21));
-		button.setSize(new Dimension(21, 21));
+        button.setPreferredSize(new Dimension(21, 21));
+        button.setMinimumSize(new Dimension(21, 21));
+        button.setMaximumSize(new Dimension(21, 21));
+        button.setSize(new Dimension(21, 21));
 
-		button.setText("?");
-		button.setMargin(new Insets(0, 0, 0, 0));
-	}
+        button.setText("?");
+        button.setMargin(new Insets(0, 0, 0, 0));
+    }
 
-	@Override
-	public void setEnabled(boolean bstatus) {
-		textField.setEnabled(bstatus);
-		button.setEnabled(bstatus);
-	}
+    @Override
+    public void setEnabled(boolean bstatus) {
+        textField.setEnabled(bstatus);
+        button.setEnabled(bstatus);
+    }
 
-	public DefaultTextField getTextField() {
-		return textField;
-	}
+    public DefaultTextField getTextField() {
+        return textField;
+    }
 
-	public DefaultButton getButton() {
-		return button;
-	}
+    public DefaultButton getButton() {
+        return button;
+    }
 }

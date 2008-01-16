@@ -21,22 +21,23 @@ import javax.swing.Action;
 
 public class DefaultToolbarButton extends DefaultButton {
 
-	public DefaultToolbarButton(Action aAction) {
-		super(aAction);
-		initialize();
-	}
+    public DefaultToolbarButton(Action aAction) {
+        super(aAction);
+        initialize();
+    }
 
-	private void initialize() {
-		setBorderPainted(false);
-		setFocusable(false);
-		/*setSize(new Dimension(32,32));
-		setPreferredSize(new Dimension(32,32)); 
-		setMinimumSize(new Dimension(32,32));*/
-	}
+    private void initialize() {
+        setBorderPainted(false);
+        setFocusable(false);
+        /*
+         * setSize(new Dimension(32,32)); setPreferredSize(new
+         * Dimension(32,32)); setMinimumSize(new Dimension(32,32));
+         */
+    }
 
-	@Override
-	public void setText(String aText) {
-		super.setText("");
-		setToolTipText(aText);
-	}
+    @Override
+    public void setText(String aText) {
+        super.setText("");
+        setToolTipText(aText);
+    }
 }

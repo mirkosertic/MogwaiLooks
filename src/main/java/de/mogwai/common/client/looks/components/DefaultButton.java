@@ -26,30 +26,30 @@ import de.mogwai.common.i18n.ResourceHelperLocator;
 
 public class DefaultButton extends JButton implements I18NAble {
 
-	private String resourceID;
+    private String resourceID;
 
-	public DefaultButton() {
+    public DefaultButton() {
 
-	}
+    }
 
-	public DefaultButton(String aResourceID) {
+    public DefaultButton(String aResourceID) {
 
-		super(aResourceID);
-		resourceID = aResourceID;
-	}
+        super(aResourceID);
+        resourceID = aResourceID;
+    }
 
-	public DefaultButton(Action aAction) {
+    public DefaultButton(Action aAction) {
 
-		super(aAction);
-	}
+        super(aAction);
+    }
 
-	public String getResourceBundleID() {
+    public String getResourceBundleID() {
 
-		return resourceID;
-	}
+        return resourceID;
+    }
 
-	public ResourceHelper getResourceHelper() {
+    public ResourceHelper getResourceHelper() {
 
-		return ResourceHelperLocator.findResourceHelperFor(this);
-	}
+        return ResourceHelperLocator.findResourceHelperFor(this);
+    }
 }

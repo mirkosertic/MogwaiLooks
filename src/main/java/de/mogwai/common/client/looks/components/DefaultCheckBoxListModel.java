@@ -28,85 +28,85 @@ import de.mogwai.common.client.looks.tools.DefaultSelectableItem;
 
 public class DefaultCheckBoxListModel<Typ> implements TableModel {
 
-	protected List<DefaultSelectableItem<Typ>> data;
+    protected List<DefaultSelectableItem<Typ>> data;
 
-	protected Vector<TableModelListener> listener = new Vector<TableModelListener>();
+    protected Vector<TableModelListener> listener = new Vector<TableModelListener>();
 
-	public DefaultCheckBoxListModel() {
-		data = new Vector<DefaultSelectableItem<Typ>>();
-	}
+    public DefaultCheckBoxListModel() {
+        data = new Vector<DefaultSelectableItem<Typ>>();
+    }
 
-	public int getRowCount() {
+    public int getRowCount() {
 
-		return data.size();
-	}
+        return data.size();
+    }
 
-	public int getColumnCount() {
-		return 1;
-	}
+    public int getColumnCount() {
+        return 1;
+    }
 
-	public String getColumnName(int columnIndex) {
-		return "";
-	}
+    public String getColumnName(int columnIndex) {
+        return "";
+    }
 
-	public Class<?> getColumnClass(int columnIndex) {
-		return DefaultSelectableItem.class;
-	}
+    public Class<?> getColumnClass(int columnIndex) {
+        return DefaultSelectableItem.class;
+    }
 
-	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		return true;
-	}
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return true;
+    }
 
-	public Object getRow(int rowIndex) {
-		return data.get(rowIndex);
-	}
+    public Object getRow(int rowIndex) {
+        return data.get(rowIndex);
+    }
 
-	public Object getValueAt(int rowIndex, int columnIndex) {
-		return data.get(rowIndex);
-	}
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        return data.get(rowIndex);
+    }
 
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-	}
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+    }
 
-	public void fireTableDataChanged() {
+    public void fireTableDataChanged() {
 
-		TableModelEvent theEvent = new TableModelEvent(this);
-		for (TableModelListener theListener : listener) {
-			theListener.tableChanged(theEvent);
-		}
-	}
+        TableModelEvent theEvent = new TableModelEvent(this);
+        for (TableModelListener theListener : listener) {
+            theListener.tableChanged(theEvent);
+        }
+    }
 
-	public void add(Typ aEntry) {
-		data.add(new DefaultSelectableItem(aEntry));
-		fireTableDataChanged();
-	}
+    public void add(Typ aEntry) {
+        data.add(new DefaultSelectableItem(aEntry));
+        fireTableDataChanged();
+    }
 
-	public void addAll(List<Typ> aList) {
-		for (Typ theTyp : aList) {
-			data.add(new DefaultSelectableItem(theTyp));
-		}
-		fireTableDataChanged();
-	}
+    public void addAll(List<Typ> aList) {
+        for (Typ theTyp : aList) {
+            data.add(new DefaultSelectableItem(theTyp));
+        }
+        fireTableDataChanged();
+    }
 
-	public void setData(List<DefaultSelectableItem<Typ>> aData) {
+    public void setData(List<DefaultSelectableItem<Typ>> aData) {
 
-		data = aData;
-		fireTableDataChanged();
-	}
+        data = aData;
+        fireTableDataChanged();
+    }
 
-	public void addTableModelListener(TableModelListener l) {
+    public void addTableModelListener(TableModelListener l) {
 
-		listener.add(l);
-	}
+        listener.add(l);
+    }
 
-	public void removeTableModelListener(TableModelListener l) {
+    public void removeTableModelListener(TableModelListener l) {
 
-		listener.remove(l);
-	}
+        listener.remove(l);
+    }
 
-	public void clear() {
+    public void clear() {
 
-		data.clear();
-		fireTableDataChanged();
-	}
+        data.clear();
+        fireTableDataChanged();
+    }
 }

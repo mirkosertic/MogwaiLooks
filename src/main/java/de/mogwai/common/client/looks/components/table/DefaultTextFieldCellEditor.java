@@ -24,13 +24,13 @@ import de.mogwai.common.client.looks.components.DefaultTextField;
 
 public class DefaultTextFieldCellEditor extends DefaultCellEditor {
 
-	public DefaultTextFieldCellEditor() {
-		super(new DefaultTextField());
+    public DefaultTextFieldCellEditor() {
+        super(new DefaultTextField());
 
-		initialize();
-	}
+        initialize();
+    }
 
-	private void initialize() {
-		UIInitializer.getInstance().initializeComponent(getComponent());
-	}
+    private void initialize() {
+        UIInitializer.getInstance().initializeComponent(getComponent());
+    }
 }

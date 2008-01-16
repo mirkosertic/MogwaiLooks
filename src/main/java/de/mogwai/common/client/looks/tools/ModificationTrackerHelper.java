@@ -21,15 +21,17 @@ import java.awt.Component;
 
 public class ModificationTrackerHelper {
 
-	public static void setModified(Component aComponent, boolean modified) {
+    public static void setModified(Component aComponent, boolean modified) {
 
-		if (aComponent instanceof ModificationTracker) {
-			ModificationTracker theTracker = (ModificationTracker) aComponent;
-			if (theTracker.isModified() != modified)
-				theTracker.setModified(modified);
-		}
-		if (aComponent.getParent() != null)
-			setModified(aComponent.getParent(), modified);
+        if (aComponent instanceof ModificationTracker) {
+            ModificationTracker theTracker = (ModificationTracker) aComponent;
+            if (theTracker.isModified() != modified) {
+                theTracker.setModified(modified);
+            }
+        }
+        if (aComponent.getParent() != null) {
+            setModified(aComponent.getParent(), modified);
+        }
 
-	}
+    }
 }

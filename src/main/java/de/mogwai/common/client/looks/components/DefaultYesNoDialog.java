@@ -33,83 +33,75 @@ import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultYesNoDialog extends DefaultDialog {
 
-	private String questionResourceID;
+    private String questionResourceID;
 
-	private ResourceHelper looksHelper = ResourceHelper
-			.getResourceHelper(LooksBundle.BUNDLE_NAME);
+    private ResourceHelper looksHelper = ResourceHelper.getResourceHelper(LooksBundle.BUNDLE_NAME);
 
-	public final static int YES_OPTION = 1;
+    public static final int YES_OPTION = 1;
 
-	public final static int NO_OPTION = 2;
+    public static final int NO_OPTION = 2;
 
-	private int result = NO_OPTION;
+    private int result = NO_OPTION;
 
-	public DefaultYesNoDialog(Component aParent,
-			ResourceHelperProvider aProvider, String aTitleResourceID,
-			String aQuestionResourceID) {
-		this(aParent, aProvider.getResourceHelper(), aTitleResourceID,
-				aQuestionResourceID);
-	}
+    public DefaultYesNoDialog(Component aParent, ResourceHelperProvider aProvider, String aTitleResourceID,
+            String aQuestionResourceID) {
+        this(aParent, aProvider.getResourceHelper(), aTitleResourceID, aQuestionResourceID);
+    }
 
-	public DefaultYesNoDialog(Component aParent,
-			ResourceHelper aResourceHelper, String aTitleResourceID,
-			String aQuestionResourceID) {
-		super(aParent, aResourceHelper, aTitleResourceID);
-		questionResourceID = aQuestionResourceID;
+    public DefaultYesNoDialog(Component aParent, ResourceHelper aResourceHelper, String aTitleResourceID,
+            String aQuestionResourceID) {
+        super(aParent, aResourceHelper, aTitleResourceID);
+        questionResourceID = aQuestionResourceID;
 
-		initialize();
-	}
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		setModal(true);
+        setModal(true);
 
-		Container theContent = getContentPane();
-		FormLayout theLayout = new FormLayout(
-				"2dlu,right:80dlu,2dlu,left:80dlu,,2dlu",
-				",2dlu,50dlu,2dlu,p,20dlu");
-		CellConstraints theConstraints = new CellConstraints();
-		theContent.setLayout(theLayout);
+        Container theContent = getContentPane();
+        FormLayout theLayout = new FormLayout("2dlu,right:80dlu,2dlu,left:80dlu,,2dlu", ",2dlu,50dlu,2dlu,p,20dlu");
+        CellConstraints theConstraints = new CellConstraints();
+        theContent.setLayout(theLayout);
 
-		DefaultLabel theInfo = new DefaultLabel(questionResourceID);
-		theInfo.setColon(false);
-		theInfo.setHorizontalAlignment(DefaultLabel.CENTER);
-		theContent.add(theInfo, theConstraints.xywh(2, 2, 3, 1));
+        DefaultLabel theInfo = new DefaultLabel(questionResourceID);
+        theInfo.setColon(false);
+        theInfo.setHorizontalAlignment(DefaultLabel.CENTER);
+        theContent.add(theInfo, theConstraints.xywh(2, 2, 3, 1));
 
-		DefaultAction theYesAction = new DefaultAction(this, looksHelper,
-				LooksBundle.YES);
-		theYesAction.setCommandName("Yes");
-		DefaultButton theYesButton = new DefaultButton();
-		theYesButton.setPreferredSize(new Dimension(80, 25));
+        DefaultAction theYesAction = new DefaultAction(this, looksHelper, LooksBundle.YES);
+        theYesAction.setCommandName("Yes");
+        DefaultButton theYesButton = new DefaultButton();
+        theYesButton.setPreferredSize(new Dimension(80, 25));
 
-		DefaultAction theNoAction = new DefaultAction(this, looksHelper,
-				LooksBundle.NO);
-		theNoAction.setCommandName("No");
-		DefaultButton theNoButton = new DefaultButton();
-		theNoButton.setPreferredSize(new Dimension(80, 25));
+        DefaultAction theNoAction = new DefaultAction(this, looksHelper, LooksBundle.NO);
+        theNoAction.setCommandName("No");
+        DefaultButton theNoButton = new DefaultButton();
+        theNoButton.setPreferredSize(new Dimension(80, 25));
 
-		theContent.add(theYesButton, theConstraints.xy(2, 4));
-		theContent.add(theNoButton, theConstraints.xy(4, 4));
+        theContent.add(theYesButton, theConstraints.xy(2, 4));
+        theContent.add(theNoButton, theConstraints.xy(4, 4));
 
-		UIInitializer.getInstance().initialize(this);
-		pack();
+        UIInitializer.getInstance().initialize(this);
+        pack();
 
-		theYesButton.setAction(theYesAction);
-		theNoButton.setAction(theNoAction);
-	}
+        theYesButton.setAction(theYesAction);
+        theNoButton.setAction(theNoAction);
+    }
 
-	public int getQuestionResult() {
-		setVisible(true);
-		return result;
-	}
+    public int getQuestionResult() {
+        setVisible(true);
+        return result;
+    }
 
-	public void doYes(ActionEvent e) {
-		result = YES_OPTION;
-		setVisible(false);
-	}
+    public void doYes(ActionEvent e) {
+        result = YES_OPTION;
+        setVisible(false);
+    }
 
-	public void doNo(ActionEvent e) {
-		result = NO_OPTION;
-		setVisible(false);
-	}
+    public void doNo(ActionEvent e) {
+        result = NO_OPTION;
+        setVisible(false);
+    }
 }

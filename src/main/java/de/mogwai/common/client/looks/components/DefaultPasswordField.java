@@ -23,14 +23,13 @@ import de.mogwai.common.client.looks.tools.DefaultModificationListener;
 
 public class DefaultPasswordField extends JPasswordField {
 
-	public DefaultPasswordField() {
+    public DefaultPasswordField() {
 
-		initialize();
-	}
+        initialize();
+    }
 
-	private void initialize() {
+    private void initialize() {
 
-		getDocument()
-				.addDocumentListener(new DefaultModificationListener(this));
-	}
+        getDocument().addDocumentListener(new DefaultModificationListener(this));
+    }
 }

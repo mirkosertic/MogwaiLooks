@@ -1,6 +1,9 @@
  
      Release Notes for MogwaiLooks
-     
+
+Requirements
+
+* Java 5 Runtime ( SDK not required )
 
 Release 0.1
 
@@ -11,3 +14,7 @@ Release 1.2
 * Minor Bug fixes
 * Renamed several packages and corrected spelling
 * Migrated to Maven
+
+Release 1.3
+
+* Several code style fixes

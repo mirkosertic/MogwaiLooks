@@ -28,117 +28,117 @@ import javax.swing.JFrame;
 
 public class WindowHelper {
 
-	public static int screenBottomOffset = 23;
+    private static int screenBottomOffset = 23;
 
-	private Window window;
+    private Window window;
 
-	public static JFrame findRootFrame(Component aComponent) {
+    public static JFrame findRootFrame(Component aComponent) {
 
-		if (aComponent == null)
-			return null;
+        if (aComponent == null) {
+            return null;
+        }
 
-		if (aComponent instanceof JFrame) {
-			return (JFrame) aComponent;
-		}
+        if (aComponent instanceof JFrame) {
+            return (JFrame) aComponent;
+        }
 
-		if (aComponent.getParent() != null)
-			return findRootFrame(aComponent.getParent());
+        if (aComponent.getParent() != null) {
+            return findRootFrame(aComponent.getParent());
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	public WindowHelper(Window window) {
+    public WindowHelper(Window window) {
 
-		this.window = window;
-	}
+        this.window = window;
+    }
 
-	public void center() {
+    public void center() {
 
-		if (!isDoubleScreen()) {
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			Dimension windowSize = window.getSize();
-			window.setLocation(calculateLocationWidth(windowSize,
-					screenSize.width), calculateLocationHeigth(windowSize,
-					screenSize));
-		} else {
-			centerOnLeftScreen();
-		}
-	}
+        if (!isDoubleScreen()) {
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            Dimension windowSize = window.getSize();
+            window.setLocation(calculateLocationWidth(windowSize, screenSize.width), calculateLocationHeigth(
+                    windowSize, screenSize));
+        } else {
+            centerOnLeftScreen();
+        }
+    }
 
-	private int calculateLocationHeigth(Dimension windowSize,
-			Dimension screenSize) {
+    private int calculateLocationHeigth(Dimension windowSize, Dimension screenSize) {
 
-		if (windowSize.height > screenSize.height) {
-			windowSize.height = screenSize.height;
-		}
-		int height = (screenSize.height - windowSize.height) / 2;
-		if (height < screenBottomOffset) {
-			height = 0;
-		}
-		return height;
-	}
+        if (windowSize.height > screenSize.height) {
+            windowSize.height = screenSize.height;
+        }
+        int height = (screenSize.height - windowSize.height) / 2;
+        if (height < screenBottomOffset) {
+            height = 0;
+        }
+        return height;
+    }
 
-	private int calculateLocationWidth(Dimension windowSize, int screenSizeWidth) {
+    private int calculateLocationWidth(Dimension windowSize, int screenSizeWidth) {
 
-		if (windowSize.width > screenSizeWidth) {
-			windowSize.width = screenSizeWidth;
-		}
-		return (screenSizeWidth - windowSize.width) / 2;
-	}
+        if (windowSize.width > screenSizeWidth) {
+            windowSize.width = screenSizeWidth;
+        }
+        return (screenSizeWidth - windowSize.width) / 2;
+    }
 
-	public void center(Component component) {
+    public void center(Component component) {
 
-		try {
-			Dimension parentSize = component.getSize();
-			Dimension windowSize = window.getSize();
-			int relativeX = (parentSize.width - windowSize.width) / 2;
-			int relativeY = (parentSize.height - windowSize.height) / 2;
-			Point topLeft = component.getLocationOnScreen();
-			int absoluteX = (int) topLeft.getX() + relativeX;
-			if (absoluteX < 0) {
-				absoluteX = 0;
-			}
-			int absoluteY = (int) topLeft.getY() + relativeY;
-			if (absoluteY < 0) {
-				absoluteY = 0;
-			}
-			window.setLocation(absoluteX, absoluteY);
-		} catch (IllegalComponentStateException e) {
-			center();
-		}
-	}
+        try {
+            Dimension parentSize = component.getSize();
+            Dimension windowSize = window.getSize();
+            int relativeX = (parentSize.width - windowSize.width) / 2;
+            int relativeY = (parentSize.height - windowSize.height) / 2;
+            Point topLeft = component.getLocationOnScreen();
+            int absoluteX = (int) topLeft.getX() + relativeX;
+            if (absoluteX < 0) {
+                absoluteX = 0;
+            }
+            int absoluteY = (int) topLeft.getY() + relativeY;
+            if (absoluteY < 0) {
+                absoluteY = 0;
+            }
+            window.setLocation(absoluteX, absoluteY);
+        } catch (IllegalComponentStateException e) {
+            center();
+        }
+    }
 
-	public void centerOnLeftScreen() {
+    public void centerOnLeftScreen() {
 
-		if (!isDoubleScreen()) {
-			center();
-			return;
-		}
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		Dimension windowSize = window.getSize();
-		int halfWidth = screenSize.width / 2;
-		window.setLocation(calculateLocationWidth(windowSize, halfWidth),
-				calculateLocationHeigth(windowSize, screenSize));
-	}
+        if (!isDoubleScreen()) {
+            center();
+            return;
+        }
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension windowSize = window.getSize();
+        int halfWidth = screenSize.width / 2;
+        window.setLocation(calculateLocationWidth(windowSize, halfWidth), calculateLocationHeigth(windowSize,
+                screenSize));
+    }
 
-	public void centerOnRightScreen() {
+    public void centerOnRightScreen() {
 
-		if (!isDoubleScreen()) {
-			center();
-			return;
-		}
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		Dimension windowSize = window.getSize();
-		int halfWidth = screenSize.width / 2;
-		window.setLocation(calculateLocationWidth(windowSize, halfWidth)
-				+ halfWidth, calculateLocationHeigth(windowSize, screenSize));
-	}
+        if (!isDoubleScreen()) {
+            center();
+            return;
+        }
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension windowSize = window.getSize();
+        int halfWidth = screenSize.width / 2;
+        window.setLocation(calculateLocationWidth(windowSize, halfWidth) + halfWidth, calculateLocationHeigth(
+                windowSize, screenSize));
+    }
 
-	public boolean isDoubleScreen() {
+    public boolean isDoubleScreen() {
 
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		double ratio = (double) screenSize.width / (double) screenSize.height;
-		boolean doubleScreen = ratio > 2.0;
-		return doubleScreen;
-	}
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double ratio = (double) screenSize.width / (double) screenSize.height;
+        boolean doubleScreen = ratio > 2.0;
+        return doubleScreen;
+    }
 }

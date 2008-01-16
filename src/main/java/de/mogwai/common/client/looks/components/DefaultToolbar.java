@@ -25,26 +25,26 @@ import javax.swing.JToolBar;
 
 public class DefaultToolbar extends JToolBar {
 
-	public DefaultToolbar() {
+    public DefaultToolbar() {
 
-		initialize();
-	}
+        initialize();
+    }
 
-	private void initialize() {
-		setFloatable(false);
-	}
+    private void initialize() {
+        setFloatable(false);
+    }
 
-	@Override
-	public JButton add(Action aAction) {
-		DefaultToolbarButton theButton = new DefaultToolbarButton(aAction);
-		add(theButton);
-		return theButton;
-	}
+    @Override
+    public JButton add(Action aAction) {
+        DefaultToolbarButton theButton = new DefaultToolbarButton(aAction);
+        add(theButton);
+        return theButton;
+    }
 
-	public void addActions(Vector<Action> registeredActions) {
-		for (Action theAction : registeredActions) {
-			DefaultToolbarButton theButton = new DefaultToolbarButton(theAction);
-			add(theButton);
-		}
-	}
+    public void addActions(Vector<Action> registeredActions) {
+        for (Action theAction : registeredActions) {
+            DefaultToolbarButton theButton = new DefaultToolbarButton(theAction);
+            add(theButton);
+        }
+    }
 }
