@@ -19,3 +19,4 @@ Release 1.3
 
 * Several code style fixes
 * Enhanced DefaultTableColumnDescriptor
+* Bug Fixing DefaultCheckBoxList enabled was not propagated to renderer

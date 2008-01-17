@@ -53,6 +53,7 @@ public final class DefaultListSelectableItemRenderer extends DefaultRenderer imp
         DefaultSelectableItem theItem = (DefaultSelectableItem) value;
         checkBox.setText(objectToString(theItem.getValue()));
         checkBox.setSelected(theItem.isSelected());
+        checkBox.setEnabled(list.isEnabled());
         if (isSelected) {
             checkBox.setBackground(initializer.getDefaultListSelectionBackground());
             checkBox.setForeground(initializer.getDefaultListSelectionForeground());
