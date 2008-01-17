@@ -46,14 +46,14 @@ public final class DefaultListSelectableItemRenderer extends DefaultRenderer imp
         initializer = UIInitializer.getInstance();
         initializer.initializeComponent(checkBox);
     }
-
-    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+    
+    public Component getRendererComponent(Component aComponent, Object value, int index, boolean isSelected,
             boolean cellHasFocus) {
 
         DefaultSelectableItem theItem = (DefaultSelectableItem) value;
         checkBox.setText(objectToString(theItem.getValue()));
         checkBox.setSelected(theItem.isSelected());
-        checkBox.setEnabled(list.isEnabled());
+        checkBox.setEnabled(aComponent.isEnabled());
         if (isSelected) {
             checkBox.setBackground(initializer.getDefaultListSelectionBackground());
             checkBox.setForeground(initializer.getDefaultListSelectionForeground());
@@ -63,10 +63,17 @@ public final class DefaultListSelectableItemRenderer extends DefaultRenderer imp
         }
         return checkBox;
     }
+    
+
+    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+            boolean cellHasFocus) {
+
+        return getRendererComponent(list, value, index, isSelected, cellHasFocus);
+    }
 
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
             int row, int column) {
 
-        return getListCellRendererComponent(null, value, row, isSelected, hasFocus);
+        return getRendererComponent(table, value, row, isSelected, hasFocus);
     }
 }
