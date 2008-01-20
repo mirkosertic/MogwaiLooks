@@ -64,13 +64,13 @@ public class DefaultStatusBar extends JLabel implements StatusBar {
 
     public void showError(String aMessage) {
 
-        setForeground(UIInitializer.getInstance().getDefaultErrorColor());
+        setForeground(UIInitializer.getInstance().getConfiguration().getDefaultErrorColor());
         setText(aMessage);
     }
 
     public void showErrorByID(String aMessageID) {
 
-        setForeground(UIInitializer.getInstance().getDefaultErrorColor());
+        setForeground(UIInitializer.getInstance().getConfiguration().getDefaultErrorColor());
         setText(ResourceHelperLocator.findResourceHelperFor(this).getText(aMessageID));
     }
 

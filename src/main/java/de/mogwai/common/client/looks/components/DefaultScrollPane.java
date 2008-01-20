@@ -37,6 +37,6 @@ public class DefaultScrollPane extends JScrollPane {
 
     private void initialize() {
 
-        getViewport().setBackground(UIInitializer.getInstance().getDefaultListNonSelectionBackground());
+        getViewport().setBackground(UIInitializer.getInstance().getConfiguration().getDefaultListNonSelectionBackground());
     }
 }

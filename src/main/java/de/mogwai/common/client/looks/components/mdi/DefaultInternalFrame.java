@@ -69,7 +69,7 @@ public class DefaultInternalFrame extends JInternalFrame implements ResourceHelp
         setVisible(true);
         setClosable(true);
         setContentPane(content);
-        setBorder(BorderFactory.createLineBorder(UIInitializer.getInstance().getDefaultInternalFrameBorderColor(), 1));
+        setBorder(BorderFactory.createLineBorder(UIInitializer.getInstance().getConfiguration().getDefaultInternalFrameBorderColor(), 1));
 
     }
 

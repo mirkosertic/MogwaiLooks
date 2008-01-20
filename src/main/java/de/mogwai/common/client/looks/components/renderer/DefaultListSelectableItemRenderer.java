@@ -55,11 +55,11 @@ public final class DefaultListSelectableItemRenderer extends DefaultRenderer imp
         checkBox.setSelected(theItem.isSelected());
         checkBox.setEnabled(aComponent.isEnabled());
         if (isSelected) {
-            checkBox.setBackground(initializer.getDefaultListSelectionBackground());
-            checkBox.setForeground(initializer.getDefaultListSelectionForeground());
+            checkBox.setBackground(initializer.getConfiguration().getDefaultListSelectionBackground());
+            checkBox.setForeground(initializer.getConfiguration().getDefaultListSelectionForeground());
         } else {
-            checkBox.setBackground(initializer.getDefaultListNonSelectionBackground());
-            checkBox.setForeground(initializer.getDefaultListNonSelectionForeground());
+            checkBox.setBackground(initializer.getConfiguration().getDefaultListNonSelectionBackground());
+            checkBox.setForeground(initializer.getConfiguration().getDefaultListNonSelectionForeground());
         }
         return checkBox;
     }

@@ -61,7 +61,7 @@ public class DefaultTable extends JTable {
         setCellSelectionEnabled(false);
         setColumnSelectionAllowed(false);
         setRowSelectionAllowed(true);
-        setGridColor(UIInitializer.getInstance().getDefaultTableGridColor());
+        setGridColor(UIInitializer.getInstance().getConfiguration().getDefaultTableGridColor());
 
         MouseListener theListener = new MouseAdapter() {
 
