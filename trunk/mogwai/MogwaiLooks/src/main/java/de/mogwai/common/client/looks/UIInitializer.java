@@ -17,10 +17,9 @@
  */
 package de.mogwai.common.client.looks;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Font;
+import java.util.Map;
 
 import javax.swing.AbstractButton;
 import javax.swing.JComboBox;
@@ -47,95 +46,28 @@ public final class UIInitializer {
 
     private static UIInitializer me;
 
-    private Font defaultFont;
+    private UIConfiguration configuration;
 
-    private Color defaultBackgroundColor;
+    private UIInitializer(UIConfiguration aConfiguration) {
 
-    private Color defaultDesktopPaneBackgroundColor = Color.lightGray;
-
-    private Color defaultTableGridColor = Color.lightGray;
-
-    private Color defaultListSelectionBackground = new Color(253, 247, 175);
-
-    private Color defaultListNonSelectionBackground = Color.white;
-
-    private Color defaultListSelectionForeground = Color.black;
-
-    private Color defaultListNonSelectionForeground = Color.black;
-
-    private Color defaultBorderColor = Color.lightGray;
-
-    private Color defaultInternalFrameBorderColor = Color.BLACK;
-
-    private Color defaultErrorColor = Color.red;
-
-    private Color defaultDisabledTextFieldColor = Color.darkGray;
-
-    public Color getDefaultDisabledTextFieldColor() {
-
-        return defaultDisabledTextFieldColor;
+        if (aConfiguration.isApplyConfiguration()) {
+            Map<String, Object> theProperties = aConfiguration.getUIManagerConfig();
+            for (String theString : theProperties.keySet()) {
+                UIManager.put(theString, theProperties.get(theString));
+            }
+        }
     }
 
-    public Color getDefaultErrorColor() {
+    public static UIInitializer getInstance(UIConfiguration aConfiguration) {
 
-        return defaultErrorColor;
-    }
-
-    public Color getDefaultListNonSelectionForeground() {
-
-        return defaultListNonSelectionForeground;
-    }
-
-    public Color getDefaultListSelectionForeground() {
-
-        return defaultListSelectionForeground;
-    }
-
-    public Color getDefaultBackgroundColor() {
-
-        return defaultBackgroundColor;
-    }
-
-    public Color getDefaultDesktopPaneBackgroundColor() {
-
-        return defaultDesktopPaneBackgroundColor;
-    }
-
-    public Font getDefaultFont() {
-
-        return defaultFont;
-    }
-
-    public Color getDefaultListNonSelectionBackground() {
-
-        return defaultListNonSelectionBackground;
-    }
-
-    public Color getDefaultListSelectionBackground() {
-
-        return defaultListSelectionBackground;
-    }
-
-    private UIInitializer() {
-
-        defaultFont = new Font("SansSerif", Font.PLAIN, 12);
-        defaultBackgroundColor = new Color(236, 233, 216);
-        UIManager.put("TabbedPane.tabAreaBackground", defaultBackgroundColor);
-        UIManager.put("TabbedPane.selected", defaultBackgroundColor);
-        UIManager.put("TabbedPane.highlight", defaultBackgroundColor);
-        // UIManager.put("TabbedPane.darkShadow", defaultBackgroundColor);
-        UIManager.put("TextField.inactiveForeground", defaultDisabledTextFieldColor);
-
-        UIManager.put("TabbedPane.shadow", Color.black);
-        UIManager.put("TabbedPane.selectHighlight", Color.gray);
+        if (me == null) {
+            me = new UIInitializer(aConfiguration);
+        }
+        return me;
     }
 
     public static UIInitializer getInstance() {
-
-        if (me == null) {
-            me = new UIInitializer();
-        }
-        return me;
+        return getInstance(new UIConfiguration());
     }
 
     public void initialize(Container aRoot) {
@@ -178,39 +110,42 @@ public final class UIInitializer {
         if (aComponent instanceof JComponent) {
             ((JComponent) aComponent).updateUI();
         }
-        aComponent.setFont(defaultFont);
-        if (aComponent instanceof JPanel) {
-            aComponent.setBackground(defaultBackgroundColor);
-        }
-        if (aComponent instanceof AbstractButton) {
-            aComponent.setBackground(defaultBackgroundColor);
-        }
-        if (aComponent instanceof JDesktopPane) {
-            aComponent.setBackground(defaultDesktopPaneBackgroundColor);
-        }
-        if (aComponent instanceof JComboBox) {
-            aComponent.setBackground(defaultBackgroundColor);
-        }
-        if (aComponent instanceof JLabel) {
-            aComponent.setBackground(defaultBackgroundColor);
-        }
-        if (aComponent instanceof JMenuBar) {
-            aComponent.setBackground(defaultBackgroundColor);
-        }
-        if (aComponent instanceof JMenu) {
-            aComponent.setBackground(defaultBackgroundColor);
-        }
-        if (aComponent instanceof JMenuItem) {
-            aComponent.setBackground(defaultBackgroundColor);
-        }
-        if (aComponent instanceof JPopupMenu) {
-            aComponent.setBackground(defaultBackgroundColor);
-        }
-        if (aComponent instanceof JTableHeader) {
-            aComponent.setBackground(defaultBackgroundColor);
-        }
-        if (aComponent instanceof JToolBar) {
-            aComponent.setBackground(defaultBackgroundColor);
+
+        if (configuration.isApplyConfiguration()) {
+            aComponent.setFont(configuration.getDefaultFont());
+            if (aComponent instanceof JPanel) {
+                aComponent.setBackground(configuration.getDefaultBackgroundColor());
+            }
+            if (aComponent instanceof AbstractButton) {
+                aComponent.setBackground(configuration.getDefaultBackgroundColor());
+            }
+            if (aComponent instanceof JDesktopPane) {
+                aComponent.setBackground(configuration.getDefaultDesktopPaneBackgroundColor());
+            }
+            if (aComponent instanceof JComboBox) {
+                aComponent.setBackground(configuration.getDefaultBackgroundColor());
+            }
+            if (aComponent instanceof JLabel) {
+                aComponent.setBackground(configuration.getDefaultBackgroundColor());
+            }
+            if (aComponent instanceof JMenuBar) {
+                aComponent.setBackground(configuration.getDefaultBackgroundColor());
+            }
+            if (aComponent instanceof JMenu) {
+                aComponent.setBackground(configuration.getDefaultBackgroundColor());
+            }
+            if (aComponent instanceof JMenuItem) {
+                aComponent.setBackground(configuration.getDefaultBackgroundColor());
+            }
+            if (aComponent instanceof JPopupMenu) {
+                aComponent.setBackground(configuration.getDefaultBackgroundColor());
+            }
+            if (aComponent instanceof JTableHeader) {
+                aComponent.setBackground(configuration.getDefaultBackgroundColor());
+            }
+            if (aComponent instanceof JToolBar) {
+                aComponent.setBackground(configuration.getDefaultBackgroundColor());
+            }
         }
         if (aComponent instanceof JTable) {
             JTable theTable = (JTable) aComponent;
@@ -235,18 +170,4 @@ public final class UIInitializer {
         }
     }
 
-    public Color getDefaultBorderColor() {
-
-        return defaultBorderColor;
-    }
-
-    public Color getDefaultTableGridColor() {
-
-        return defaultTableGridColor;
-    }
-
-    public Color getDefaultInternalFrameBorderColor() {
-
-        return defaultInternalFrameBorderColor;
-    }
 }
