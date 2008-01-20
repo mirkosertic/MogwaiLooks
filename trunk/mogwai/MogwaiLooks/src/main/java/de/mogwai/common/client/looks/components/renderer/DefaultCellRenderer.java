@@ -48,11 +48,11 @@ public final class DefaultCellRenderer extends DefaultRenderer implements TableC
         setText(objectToString(value));
         setIcon(objectToIcon(value));
         if (isSelected) {
-            setBackground(initializer.getDefaultListSelectionBackground());
-            setForeground(initializer.getDefaultListSelectionForeground());
+            setBackground(initializer.getConfiguration().getDefaultListSelectionBackground());
+            setForeground(initializer.getConfiguration().getDefaultListSelectionForeground());
         } else {
-            setBackground(initializer.getDefaultListNonSelectionBackground());
-            setForeground(initializer.getDefaultListNonSelectionForeground());
+            setBackground(initializer.getConfiguration().getDefaultListNonSelectionBackground());
+            setForeground(initializer.getConfiguration().getDefaultListNonSelectionForeground());
         }
         return this;
     }
@@ -65,11 +65,11 @@ public final class DefaultCellRenderer extends DefaultRenderer implements TableC
 
         setText(objectToString(value));
         if (selected) {
-            setBackground(initializer.getDefaultListSelectionBackground());
-            setForeground(initializer.getDefaultListSelectionForeground());
+            setBackground(initializer.getConfiguration().getDefaultListSelectionBackground());
+            setForeground(initializer.getConfiguration().getDefaultListSelectionForeground());
         } else {
-            setBackground(initializer.getDefaultListNonSelectionBackground());
-            setForeground(initializer.getDefaultListNonSelectionForeground());
+            setBackground(initializer.getConfiguration().getDefaultListNonSelectionBackground());
+            setForeground(initializer.getConfiguration().getDefaultListNonSelectionForeground());
         }
         return this;
     }

@@ -27,12 +27,12 @@ public class DefaultTitledBorder extends TitledBorder {
     public DefaultTitledBorder(String aResourceID) {
 
         super(aResourceID);
-        setBorder(BorderFactory.createLineBorder(UIInitializer.getInstance().getDefaultBorderColor()));
+        setBorder(BorderFactory.createLineBorder(UIInitializer.getInstance().getConfiguration().getDefaultBorderColor()));
         initialize();
     }
 
     private void initialize() {
 
-        setTitleFont(UIInitializer.getInstance().getDefaultFont());
+        setTitleFont(UIInitializer.getInstance().getConfiguration().getDefaultFont());
     }
 }

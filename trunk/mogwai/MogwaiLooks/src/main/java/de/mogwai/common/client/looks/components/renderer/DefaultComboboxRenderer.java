@@ -45,11 +45,11 @@ public final class DefaultComboboxRenderer extends DefaultRenderer implements Li
 
         setText(objectToString(value));
         if (isSelected) {
-            setBackground(initializer.getDefaultListSelectionBackground());
-            setForeground(initializer.getDefaultListSelectionForeground());
+            setBackground(initializer.getConfiguration().getDefaultListSelectionBackground());
+            setForeground(initializer.getConfiguration().getDefaultListSelectionForeground());
         } else {
-            setBackground(initializer.getDefaultBackgroundColor());
-            setForeground(initializer.getDefaultListNonSelectionForeground());
+            setBackground(initializer.getConfiguration().getDefaultBackgroundColor());
+            setForeground(initializer.getConfiguration().getDefaultListNonSelectionForeground());
         }
         return this;
     }

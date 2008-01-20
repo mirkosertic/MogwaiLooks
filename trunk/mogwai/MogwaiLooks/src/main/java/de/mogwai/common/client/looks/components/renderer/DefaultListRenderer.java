@@ -45,11 +45,11 @@ public final class DefaultListRenderer extends DefaultRenderer implements ListCe
 
         setText(objectToString(value));
         if (isSelected) {
-            setBackground(initializer.getDefaultListSelectionBackground());
-            setForeground(initializer.getDefaultListSelectionForeground());
+            setBackground(initializer.getConfiguration().getDefaultListSelectionBackground());
+            setForeground(initializer.getConfiguration().getDefaultListSelectionForeground());
         } else {
-            setBackground(initializer.getDefaultListNonSelectionBackground());
-            setForeground(initializer.getDefaultListNonSelectionForeground());
+            setBackground(initializer.getConfiguration().getDefaultListNonSelectionBackground());
+            setForeground(initializer.getConfiguration().getDefaultListNonSelectionForeground());
         }
         return this;
     }

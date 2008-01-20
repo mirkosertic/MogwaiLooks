@@ -50,6 +50,8 @@ public final class UIInitializer {
 
     private UIInitializer(UIConfiguration aConfiguration) {
 
+        configuration = aConfiguration;
+        
         if (aConfiguration.isApplyConfiguration()) {
             Map<String, Object> theProperties = aConfiguration.getUIManagerConfig();
             for (String theString : theProperties.keySet()) {
