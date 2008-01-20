@@ -155,6 +155,13 @@ public final class UIInitializer {
             initializeComponent(theTable.getTableHeader());
         }
     }
+    
+    /**
+     * @return the configuration
+     */
+    public UIConfiguration getConfiguration() {
+        return configuration;
+    }
 
     public void initializeComponent(Component aComponent) {
 
