@@ -24,3 +24,7 @@ Release 1.3
 Release 1.4
 
 * Made UIInitializer configurable
+
+Release 1.5
+
+* Added DefaultSpinner
