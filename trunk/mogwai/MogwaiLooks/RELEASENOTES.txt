@@ -28,3 +28,7 @@ Release 1.4
 Release 1.5
 
 * Added DefaultSpinner
+
+Release 1.6
+
+* Added DefaultCheckboxMenuItem
