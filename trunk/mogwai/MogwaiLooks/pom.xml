@@ -11,40 +11,19 @@
 		MogwaiLooks is a component set to make swing applications look fancier.
 	</description>
 	<url>http://mogwai.sourceforge.net</url>
-	<developers>
-		<developer>
-			<id>mirkosertic</id>
-			<name>Mirko Sertic</name>
-			<roles>
-				<role>Project admin</role>
-			</roles>
-			<email>mail@mirkosertic.de</email>
-			<organization>Project Mogwai</organization>
-		</developer>
-	</developers>
-	<inceptionYear>2002</inceptionYear>
-	<licenses>
-		<license>
-			<name>GNU LESSER GENERAL PUBLIC LICENSE Version 2.1</name>
-		</license>
-	</licenses>
-	<mailingLists>
-		<mailingList>
-			<name>Mogwai users mailing list</name>
-			<post>mogwai-users@lists.sourceforge.net</post>
-		</mailingList>
-	</mailingLists>
+	<parent>
+		<groupId>net.sourceforge.mogwai</groupId>
+		<artifactId>mogwai-masterpom</artifactId>
+		<version>1.0</version>
+	</parent>
+	<repositories>
+    	<repository>
+      		<id>mogwai-internal-site</id>
+      		<url>http://mogwai.sourceforge.net/repository/maven2</url>
+    	</repository>
+  	</repositories>
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0</version>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
 
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -82,26 +61,6 @@
 				</dependencies>
 
 			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>javadoc</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<links>
-						<link>
-							http://java.sun.com/j2se/1.5.0/docs/api
-						</link>
-					</links>
-				</configuration>
-			</plugin>			
 			
 			<plugin>
 		        <artifactId>maven-assembly-plugin</artifactId>
