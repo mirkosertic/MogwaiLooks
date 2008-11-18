@@ -10,7 +10,6 @@
 	<description>
 		MogwaiLooks is a component set to make swing applications look fancier.
 	</description>
-	<url>http://mogwai.sourceforge.net</url>
 	<parent>
 		<groupId>net.sourceforge.mogwai</groupId>
 		<artifactId>mogwai-masterpom</artifactId>
