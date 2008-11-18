@@ -19,6 +19,7 @@ package de.mogwai.common.client.looks;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Insets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -284,12 +285,13 @@ public class UIConfiguration {
 
         theMap.put("TabbedPane.tabAreaBackground", getDefaultBackgroundColor());
         theMap.put("TabbedPane.selected", getDefaultBackgroundColor());
+        theMap.put("TabbedPane.focus", getDefaultBackgroundColor());
         theMap.put("TabbedPane.highlight", getDefaultBackgroundColor());
-        // UIManager.put("TabbedPane.darkShadow", defaultBackgroundColor);
         theMap.put("TextField.inactiveForeground", getDefaultDisabledTextFieldColor());
         theMap.put("TabbedPane.shadow", getDefaultTabbedPaneShadow());
         theMap.put("TabbedPane.selectHighlight", getDefaultTabbedPaneHighlight());
-
+//        theMap.put("TabbedPane.borderHightlightColor", getDefaultBackgroundColor());
+//        theMap.put("TabbedPane.contentBorderInsets", new Insets(1,1,1,1));
         return theMap;
     }
 }
