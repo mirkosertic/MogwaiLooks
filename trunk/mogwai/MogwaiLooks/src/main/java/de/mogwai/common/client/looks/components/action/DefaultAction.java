@@ -31,6 +31,8 @@ import de.mogwai.common.i18n.ResourceHelperProvider;
 
 public class DefaultAction extends AbstractAction implements I18NAble {
 
+    public static final String HOTKEY_KEY = "mogwai.hotkey";  
+    
     private Vector<ActionListener> listener = new Vector<ActionListener>();
 
     private String resourceID;
