@@ -19,7 +19,10 @@ package de.mogwai.common.client.looks.components;
 
 import javax.swing.Action;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 
+import de.mogwai.common.client.looks.components.action.DefaultAction;
 import de.mogwai.common.i18n.I18NAble;
 import de.mogwai.common.i18n.ResourceHelper;
 import de.mogwai.common.i18n.ResourceHelperLocator;
@@ -30,6 +33,18 @@ public class DefaultButton extends JButton implements I18NAble {
 
     public DefaultButton() {
 
+    }
+
+    @Override
+    public void setAction(Action aAction) {
+        super.setAction(aAction);
+        if (aAction instanceof DefaultAction) {
+            DefaultAction theAction = (DefaultAction) aAction;
+            KeyStroke theStroke = (KeyStroke) theAction.getValue(DefaultAction.HOTKEY_KEY);
+            if (theStroke != null) {
+                registerKeyboardAction(theAction, theStroke, JComponent.WHEN_IN_FOCUSED_WINDOW);
+            }
+        }
     }
 
     public DefaultButton(String aResourceID) {

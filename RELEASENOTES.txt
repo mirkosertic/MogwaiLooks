@@ -32,3 +32,7 @@ Release 1.5
 Release 1.6
 
 * Added DefaultCheckboxMenuItem
+
+Release 1.7
+
+* Implemented FR 2683620 [MogwaiLooks] Add support for HotKeys in DefaultAction
