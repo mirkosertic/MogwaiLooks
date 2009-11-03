@@ -36,3 +36,7 @@ Release 1.6
 Release 1.7
 
 * Implemented FR 2683620 [MogwaiLooks] Add support for HotKeys in DefaultAction
+
+Release 1.8
+
+* Changed masterpom and reference fo Mogwai DataBinding
