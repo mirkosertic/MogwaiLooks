@@ -7,12 +7,12 @@ public interface LooksBundle {
 
   String BUNDLE_NAME = "de/mogwai/common/client/looks/LooksBundle";
 
-  /** Ok. */
+  /** \u004f\u006b. */
   String OK = "OK";
-  /** Abbrechen. */
+  /** \u0041\u0062\u0062\u0072\u0065\u0063\u0068\u0065\u006e. */
   String CANCEL = "CANCEL";
-  /** Ja. */
+  /** \u004a\u0061. */
   String YES = "YES";
-  /** Nein. */
+  /** \u004e\u0065\u0069\u006e. */
   String NO = "NO";
 }
