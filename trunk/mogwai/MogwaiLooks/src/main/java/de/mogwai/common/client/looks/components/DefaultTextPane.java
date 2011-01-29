@@ -1,38 +1,33 @@
 /**
  * Mogwai Looks. Copyright (C) 2002 The Mogwai Project.
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 package de.mogwai.common.client.looks.components;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import de.mogwai.common.client.looks.tools.DefaultModificationListener;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterJob;
 import java.io.File;
 import java.util.HashMap;
-
-import javax.imageio.ImageIO;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
-
-import de.mogwai.common.client.looks.tools.DefaultModificationListener;
 
 public class DefaultTextPane extends JTextPane implements Printable {
 
@@ -64,13 +59,10 @@ public class DefaultTextPane extends JTextPane implements Printable {
 
     /**
      * Print Method.
-     * 
-     * @param g
-     *            Graphics Context of Printer
-     * @param pageFormat
-     *            PageFormat
-     * @param pageIndex
-     *            PageIndex
+     *
+     * @param g          Graphics Context of Printer
+     * @param pageFormat PageFormat
+     * @param pageIndex  PageIndex
      * @return Printable.PAGE_EXISTS / NO_SUCH_PAGE
      */
     public int print(Graphics g, PageFormat pageFormat, int pageIndex) {
@@ -182,21 +174,21 @@ public class DefaultTextPane extends JTextPane implements Printable {
      * offset zurückgegeben. Ist dort auch kein offset vorhanden, wird 0
      * zurückgegeben und hart umgebrochen. Funktioniert so allerdings nur bei
      * weisser hintergrundfarbe
-     * 
-     * @param image
-     *            Image
+     *
+     * @param image Image
      * @return offset für clipping area
      */
     private int calculateOffset(BufferedImage image) {
         int iHeight = image.getHeight();
         int iMaxBreakBorder = (int) ((double) (iHeight / 100) * 90);
-        int iRGB = 0;
+        int iRGB;
         int iIncrement = 0;
         int iLastPercentBorder = 0;
         int iWidth = image.getWidth();
         int iColorBorder = (int) ((double) (iWidth / 100) * 80);
         int y;
-        outer: for (y = iHeight - 3; y >= 0; y--) {
+        outer:
+        for (y = iHeight - 3; y >= 0; y--) {
             HashMap<Integer, Integer> hMap = new HashMap<Integer, Integer>();
             for (int x = 0; x < iWidth; x++) {
                 iRGB = image.getRGB(x, y);
@@ -235,7 +227,6 @@ public class DefaultTextPane extends JTextPane implements Printable {
 
     /**
      * Print Method to call.
-     * 
      */
     public void printme() {
         final DefaultTextPane me = this;
