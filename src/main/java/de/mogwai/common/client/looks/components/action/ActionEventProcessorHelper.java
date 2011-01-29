@@ -1,29 +1,26 @@
 /**
  * Mogwai Looks. Copyright (C) 2002 The Mogwai Project.
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 package de.mogwai.common.client.looks.components.action;
 
-import java.awt.Component;
-import java.awt.Cursor;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.lang.reflect.Method;
-
-import javax.swing.JRootPane;
-import javax.swing.RootPaneContainer;
 
 public class ActionEventProcessorHelper {
 
@@ -33,7 +30,7 @@ public class ActionEventProcessorHelper {
         }
 
         if (aWhere instanceof RootPaneContainer) {
-            return (JRootPane) ((RootPaneContainer) aWhere).getRootPane();
+            return ((RootPaneContainer) aWhere).getRootPane();
         }
 
         return getRootPane(((Component) aWhere).getParent());
@@ -54,8 +51,8 @@ public class ActionEventProcessorHelper {
 
                 try {
                     Method theMethod = aWhere.getClass().getMethod("do" + aEvent.getActionCommand(),
-                            new Class[] { ActionEvent.class });
-                    theMethod.invoke(aWhere, new Object[] { aEvent });
+                            new Class[]{ActionEvent.class});
+                    theMethod.invoke(aWhere, aEvent);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

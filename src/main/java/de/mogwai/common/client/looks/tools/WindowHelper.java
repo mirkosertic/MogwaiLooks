@@ -1,34 +1,26 @@
 /**
  * Mogwai Looks. Copyright (C) 2002 The Mogwai Project.
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 package de.mogwai.common.client.looks.tools;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.IllegalComponentStateException;
-import java.awt.Point;
-import java.awt.Toolkit;
-import java.awt.Window;
-
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
 public class WindowHelper {
-
-    private static int screenBottomOffset = 23;
 
     private Window window;
 
@@ -72,6 +64,7 @@ public class WindowHelper {
             windowSize.height = screenSize.height;
         }
         int height = (screenSize.height - windowSize.height) / 2;
+        int screenBottomOffset = 23;
         if (height < screenBottomOffset) {
             height = 0;
         }
@@ -138,7 +131,6 @@ public class WindowHelper {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double ratio = (double) screenSize.width / (double) screenSize.height;
-        boolean doubleScreen = ratio > 2.0;
-        return doubleScreen;
+        return ratio > 2.0;
     }
 }

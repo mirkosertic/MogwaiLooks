@@ -1,35 +1,27 @@
 /**
  * Mogwai Looks. Copyright (C) 2002 The Mogwai Project.
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 package de.mogwai.common.client.looks.components;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FontMetrics;
-import java.awt.Insets;
-import java.awt.LayoutManager;
-
-import javax.swing.JLabel;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
-
 import de.mogwai.common.i18n.I18NAble;
 import de.mogwai.common.i18n.ResourceHelper;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class DefaultSeparator extends DefaultPanel implements I18NAble {
 
@@ -75,7 +67,6 @@ public class DefaultSeparator extends DefaultPanel implements I18NAble {
 
                 FontMetrics metrics = label.getFontMetrics(label.getFont());
                 int ascent = metrics.getMaxAscent();
-                int hGapDlu = centerSeparators ? 3 : 1;
                 int hGap = 5;
                 int vOffset = centerSeparators ? 1 + (labelHeight - separatorHeight) / 2 : ascent - separatorHeight / 2;
 

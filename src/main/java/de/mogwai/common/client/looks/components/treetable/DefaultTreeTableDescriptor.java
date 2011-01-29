@@ -1,37 +1,34 @@
 /**
  * Mogwai Looks. Copyright (C) 2002 The Mogwai Project.
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 package de.mogwai.common.client.looks.components.treetable;
 
-import java.util.Vector;
-
-import javax.swing.JTable;
-import javax.swing.table.TableColumn;
-
 import de.mogwai.common.i18n.ResourceHelper;
 import de.mogwai.common.i18n.ResourceHelperProvider;
+
+import javax.swing.*;
+import javax.swing.table.TableColumn;
+import java.util.Vector;
 
 public class DefaultTreeTableDescriptor {
 
     private Vector<DefaultTreeTableColumnDescriptor> column = new Vector<DefaultTreeTableColumnDescriptor>();
 
     protected ResourceHelper resourceHelper;
-
-    private JTable table;
 
     protected DefaultTreeTableDescriptor(ResourceHelper aResourceHelper) {
 
@@ -85,16 +82,14 @@ public class DefaultTreeTableDescriptor {
 
     public void configureTable(DefaultTreeTable aTable) {
 
-        table = aTable;
-
-        table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-        table.setRowSelectionAllowed(true);
-        table.setColumnSelectionAllowed(false);
-        table.setRowSelectionAllowed(true);
-        table.getTableHeader().setReorderingAllowed(false);
+        aTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        aTable.setRowSelectionAllowed(true);
+        aTable.setColumnSelectionAllowed(false);
+        aTable.setRowSelectionAllowed(true);
+        aTable.getTableHeader().setReorderingAllowed(false);
         for (DefaultTreeTableColumnDescriptor theDesc : column) {
             int index = column.indexOf(theDesc);
-            TableColumn theColumn = table.getColumnModel().getColumn(index);
+            TableColumn theColumn = aTable.getColumnModel().getColumn(index);
             if (theDesc.getSize() > 0) {
                 theColumn.setMinWidth(theDesc.getSize());
                 theColumn.setMaxWidth(theDesc.getSize());
