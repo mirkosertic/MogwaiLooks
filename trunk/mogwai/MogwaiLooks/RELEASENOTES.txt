@@ -40,3 +40,7 @@ Release 1.7
 Release 1.8
 
 * Changed masterpom and reference fo Mogwai DataBinding
+
+Release 1.9
+
+* Minor code inspection issues
