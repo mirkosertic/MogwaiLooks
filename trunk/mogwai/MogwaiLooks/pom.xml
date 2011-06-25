@@ -5,7 +5,7 @@
     <groupId>net.sourceforge.mogwai</groupId>
     <artifactId>mogwai-looks</artifactId>
     <packaging>jar</packaging>
-    <version>1.9</version>
+    <version>1.9.1-SNAPSHOT</version>
     <name>MogwaiLooks</name>
     <description>
         MogwaiLooks is a component set to make swing applications look fancier.
@@ -55,7 +55,7 @@
                     <dependency>
                         <groupId>net.sourceforge.mogwai</groupId>
                         <artifactId>mogwai-i18n</artifactId>
-                        <version>2.14</version>
+                        <version>2.14.1-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
 
@@ -76,7 +76,7 @@
         <dependency>
             <groupId>net.sourceforge.mogwai</groupId>
             <artifactId>mogwai-databinding</artifactId>
-            <version>1.8</version>
+            <version>1.8.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
